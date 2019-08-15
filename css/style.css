@@ -47,7 +47,7 @@
             
             #heading {
                 height: 165px;
-                background: rgb(0, 165, 134); 
+                background: rgb(179, 131, 55); 
                 text-align: center;
                 color: rgb(194, 202, 201);
                 
@@ -56,7 +56,7 @@
             
             #bold_part {
                 font-weight: bold;
-                color: rgb(47, 45, 47);
+                color: rgb(26, 47, 76);
             }
             
             
@@ -64,7 +64,7 @@
                 margin: 0;
                 background: white;
                 font-family: 'Raleway';
-                color: rgb(47, 45, 47);
+                color: rgb(26, 47, 76);
             }
             
             #image-region {
@@ -76,7 +76,7 @@
 	     }
             #image-region a {
                 text-decoration: none;
-                color: rgb(0, 165, 134);
+                color: rgb(179, 131, 55);
             }
             
             #contact {
@@ -104,7 +104,7 @@
                 
             }
             #fb:hover {
-                background: url(images/fb_teal_resize.png) no-repeat;
+                background: url(images/fb_gold_resize.png) no-repeat;
                 transition: background 0.2s ease;
             }
             
