@@ -1,3 +1,3 @@
 ## Personal website
 
-Used Pinetools[https://pinetools.com/colorize-image] to colorize images
+Used [Pinetools](https://pinetools.com/colorize-image) to colorize logos.

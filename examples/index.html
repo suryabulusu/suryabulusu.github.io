@@ -1,0 +1,167 @@
+<!--
+  Copyright 2018 The Distill Template Authors
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!doctype html>
+
+<head>
+  <script src="../dist/template.v2.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" >
+  <meta charset="utf8">
+</head>
+
+<body>
+  <distill-header></distill-header>
+<d-front-matter>
+  <script id='distill-front-matter' type="text/json">{
+    "title": "Hierarchical Dirichlet Process",
+    "description": "rip in peace... ",
+    "published": "April 15, 2019",
+    "authors": [
+      {
+        "author":"Surya",
+        "authorURL":"https://suryab.github.io/",
+        "affiliations": [{"name": "IIT Kanpur"}]
+      }
+    ],
+    "katex": {
+      "delimiters": [
+        {"left": "$$", "right": "$$", "display": false}
+      ]
+    }
+  }</script>
+</d-front-matter>
+<d-title>
+        <p>An attempt to intuitively explain HDP, and why it makes sense to use HDPs for jointly doing mixture modeling of multiple related datasets.<d-cite key="teh"></d-cite> [wip]</p>
+  <figure style="grid-column: page; margin: 1rem 1rem;"><img src="hdp_1.png" style="width:100%; border: 1px solid rgba(0, 0, 0, 0.2);"/>
+    <figcaption>Plate model of DP (left) and HDP (right) </figcaption>
+  </figure>
+  
+  
+</d-title>
+<d-byline></d-byline>
+
+
+
+
+<d-article>
+        
+  <a class="marker" href="#section-1" id="section-1"><span>1</span></a>
+  <h2>Introduction</h2>
+  <p>
+      Suppose we consider that every document discusses a set of topics. Our task is to learn the
+        topics. We apriori do not know how many topics are there in a document. A salient approach
+        to this problem is non-parametric Bayesian modeling, wherein we use a Dirichlet Process (DP)
+        prior, which offers probabilities to infinite topics apriori. Using the document data, we could
+        pick the required finite topics a posteriori. 
+  </p>
+  <aside>You can read about Dirichlet Processes <a href="https://www.cs.cmu.edu/~kbe/dp_tutorial.pdf" target="_blank">here</a></aside>
+  
+  <p>Now, it is natural to expect that various documents share topics. For example, a document
+        on Beta Processes and a document on Gaussian Processes might share a topic like <em>Stochastic</em>.
+        Learning topics for each document seperately denies us an opportunity to share data across
+        documents. We could’ve learned about the topic <em>Stochastic</em> better if we jointly learned on
+        both documents. Note that we don’t want to club both documents into one! This <span style="color:red">destroys</span>
+        the individual document structure. A solution in statistics which enables joint learning while
+        preserving the document structure is the hierarchical modeling technique.
+    </p>
+
+    <p>
+            Let’s take 2 documents, and put up <d-math>G1, G2 \sim DP (α_0, G_0) </d-math> priors where <d-math>G_1 = \sum_{k=1}^{\infty}\pi_{1k}\red{\delta_{\phi_{1k}}}</d-math> and <d-math>G_2 = \sum_{k=1}^{\infty}\pi_{2k}\blue{\delta_{\phi_{2k}}}</d-math>
+            Since <d-math>G_0</d-math> is continuous, none of <d-math>\red{\phi_{1k}}</d-math>'s and <d-math>\blue{\phi_{2k}}</d-math>'s are equal, implying that there is no sharing of topics across both documents. So, we need a <em>discrete</em> <d-math>G_0</d-math> with broad support. The paper <b>Hierarchical Dirichlet Process</b><d-cite key = "teh"></d-cite> proposes a straightforward solution - draw <d-math>G_0</d-math> from another dirichlet process. An example generative story using HDP is given below, wherein H is a Normal-Wilshart distribution. 
+    </p>
+  
+  <d-math block>
+        \begin{aligned}
+    \green{G_0 | \gamma, H} &\sim  DP(\gamma, H) \quad \quad \quad \quad \quad \quad G_0 = \sum_{k=1}^{\infty}\beta_{k}\delta_{\phi_k} \\
+    G_j | \alpha_{0}, G_0 &\sim DP(\alpha_0, G_0) \quad \forall \quad j \quad \quad  G_j = \sum_{k=1}^{\infty}\pi_{jk}\delta_{\phi_k}\\
+    \theta_{ji} | G_j &\sim G_j \\
+    x_{ji} | \theta_{ji} &\sim N(x_{ji} | \mu_{ji}, \Sigma_{ji}) \\
+\end{aligned}
+  </d-math>
+  <p>
+        One appealing aspect of the model is its recursiveness, as in, we could easily extend the model
+        to another level of hierarchy by sampling H from another DP. This can be used to learn topics
+        jointly from multiple corpora. For example, it is likely that documents from Statistics corpora
+        and Computer Science corpora share a topic like ’Python’.
+  </p>
+  <a class="marker" href="#section-2" id="section-2"><span>2</span></a>
+  <h2>Stick Breaking Construction</h2>
+  <p>
+        How are <d-math>\beta_k</d-math> and <d-math>\pi_{jk}</d-math> related? Sethuraman suggested a stick breaking construction<d-cite key="sethuraman"></d-cite> to compute <d-math>\beta_k</d-math>'s. The target is to find a sequence of <d-math>\beta_k</d-math>'s such that <d-math>\sum_{k=1}^{\infty} \beta_k = 1</d-math>. The construction is as follows - we recursively break a stick of unit length. Let us call this the parent stick.
+        <d-math block>
+                \beta_k' \sim \text{Beta}(1, \gamma) \quad \quad \quad \quad \beta_k = \beta_k'\prod_{l=1}^{k-1}(1-\beta_l') 
+        </d-math>
+
+        For our case with J documents (groups), we can think of recursively breaking J sticks of unit length such that <d-math>\sum_{k=1}^{\infty} \pi_{jk} = 1</d-math> for all j. The catch is that each piece length of <d-math>j^{th}</d-math> stick depends on the piece lengths in parent stick, thereby establishing a hierarchical flavor. 
+        <d-math block>
+                \pi_{jk}' \sim \text{Beta}(\alpha_0\green{\beta_k}, \alpha_0(\sum_{l=k+1}^{\infty}\green{\beta_l})) \quad \quad \quad \pi_{jk} = \pi_{jk}'\prod_{l=1}^{k-1}(1-\pi_{jl}') 
+        </d-math>
+
+        The stick breaking process works for <d-math>\pi_{jk}</d-math>'s because it can be shown that <d-math>\pi_{j} \sim \text{DP}(\alpha_0, \beta)</d-math>.
+        Note the contrast with respect to a normal DP. We'd have drawn <d-math>\pi_{jk}'</d-math> from Beta<d-math>(1, \alpha_0)</d-math>, in which there is no sharing of values.
+  </p>  
+  <a class="marker" href="#section-3" id="section-3"><span>3</span></a>
+  <h2>Chinese Restaurant Franchise</h2>
+  <figure id="crf-figure" style="grid-column: page; display: block; margin-left: auto; margin-right: auto;">
+        <img src = "crf.jpg">
+        <figcaption>Figure 1: Chinese Restaurant Franchise when J = 2</figcaption>
+      </figure>
+  <p>
+  The CRP metaphor for Dirichlet Process can be extended to the Chine Restaurant Franchise metaphor to explain HDP intuitively. The core idea is that, in addition to customers going to restaurants and picking tables, we now have <i>tables</i> taking up a customer role and going to a parent restaurant. For simplicity's sake, let's take the case of 2 restaurants X and Y. A, B, C are tables in restaurant X which has 4 customers. D and E are tables in restaurant Y with 5 customers. The parent restaurant has tables p, q, and r, with the 5 tables from two restaurants being customers. The customer seating arrangement is as shown in <a href="#crf-figure" ><span>Figure 1</span></a>. Since A and D sit at table p, it means the dishes served at table A and D would be the same as p. 
+  </p>
+
+  <p>
+        Suppose a new customer 6 comes in restaurant X. She would sit at table A with probability <d-math>\frac{1}{4 + \alpha_0}</d-math>, and eat dish p (since A sits at p in parent restaurant). Similarly, she'd sit at table B with probability <d-math>\frac{1}{4 + \alpha_0}</d-math> and eat dish q; at table C with probability <d-math>\frac{2}{4 + \alpha_0}</d-math> and eat dish p. Note that the numerator is the number of customers in restaurant X sitting at that particular table, and the denominator is <d-math>\alpha_0</d-math> plus the number of customers in the restaurant before current customer arrived. Customer 6 chooses to sit at a new table with probability <d-math>\frac{\alpha_0}{4 + \alpha_0}</d-math>. Now, we could think of a waiter at the new table going to the parent restaurant, and a CRP starts at parent restaurant with the waiter as a new customer. The probabilities are as shown in <a href="#table-1">Table 1</a>
+  </p>
+  
+
+  <table id = "table-1">
+      <thead>
+        <tr><th>Table/Dish</th><th>Probability</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>p</td><td><d-math>\frac{2}{5 + \gamma}</d-math></td></tr>
+        <tr><td>q</td><td><d-math>\frac{1}{5 + \gamma}</d-math></td></tr>
+        <tr><td>r</td><td><d-math>\frac{2}{5 + \gamma}</d-math></td></tr>
+        <tr><td>New Dish</td><td><d-math>\frac{\gamma}{5 + \gamma}</d-math></td></tr>
+      </tbody>
+      <caption>Table 1: CRP in parent restaurant</caption>
+    </table>
+
+    <p>
+            In case the waiter sits at table p, she'd call restaurant X and tell the chef to serve dish p at the new table that customer 6 chose. If the waiter chooses a new dish, say s, then this new dish s will be served to customer 6. 
+    </p>
+
+    <p>
+            The process in similar in Restaurant Y too. A new customer would either sit at one of the tables, or choose to sit at a new table. If she prefers a new table, a waiter would go to the parent restaurant and choose a dish according to another CRP. Notice that there is a global set of dishes; a subset of those dishes is being served in each restaurant.
+    </p>
+    <a class="marker" href="#section-4" id="section-4"><span>4</span></a>
+  <h2>Final Comments</h2>
+    <p>
+            The dishes p, q, r are analogous to <d-math>\phi_k</d-math>'s, ie, the support of <d-math>G_0</d-math>. A, B, C, D, E are analogous to <d-math>\theta_{11}, \theta_{12}, \theta_{13}, \theta_{21}, \theta_{22}</d-math> respectively. Note that <d-math>\theta_{11}</d-math> and <d-math>\theta_{21}</d-math> are the same, as in, the latent variables are being shared across the 2 groups. Due to such sharing of latent variables, it makes sense that we use CRF as a prior for jointly modeling multiple related datasets. The posterior predictive distribution would pool the information across multiple restaurants before assigning a table to a new customer in a restaurant.
+    </p>
+</d-article>
+
+<d-appendix>
+  <h3>Acknowledgements</h3>
+  <p>The article was prepared using the <a href="https://github.com/distillpub/post--example" target="_blank">Distill Template</a></p>
+  <p>I wrote this article as a part of the course <a href="https://www.cse.iitk.ac.in/users/piyush" target="_blank">CS698X: Probabilistic Modeling and Inference</a> by Prof. Piyush Rai</p>
+  <h3>Updates and Corrections</h3>
+  <p>If you see mistakes or want to suggest changes, please <a href="mailto:teja.surya59@gmail.com">contact me</a></p>
+
+  <d-bibliography src="bibliography.bib"></d-bibliography>
+</d-appendix>
+
+</body>
