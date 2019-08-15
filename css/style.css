@@ -1,0 +1,150 @@
+#wrapper {
+                  display: -webkit-box;
+                  display: -moz-box;
+                  display: -ms-flexbox;
+                  display: -webkit-flex;
+                  display: flex; 
+                  
+                  -webkit-flex-flow: row wrap;
+                  flex-flow: row wrap;
+            }
+            
+            
+            #wrapper > * {
+                flex: 1 100%;
+            }
+            
+            @media all and (max-width: 554px) {
+                #image-region { 
+                    flex: 1 auto;
+                    text-align: center;
+                    
+                }
+                #heading { padding: 60px 0px 0px 0px;}
+                #name { font-size: 300%; }
+                #designation { font-size: 17px;}
+            }
+                    
+            @media all and (min-width: 554px) {
+                #root    { flex: 25 0px; }
+                #image-region { 
+                    flex: 1 auto;
+                    order: 1; 
+                } 
+                #root   { order: 2; }
+                #name {
+                font-size: 600%;
+                }
+                #designation {
+                font-size: 25px;
+                }
+            }
+            
+            @font-face {
+                font-family: 'Raleway';
+                src: url('Raleway-Light.ttf');
+            }
+            
+            #heading {
+                height: 165px;
+                background: rgb(0, 165, 134); 
+                text-align: center;
+                color: rgb(194, 202, 201);
+                
+            }
+            
+            
+            #bold_part {
+                font-weight: bold;
+                color: rgb(47, 45, 47);
+            }
+            
+            
+            body {
+                margin: 0;
+                background: white;
+                font-family: 'Raleway';
+                color: rgb(47, 45, 47);
+            }
+            
+            #image-region {
+                margin: 25px;
+            }
+            
+	     #main-im {
+		  border-radius: 100%;	
+	     }
+            #image-region a {
+                text-decoration: none;
+                color: rgb(0, 165, 134);
+            }
+            
+            #contact {
+                margin: 25px 25px 0px 5px;
+                font-family: 'Calibri';
+                font-size: 18px;
+            }
+            
+            #logos {
+                display: flex;
+            }
+            #logos > div {
+                flex: 1;
+            }
+            #fb {
+                cursor: pointer;
+                margin: 15px 15px 15px 0px;
+                background: url('images/fb_grey_resize.png') no-repeat;
+                width: 36px;
+                height: 36px;
+                -webkit-transition: background 0.5s ease ;
+                -moz-transition: background 0.5s ease ;
+                -o-transition: background 0.5s ease ;
+                transition: background 0.5s ease ;
+                
+            }
+            #fb:hover {
+                background: url(images/fb_teal_resize.png) no-repeat;
+                transition: background 0.2s ease;
+            }
+            
+            #github {
+                cursor: pointer;
+                margin: 15px 15px 15px 0px;
+                background: url('images/github_grey.png') no-repeat;
+                width: 36px;
+                height: 36px;
+                -webkit-transition: background 0.5s ease ;
+                -moz-transition: background 0.5s ease ;
+                -o-transition: background 0.5s ease ;
+                transition: background 0.5s ease ;
+                
+            }
+            #github:hover {
+                background: url(images/github_teal.png) no-repeat;
+                transition: background 0.2s ease;
+            }
+            
+            #linkin {
+                cursor: pointer;
+                margin: 15px 15px 15px 0px;
+                background: url('images/linkin_grey.png') no-repeat;
+                width: 36px;
+                height: 36px;
+                -webkit-transition: background 0.5s ease ;
+                -moz-transition: background 0.5s ease ;
+                -o-transition: background 0.5s ease ;
+                transition: background 0.5s ease ;
+                
+            }
+            #linkin:hover {
+                background: url(images/linkin_teal.png) no-repeat;
+                transition: background 0.2s ease;
+            }
+            
+            #root {
+                margin: 25px 100px 0px 5px;
+            }
+	     #root a {
+		  text-decoration: none;	
+	     }
