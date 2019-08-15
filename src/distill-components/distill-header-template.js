@@ -5,7 +5,7 @@ export const headerTemplate = `
 distill-header {
   position: relative;
   height: 60px;
-  background-color: hsl(200, 60%, 15%);
+  background-color: rgb(179, 131, 55);
   width: 100%;
   box-sizing: border-box;
   z-index: 2;
