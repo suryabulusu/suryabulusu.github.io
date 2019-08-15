@@ -1026,11 +1026,6 @@ function bibliography_cite(ent, fancy){
   }
 }
 
-
-
-
-//https://scholar.google.com/scholar?q=allintitle%3ADocument+author%3Aolah
-
 // Copyright 2018 The Distill Template Authors
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12839,6 +12834,43 @@ function quotes(text) {
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+// const template = `
+// if ('IntersectionObserver' in window &&
+//   'IntersectionObserverEntry' in window &&
+//   'intersectionRatio' in IntersectionObserverEntry.prototype) {
+//     // Platform supports IntersectionObserver natively! :-)
+//     if (!('isIntersecting' in IntersectionObserverEntry.prototype)) {
+//       Object.defineProperty(IntersectionObserverEntry.prototype,
+//         'isIntersecting', {
+//         get: function () {
+//           return this.intersectionRatio > 0;
+//         }
+//       });
+//     }
+// } else {
+//   // Platform does not support webcomponents--loading polyfills synchronously.
+//   const scriptTag = document.createElement('script');
+//   scriptTag.src = '${intersectionObserverPath}';
+//   scriptTag.async = false;
+//   document.currentScript.parentNode.insertBefore(scriptTag, document.currentScript.nextSibling);
+// }
+//
+// if ('registerElement' in document &&
+//     'import' in document.createElement('link') &&
+//     'content' in document.createElement('template')) {
+//   // Platform supports webcomponents natively! :-)
+// } else {
+//   // Platform does not support webcomponents--loading polyfills synchronously.
+//   const scriptTag = document.createElement('script');
+//   scriptTag.src = '${webcomponentPath}';
+//   scriptTag.async = false;
+//   document.currentScript.parentNode.insertBefore(scriptTag, document.currentScript.nextSibling);
+// }
+//
+//
+// `;
+
+
 const addBackIn = `
 window.addEventListener('WebComponentsReady', function() {
   console.warn('WebComponentsReady');
@@ -13065,10 +13097,10 @@ distill-header .nav a {
 </style>
 <div class="content">
   <a href="/" class="logo">
-    blogs
+    Blog
   </a>
   <nav class="nav">
-    <a href="/about/">about me</a>
+    <a href="/">About Me</a>
   </nav>
 </div>
 `;
@@ -13320,6 +13352,7 @@ var DistillFooter = function(dom) {
 
 /* eslint-env node, mocha */
 
+/* Extractors */
 const extractors = new Map([
   ['ExtractFrontmatter', ExtractFrontmatter],
   ['ExtractBibliography', ExtractBibliography],

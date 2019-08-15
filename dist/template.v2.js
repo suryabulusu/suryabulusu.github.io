@@ -714,6 +714,7 @@ const renderMathInElement = function(elem, options) {
 // limitations under the License.
 
 /*global katex */
+// attaches renderMathInElement to window
 const katexJSURL = 'https://distill.pub/third-party/katex/katex.min.js';
 const katexCSSTag = '<link rel="stylesheet" href="https://distill.pub/third-party/katex/katex.min.css" crossorigin="anonymous">';
 
@@ -976,9 +977,6 @@ function hover_cite(ent){
     return '?';
   }
 }
-
-
-//https://scholar.google.com/scholar?q=allintitle%3ADocument+author%3Aolah
 
 function domContentLoaded() {
   return ['interactive', 'complete'].indexOf(document.readyState) !== -1;
@@ -4846,6 +4844,9 @@ if (typeof window !== 'undefined') {
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+// This overlay is not secure.
+// It is only meant as a social deterrent.
+
 const productionHostname = 'distill.pub';
 const T$9 = Template('d-interstitial', `
 <style>
@@ -5490,6 +5491,7 @@ function hsl2rgb(h, m1, m2) {
 var deg2rad = Math.PI / 180;
 var rad2deg = 180 / Math.PI;
 
+// https://observablehq.com/@mbostock/lab-and-rgb
 var K = 18;
 var Xn = 0.96422;
 var Yn = 1;
@@ -8426,6 +8428,7 @@ DragEvent.prototype.on = function() {
   return value === this._ ? this : value;
 };
 
+// Ignore right-click, since that should open the context menu.
 function defaultFilter() {
   return !event.ctrlKey && !event.button;
 }
@@ -8982,10 +8985,10 @@ distill-header .nav a {
 </style>
 <div class="content">
   <a href="/" class="logo">
-    blogs
+    Blog
   </a>
   <nav class="nav">
-    <a href="/about/">about me</a>
+    <a href="/">About Me</a>
   </nav>
 </div>
 `;
@@ -9205,6 +9208,9 @@ class DistillFooter extends T$12(HTMLElement) {
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+/* Transforms */
+/* Components */
+/* Distill website specific components */
 const distillMain = function() {
 
   if (window.distillRunlevel < 1) {

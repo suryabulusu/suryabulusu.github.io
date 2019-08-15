@@ -67,10 +67,10 @@ distill-header .nav a {
 </style>
 <div class="content">
   <a href="/" class="logo">
-    blogs
+    Blog
   </a>
   <nav class="nav">
-    <a href="/about/">about me</a>
+    <a href="/">About Me</a>
   </nav>
 </div>
 `;
