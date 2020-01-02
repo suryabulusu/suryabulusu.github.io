@@ -20,6 +20,11 @@
   }
 }
 
+@font-face {
+  font-family: 'Raleway';
+  src: url('Raleway-Light.ttf');
+}
+
 /*! minireset.css v0.0.2 | MIT License | github.com/jgthms/minireset.css */
 html,
 body,
@@ -6073,6 +6078,7 @@ label.panel-block:hover {
   display: -ms-flexbox;
   display: flex;
   font-size: 1rem;
+  font-family: 'Raleway';
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;

@@ -21,7 +21,9 @@
                     
                 }
                 #name { font-size: 200%; 
-                font-family: 'Raleway';}
+                font-family: 'Raleway';
+                color: rgb(26, 47, 76);
+                }
                 /* #designation { font-size: 10px;} */
             }
                     
@@ -35,6 +37,7 @@
                 #name {
                 font-size: 200%;
                 font-family: 'Raleway';
+                color: rgb(26, 47, 76);
                 }
                 /* #designation {
                 font-size: 25px;
@@ -62,9 +65,10 @@
             body {
                 margin-left: 30px;
                 margin-right: 50px;
+                margin-bottom: 50px;
                 background: white;
                 font-family: 'Spectral', serif;
-                color: rgb(26, 47, 76);
+                color: #333333;
                 font-size: 18px;
 
             }
@@ -142,8 +146,8 @@
                 transition: background 0.5s ease ;
                 
             }
-            #linkin:hover {
-                background: url(images/linkin_gold.png) no-repeat;
+            #linkin:hover {email
+                background: url(imemailages/linkin_gold.png) no-repeat;
                 transition: background 0.2s ease;
             }
             
