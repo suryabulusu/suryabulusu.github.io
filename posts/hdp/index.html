@@ -43,7 +43,7 @@
   }</script>
 </d-front-matter>
 <d-title>
-        <p>An attempt to intuitively explain HDP, and why it makes sense to use HDPs for jointly doing mixture modeling of multiple related datasets.<d-cite key="teh"></d-cite> [wip]</p>
+        <p>An attempt to intuitively explain HDP, and why it makes sense to use HDPs for joint mixture modeling of multiple related datasets.<d-cite key="teh"></d-cite></p>
   <figure style="grid-column: page; margin: 1rem 1rem;"><img src="hdp_1.png" style="width:100%; border: 1px solid rgba(0, 0, 0, 0.2);"/>
     <figcaption>Plate model of DP (left) and HDP (right) </figcaption>
   </figure>
@@ -73,7 +73,7 @@
         documents. We could’ve learned about the topic <em>Stochastic</em> better if we jointly learned on
         both documents. Note that we don’t want to club both documents into one! This <span style="color:red">destroys</span>
         the individual document structure. A solution in statistics which enables joint learning while
-        preserving the document structure is the hierarchical modeling technique.
+        preserving the document structure is the <u>hierarchical modeling technique</u>.
     </p>
 
     <p>
@@ -84,7 +84,7 @@
   <d-math block>
         \begin{aligned}
     \green{G_0 | \gamma, H} &\sim  DP(\gamma, H) \quad \quad \quad \quad \quad \quad G_0 = \sum_{k=1}^{\infty}\beta_{k}\delta_{\phi_k} \\
-    G_j | \alpha_{0}, G_0 &\sim DP(\alpha_0, G_0) \quad \forall \quad j \quad \quad  G_j = \sum_{k=1}^{\infty}\pi_{jk}\delta_{\phi_k}\\
+    G_j | \alpha_{0}, G_0 &\sim DP(\alpha_0, G_0) \quad \forall \quad j \quad \quad  G_j = \sum_{k=1}^{\infty}\pi_{jk}\delta_{\phi_{jk}}\\
     \theta_{ji} | G_j &\sim G_j \\
     x_{ji} | \theta_{ji} &\sim N(x_{ji} | \mu_{ji}, \Sigma_{ji}) \\
 \end{aligned}
@@ -122,11 +122,11 @@
   </p>
 
   <p>
-        Suppose a new customer 6 comes in restaurant X. She would sit at table A with probability <d-math>\frac{1}{4 + \alpha_0}</d-math>, and eat dish p (since A sits at p in parent restaurant). Similarly, she'd sit at table B with probability <d-math>\frac{1}{4 + \alpha_0}</d-math> and eat dish q; at table C with probability <d-math>\frac{2}{4 + \alpha_0}</d-math> and eat dish p. Note that the numerator is the number of customers in restaurant X sitting at that particular table, and the denominator is <d-math>\alpha_0</d-math> plus the number of customers in the restaurant before current customer arrived. Customer 6 chooses to sit at a new table with probability <d-math>\frac{\alpha_0}{4 + \alpha_0}</d-math>. Now, we could think of a waiter at the new table going to the parent restaurant, and a CRP starts at parent restaurant with the waiter as a new customer. The probabilities are as shown in <a href="#table-1">Table 1</a>
+        Suppose a new customer 5 comes in restaurant X. She would sit at table A with probability <d-math>\frac{1}{4 + \alpha_0}</d-math>, and eat dish p (since A sits at p in parent restaurant). Similarly, she'd sit at table B with probability <d-math>\frac{1}{4 + \alpha_0}</d-math> and eat dish q; at table C with probability <d-math>\frac{2}{4 + \alpha_0}</d-math> and eat dish p. Note that the numerator is the number of customers in restaurant X sitting at that particular table, and the denominator is <d-math>\alpha_0</d-math> plus the number of customers in the restaurant before current customer arrived. Customer 5 chooses to sit at a new table with probability <d-math>\frac{\alpha_0}{4 + \alpha_0}</d-math>. Now, we could think of a waiter at the new table going to the parent restaurant, and a CRP starts at parent restaurant with the waiter as a new customer. The probabilities are as shown in <a href="#table-1">Table 1</a>
   </p>
   
 
-  <table id = "table-1">
+  <table id = "table-1" align="center">
       <thead>
         <tr><th>Table/Dish</th><th>Probability</th></tr>
       </thead>
@@ -140,7 +140,7 @@
     </table>
 
     <p>
-            In case the waiter sits at table p, she'd call restaurant X and tell the chef to serve dish p at the new table that customer 6 chose. If the waiter chooses a new dish, say s, then this new dish s will be served to customer 6. 
+            In case the waiter sits at table p, she'd call restaurant X and tell the chef to serve dish p at the new table that customer 5 chose. If the waiter chooses a new dish, say s, then this new dish s will be served to customer 5. 
     </p>
 
     <p>
