@@ -146,8 +146,8 @@
                 transition: background 0.5s ease ;
                 
             }
-            #linkin:hover {email
-                background: url(imemailages/linkin_gold.png) no-repeat;
+            #linkin:hover {
+                background: url(images/linkin_gold.png) no-repeat;
                 transition: background 0.2s ease;
             }
             

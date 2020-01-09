@@ -18,6 +18,127 @@
         <title>
             Surya Bulusu
         </title>
+
+        <style>
+            .description h2,
+        
+            .description h2 {
+                font-weight: 600;
+            }
+        
+            h2.post-tag {
+                border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+                padding-bottom: 12px;
+            }
+        
+            /* .posts-list {
+                margin-top: 24px;
+                margin-bottom: 24px;
+            } */
+        
+            .posts-list .post-preview {
+                text-decoration: none;
+                overflow: hidden;
+                display: block;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+                padding: 14px 0;
+            }
+        
+            .posts-list .post-preview:last-of-type {
+                border-bottom: none;
+            }
+        
+            .posts-list .post-preview h2 {
+                margin: 0 0 6px 0;
+                line-height: 1.2em;
+                font-style: normal;
+                font-size: 18px;
+            }
+        
+            .posts-list .post-preview p {
+                margin: 0 0 12px 0;
+                line-height: 1.4em;
+            }
+        
+            .posts-list .post-preview .thumbnail {
+                box-sizing: border-box;
+                margin-bottom: 14px;
+                position: relative;
+                max-width: 500px;
+            }
+        
+            .posts-list .post-preview.editorial .thumbnail {
+                display: none;
+            }
+        
+            .posts-list .post-preview img {
+                width: 100%;
+                display: block;
+            }
+        
+            .posts-list .metadata {
+                font-size: 12px;
+                line-height: 1.4em;
+                margin-bottom: 18px;
+            }
+        
+            .metadata>* {
+                display: inline-block;
+            }
+        
+            .metadata .publishedDate {
+                margin-right: 1em;
+            }
+        
+            .metadata .tags {
+                margin-top: 1em;
+            }
+        
+            .tags .tag {
+                color: rgba(0, 0, 0, 0.67);
+                padding: 0.3em 0.5em;
+                margin-bottom: 0.5em;
+                font-size: 80%;
+                border: 1px solid rgba(0, 0, 0, 0.4);
+                border-radius: 3px;
+                text-transform: uppercase;
+                font-weight: 500;
+            }
+        
+            @media(min-width: 768px) {
+                .posts-list .post-preview h2 {
+                    font-size: 20px;
+                }
+        
+                /* .posts-list {
+                    margin-top: 60px;
+                } */
+        
+                .posts-list .post-preview .thumbnail {
+                    float: right;
+                    width: 35%;
+                    margin-bottom: 0;
+                }
+        
+                .posts-list .post-preview .description {
+                    float: left;
+                    width: 85%;
+                }
+        
+                .posts-list .post-preview .metadata {
+                    float: left;
+                    width: 15%;
+                    margin-top: 8px;
+                }
+        
+                .posts-list .post-preview p {
+                    margin: 0 0 12px 0;
+                    line-height: 1.5em;
+                    font-size: 18px;
+                }
+        
+            }
+        </style>
     </head>
     <body>
         <div id="wrapper">
@@ -46,16 +167,14 @@
         <div id="root">
             <tabs>
                 <tab name="About me	" v-bind:selected="true">
-                    I'm Surya, a final-year undergrad at Indian Institute of Technology Kanpur, majoring in Electrical Engineering. You may get in touch with me through <a target="_blank" href="mailto:teja.surya59@gmail.com">email</a>. <br>
+                    I'm Surya, a final-year undergrad at Indian Institute of Technology Kanpur, majoring in Electrical Engineering. My current interests are in Probabilistic Modeling, Interpretability, and New Media. 
+                     You may get in touch with me at: <a target="_blank" href="mailto:teja.surya59@gmail.com" style="font-family: Courier; font-size: 16px">teja.surya59@gmail.com</a> <br>
               <blockquote style=" margin-top: 8px; margin-bottom: 12px; padding: 10px; background-color: rgba(179, 131, 55, 0.2);">
-                My current academic interests are in <b>Probabilistic Modeling</b>,  and <strong>Network Science</strong><br>I focus on doing so and so, the questions i ponder over are so and so... <br>
-               i also think about so and so..hence my motivation is this and that<br>
-               <a href="blogs/hdp/">here</a>
+                I worked on generating coordinated image-text pairs at Adobe Research (Bengaluru) in the summer of 2019. Our work has been accepted at IUI 2020 as a full paper. Preprint coming soon!
 
               </blockquote>
-            I worked on generating coordinated image-text pairs at <strong>Adobe Research, Bengaluru</strong> in the summer of 2019. Our work has been accepted at IUI 2020. Preprint coming soon!<br><br>   
-         A few blogs that I follow - <a target="_blank" href="https://www.one-tab.com/page/vT_7Qtv7Rti1qG5cwtOCDg">here</a> <br><br> 	
-         I'm an ardent <b>Real Madrid</b> fan. Infact, the color scheme of this page is based on Madrid's jersey 
+         I love how lucidly people express their thoughts via technical writing and visualizations. Some of my favourite works are listed <a target="_blank" href="https://www.one-tab.com/page/HdnZfaM7RiKxh_P-vNs16w"><u>here</u></a>. Please check the Posts section for my writeups. I intend to write more often in future. <br><br>  	
+         I'm an ardent <span style="color: rgb(179, 131, 55);"><b>Real Madrid</b></span> fan. Infact, the color scheme of this page is based on Madrid's jersey 
             this year.<br><br>
             
                 </tab> 
@@ -74,7 +193,46 @@ web app using Django. Later on I developed the database, wrote code for generati
 hashing of songs. We were adjudged the winners of
 National Finals of code.fun.do Showcase held in Microsoft Hyderabad. Check out the demo video <a href="https://www.youtube.com/watch?v=BA8vgPW-Ju0">here</a>.
                 </tab>
-                <tab name="Posts"></tab>
+                <tab name="Posts">
+                    <div class="posts-list l-page">
+                        <a href="2019/computing-receptive-fields" class="post-preview ">
+                            <div class="metadata">
+                                <div class="publishedDate">Nov. 4, 2019</div>
+                            </div>
+                            <!-- <div class="thumbnail"><img src="2019/computing-receptive-fields/thumbnail.jpg" title="" style=""></div> -->
+                            <div class="description">
+                                <h2>Computing Receptive Fields of Convolutional Neural Networks</h2>
+                                <p>Detailed derivations and open-source code to analyze the receptive fields of convnets.</p>
+                            </div>
+                        </a>
+                        <a href="2019/paths-perspective-on-value-learning" class="post-preview ">
+                            <div class="metadata">
+                                <div class="publishedDate">Sept. 30, 2019</div>
+                            </div>
+                            <!-- <div class="thumbnail"><img src="2019/paths-perspective-on-value-learning/thumbnail.jpg"></div> -->
+                            <div class="description">
+                                <h2>The Paths Perspective on Value Learning</h2>
+                                <p>A closer look at how Temporal Difference Learning merges paths of experience for greater statistical efficiency</p>
+                            </div>
+                        </a>
+                        <a href="posts/affordance/" class="post-preview commentary">
+                            <div class="metadata">
+                                <div class="publishedDate">Aug. 20, 2018</div>
+                                <div class="tags"><span class="tag">New Media</span>
+                                </div>
+                                
+                            </div>
+                            
+                            <div class="description">
+                                <h2>Theorizing Affordances: From Request to Refuse</h2>
+                                <p>Applying Davis & Chouinard's 
+                                    
+                                    Affordance Theory to Twitter’s Thread Feature</p>
+                            </div>
+                        </a>
+                    </div>
+                    
+                </tab>
 		            </tabs>
         </div>
         

@@ -8985,7 +8985,7 @@ distill-header .nav a {
 </style>
 <div class="content">
   <a href="/" class="logo">
-    Blog
+    Posts
   </a>
   <nav class="nav">
     <a href="/">About Me</a>
