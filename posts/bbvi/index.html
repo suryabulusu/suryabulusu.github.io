@@ -44,7 +44,7 @@
   }</script>
 </d-front-matter>
 <d-title>
-        <p>An intuitive explanation of Ranganath et. al.'s Black-Box Variational Inference approach, and how it helps us get over tedious inference calculations</p>
+        <p>An intuitive explanation of Ranganath et. al.'s Black-Box Variational Inference approach, and how it helps us get over tedious inference calculations. [wip]</p>
  
   
 </d-title>
@@ -63,7 +63,7 @@
     <img src="model_basic.jpg">
     <figcaption>Probabilistic Pipeline</figcaption>
   </figure>
-  
+  An intuitive explanation of Ranganath et. al.'s Black-Box Variational Inference approach, and how it helps us get over tedious inference calculations
   <p>
     Variational inference converts an inference problem to an optimization problem. The idea is to consider a variational distribution <d-math>q(z | \lambda )</d-math> over all the hidden variables and bring it as close as possible to the actual posterior distribution <d-math>p(z | \theta )</d-math>. To do so, we minimize the KL divergence between the actual posterior and our variational approximation. Minimizing divergence can be shown to be the same as maximising the <b>ELBO</b> <b>E</b>vidence <b>L</b>ower <b>BO</b>und given by,
     <d-math block>
@@ -189,7 +189,7 @@ Using the above Monte Carlo gradients, authors improve upon basic BBVI to arrive
   <h3>Acknowledgements</h3>
   <p>The article was prepared using the <a href="https://github.com/distillpub/post--example" target="_blank">Distill Template</a></p>
   <p>I wrote this article as a part of the course <a href="https://www.cse.iitk.ac.in/users/piyush" target="_blank">CS698X: Probabilistic Modeling and Inference</a> by Prof. Piyush Rai</p>
-  <h3>Updates and Corrections</h3>\br{
+  <h3>Updates and Corrections</h3>
   <p>If you see mistakes or want to suggest changes, please <a href="mailto:teja.surya59@gmail.com">contact me</a></p>
 
   <d-bibliography src="bibliography.bib"></d-bibliography>
