@@ -1,0 +1,342 @@
+<!--
+  Copyright 2018 The Distill Template Authors
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!doctype html>
+
+<head>
+  <script src="../../dist/template.v2.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" >
+  <meta charset="utf8">
+  <title>Ethics in Technology</title>
+
+  <style>
+    /* thanks distill :) */
+        @media(max-width: 1000px){
+      d-contents {
+        justify-self: start;
+        align-self: start;
+        grid-column-start: 2;
+        grid-column-end: 6;
+        padding-bottom: 0.5em;
+        margin-bottom: 1em;
+        padding-left: 0.25em;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        border-bottom-color: rgba(0, 0, 0, 0.1);
+      }
+    } 
+    
+    @media (min-width: 1000px){
+      d-contents {
+        align-self: start;
+        grid-column-start: 1;
+        grid-column-end: 4;
+        justify-self: end;
+        padding-right: 3em;
+        padding-left: 2em;
+        border-right: 1px solid rgba(0, 0, 0, 0.1);
+        border-right-width: 1px;
+        border-right-style: solid;
+        border-right-color: rgba(0, 0, 0, 0.1);
+      }
+    }
+
+    @media (min-width: 1180px){
+      d-contents {
+        grid-column-start: 1;
+        grid-column-end: 4;
+        justify-self: end;
+        padding-right: 3em;
+        padding-left: 2em;
+        border-right: 1px solid rgba(0, 0, 0, 0.1);
+        border-right-width: 1px;
+        border-right-style: solid;
+        border-right-color: rgba(0, 0, 0, 0.1);
+      }
+    }
+
+    d-contents nav h3 {
+      margin-top: 0;
+      margin-bottom: 1em;
+    }
+
+    d-contents nav a {
+      color: rgba(0, 0, 0, 0.8);
+      border-bottom: none;
+      text-decoration: none;
+    }
+
+    d-contents li {
+      list-style-type: none;
+    }
+
+    d-contents ul {
+      padding-left: 1em;
+    }
+    
+    d-contents nav ul li {
+      margin-bottom: .25em;
+    }
+
+    d-contents nav a:hover {
+      text-decoration: underline solid rgba(0, 0, 0, 0.6);
+    }
+
+    d-contents nav ul {
+      margin-top: 0;
+      margin-bottom: 6px;
+    }
+
+
+    d-contents nav>div {
+      display: block;
+      outline: none;
+      margin-bottom: 0.5em;
+    }
+
+    d-contents nav>div>a {
+      font-size: 13px;
+      font-weight: 600;
+    }
+    /* code blocks to margins */
+    @media (min-width: 1600px) {
+      d-code {
+        margin-top: -10px;
+        grid-column-start: 12;
+        grid-column-end: 14; 
+      }
+    }
+    /* so title is on one line */
+    d-title h1, d-title p {
+      grid-column: middle;
+    }
+  </style>
+
+</head>
+
+<body>
+   
+<d-front-matter>
+  <script id='distill-front-matter' type="text/json">{
+    "title": "Ethics in Technology",
+    "description": "Exploring skepticism around ethics in technology through the lens of Metcalf et al.'s Corporate Logics",
+    "published": "December 5, 2019",
+    "authors": [
+      {
+        "author":"Surya",
+        "authorURL":"https://suryabulusu.github.io/",
+        "affiliations": [{"name": "IIT Kanpur"}]
+      }
+    ],
+    "katex": {
+      "delimiters": [
+        {"left": "$$", "right": "$$", "display": false}
+      ]
+    }
+  }</script>
+</d-front-matter>
+<d-title>
+        <p>Exploring skepticism around ethics in technology through the lens of Metcalf et al.'s Corporate Logics</p>
+  
+</d-title>
+<d-byline></d-byline>
+
+<d-article>
+  <d-contents>
+    <nav class="l-text toc figcaption">
+      <h3>Contents</h3>
+      <div><a href="#logics">Corporate Logics</a></div>
+      <ul>
+        <li><a href="#meritocracy">Meritocracy</a></li>
+        <li><a href="#solutionism">Technological Solutionism</a></li>
+        <li><a href="#markets">Market Fundamentalism</a></li>
+      </ul>
+      <div><a href="#darkpatterns">Encouraging Dark Patterns?</a></div>
+      <div><a href="#evaluating">Evaluating Ethics</a></div>
+      <div><a href="#ethicalai">Ethical AI</a></div>
+      <div><a href="#finalremarks">Final Remarks</a></div>
+    </nav>
+  </d-contents>
+
+  <p>
+    Ethics is now a major part of the Silicon Valley hype cycle. Companies are literally hiring people to pause and criticize their products. This seems fishy -- why would corporates want to lower their returns? Are they really focussed on <span style="color: green;">doing the right thing</span> or is it just about <span style="color: red;">escaping the risk</span>? 
+    Corporates have been calling for guidelines to establish 
+    ethics in a principled way. Is this just PR-guided signalling? 
+    Does it make sense to allow corporates whose interests are in direct conflict 
+    with ethics, to shape the discourse of ethics? It probably is easy to give TED-style talks on the importance of ethics and 
+    other <i><span style="color: red;">empty</span></i> words such as transparency, fairness, etc. but doing 
+    ethics isn't. 
+  </p>
+  <aside>
+    MIT's AI + Ethics <a href="https://www.media.mit.edu/projects/ai-ethics-for-middle-school/overview/" target="_blank">Curriculum</a> for middle schools 
+  </aside>
+  
+  <p>
+    For starters, how do we define a broad term such as ethics? We 
+    ourselves don't know what is right or wrong, which begs the question - how can 
+    we evaluate ethics? There are no simple metrics such as <u>click
+    through rate</u> to test whether a product is ethical. We could have fancy ethics checklists or a hippocratic oath 
+    of data science, but ethics is not something we can implement. 
+    What matters is whether we structure our companies around ethics and uphold values. 
+    Who decides the right ethics in a company - is it the legal team, the security team, or the design team?
+  </p>
+  <aside>
+    It's funny how AI Ethics lectures are pushed right to the end of courses. Here's a <a href="https://www.youtube.com/watch?v=XR8YSRcuVLE&list=PLoROMvodv4rOhcuXMZkNm7j3fVwBBY42z&index=19" target="_blank">link</a> to the 19th lecture of Stanford's NLP course on Bias in AI
+  </aside>
+  <p>
+    Metcalf et al.'s well-nuanced paper <d-cite key="metcalf2019"></d-cite> 
+    discusses many other pertinent questions about ethics in technology and points 
+    out that various ethical components being enmeshed in corporate logics doesn't help 
+    the cause. 
+  </p>
+  <p>
+    Metcalf et al. conduct interviews with various stakeholders involved in the discourse around ethics in tech industry. They find structural failures in how ethics is done -- companies are trying to build solutions in the same mold that was used to build problems. In the following sections, we discuss some corporate logics that Metcalf et al. arrive at, and try to make sense of their skepticism about ethics in technology. 
+  </p>
+  <aside>
+    A nice definition of ethics from Metcalf's paper - Ethics is doing the
+    right thing, even when doing the wrong thing is easy or legal
+  </aside>
+  
+  <h2 id = "logics">Corporate Logics</h2>
+  
+  <h3 id = "meritocracy">Meritocracy</h3>
+  <p>
+    The argument is as follows -- tech has the best people => they can solve any 
+    problem => they can solve ethics too. Infact, they are the best suited to solve 
+    the ethical challenges of today's world - which is wrong. 
+  </p>
+  <p>
+    John Brockmann predicted a <b>third culture</b> which pushes the world towards intellectual discourse. In this new culture, smart people would be the global leaders. They would discuss smart things and consume intellectual snacks like TED talks. Evgeny Morozov calls out the moral bankruptcy of these <span style="color: red;">smart</span> people in his takedown of MIT Media Lab (Epstein Scandal) <d-cite key="epsteinscandal"></d-cite>. In this scathing criticism, he says that the discourse around third culture enabled lousy billionaires to indulge in unethical entrepreneurial activities under the hood of academic intellectualism. 
+  </p>
+  <aside>
+    There is a lot to unpack about MIT Media Lab's sugar-daddy science <d-cite key="mitmedialab, sugardaddyscience"></d-cite>
+  </aside>
+  <p>
+    Tech industry rewards leaders who break rules. We hear quotes from CEOs and motivational 
+    gurus on why it is important to <u>fail hard and fail often</u>. While such quotes are encouraging for some, they definitely don't fit in the bill with respect to ethics. Doing unethical things and failing is never a valid option. 
+  </p>
+  <p>
+    The entire saga <d-cite key="kalanickterrible"></d-cite> of how Uber got their then CEO Travis Kalanick out is worth a read. Its alarming how so many leaders full of swagger and extreme confidence later go on to do terrible things. We should reflect upon the type of leaders that we encourage in tech, and stop correlating merit with swagger.
+  </p>
+
+<h3 id = "solutionism">Technological Solutionism</h3>
+<p>
+  Technologists are optimistic -- they believe that approaching a problem technically would fetch the best results. This involves framing ethics as some sort of an optimisation problem that can be iteratively solved, and arrive at a global solution. Again, this won't work -- because they are just grounding ethics to their domain, instead of entering the social domain where ethics actually belongs to. Tech could be a major part of various solutions, but the process often involves intense discussions and debates over uncomfortable corner cases that can't always be brought under some framework.
+</p>
+<p>
+  Take the example of machines being used to score subjective answers such as essays <d-cite key="machinescoringtests"></d-cite>. These machines suffer from bias -- certain groups of people are consistently given less score. At times, even gibberish text is awarded a high score. This stems from the fact that NLP algorithms don't understand text yet. They perform well on test sets by capturing spurious correlations, such as - <i>any essay with the word <span style="color: blue;">X</span> should be given a <span style="color: blue;">high score</span></i>. 
+</p>
+<p>
+  Despite such concerns, these machines are increasingly being adopted for grading. They also
+  don't provide much-needed feedback to the essays we write. This is problematic as kids 
+  need feedback to improve their writing skills.
+</p>
+<p> 
+  It is also not obvious as to how we can improve the understanding of text without clean data. Our labelled training data (such as [essay, score]) already has various human biases, 
+  and any machine trained on such data is bound to make errors. So, a tech solution is possible only when we discuss, debate, and improve our data collection practices, which requires significant fieldwork not only from technologists, but also from social scientists <d-cite key="irving2019ai"></d-cite>.
+</p>
+
+<h3 id = "markets">Market Fundamentalism</h3>
+<p>
+  This refers to how the market rewards every step tech takes, regardless of ethics, and thereby not having any incentive to do ethics. Consumers determine what decisions are taken in the industry. Their indifference to ethics is a signal to tech industry that they can pursue problems without any repercussions. The belief that solutions rewarded by markets are the best stops corporates from thinking critically about the products they sell. 
+</p>
+<p>
+  GOQii, a fitness app in India, carries out unethical clinical trials on
+  users via its nutrionists <d-cite key="goqiifitness"></d-cite>. For instance, a nutrionist might tell various users to drink <i>juice A</i> as a cure for sore throat, and later on check if it actually worked (like A/B testing). The nutrionists nudge users into completing certain actions by making them feel guilty about their health (more on nudging later). Despite these exploitative practices, the app is quite famous. Infact, it has attracted investment from Bollywood Superstar Akshay Kumar. Recently, Prime Minister Modi applauded GOQii's commitment to the Fit India movement. With both market and government support, no wonder GOQii feels it has complete freedom to exploit its users.
+</p>
+
+<p>
+  <b>The three corporate logics reinforce each other. Markets reward technological solutions provided by people with merit. </b>
+</p>
+
+<h2 id="darkpatterns">Encouraging Dark Patterns?</h2>
+<p>
+  With proxies in place, tech industry sometimes blinds us into believing that they are doing the right thing. Some apps transfer the decision making to consumers thereby claiming that all actions are taken with consumers' consent. This is a trap - because there is a large power differential between consumers and companies. Apps can use nudging and dark patterns to force us into making decisions on our behalf. Is the push for ethics just encouraging such dark patterns?
+</p>
+<p>
+  Shoshana Zuboff, an American author and expert on surveillance capitalism, talks 
+of how data anonymity and data ownership are just hacky terms to normalize commercial surveillance <d-cite key="zuboff"></d-cite>. Tech isn't predicting our behaviour anymore. It is manufacturing our behaviour. That is, its not the machines that are being automated; its us. For instance, if you are only recommended romantic movies, you might click on at least one of it. This sends a wrong signal to the recommender that you like romantic movies, and hence it recommends you more romantic movies. This is known as a feedback loop. Most recommender systems do not correct for possible feedback loops, thereby manufacturing our behaviour. Interestingly, Zuboff calls consumers as the abandoned carcass, and consumer data we provide as the product.
+</p>
+<aside>
+  Another nice metaphor adapted from <d-cite key="goqiifitness"></d-cite> - Consumers are part of a digital assembly line. They are supposed to generate the data for their tech industry bosses.
+</aside>
+<p>
+  We are often nudged into buying products. Tech industry makes us feel that we are not keeping pace with others incase we don't opt for the latest <span style="color: red">evolved</span> products <d-cite key="techevolution"></d-cite>. Consider the example of childcare tech - if you don't monitor your child's body temperature with an app, you are not doing parenting right. Another example is that of fear-inducing apps such as Citizen, Ring - if you are not vary of crimes that happen in your neighbourhood, you are not careful enough <d-cite key="fearinducingapps"></d-cite>. These apps feed on our fear, and inturn make us more scared of our neighbours (feedback!).
+</p>
+<p>
+  Dark patterns such as nudging show that despite having <i>complete</i> control of our choices and data, we are acting on the whims of tech industry. Rather than having tech adapt to our world, we have stripped off the complexities of our life to make tech work. Tech is indeed <i>eating</i> the world. 
+</p>
+
+<h2 id="evaluating">Evaluating Ethics</h2>
+<p>
+  One of the biggest hurdles that researchers face while analyzing ethics of socio-technical systems is the lack of clean data. We don't even know what questions to ask, or on what metrics we are supposed to evaluate. Kleinberg et al. discuss this issue in their paper on evaluating biases in algorithmic hiring <d-cite key="raghavan2020mitigating"></d-cite>. Collecting data to train hiring systems is very difficult as it is not entirely clear what features in employees are <i>good</i>. Moreover, collecting subjective data such as <span style="color: red">cultural fit</span> to a company faces serious issues of confirmation bias, and our systems may end up with the same problems that are present in normal hiring. What if our algorithm finds out that the best fit to the company is a male with shrill voice? Do we ignore this as a spurious correlation in our data? Or do we accept this link as an important discovery of our algorithm? Thus, it is not clear as to how we can objectively evaluate such algorithms.
+</p>
+<aside>
+  Prof. Arvind Narayanan's debunking of a paper on YouTube's de-radicalization is a <a href="https://twitter.com/random_walker/status/1211262124724510721" target="_blank">must-read</a>. Narayanan stresses the importance of quantitative analysis and calls for tech companies to provide data so that researchers can at least start asking the right questions.
+</aside>
+<p>
+  Lydia Denworth's article <d-cite key="snafraud"></d-cite> in Scientific American points out how claims of social media destroying the GenZ are either wrong or massively overstated by researchers. The issue again is of poorly collected data. Experimental design for collecting data has often neglected content and context. This falsifies measurements of social media's impact on users' mental health. Asking users to record their daily activities on social media in a diary again suffers from confirmation bias. 
+</p>
+
+<h2 id="ethicalai">Ethical AI</h2>
+  <p>
+    Many researchers have shifted their focus towards opening black-box machine learning 
+models and explaining predictions to garner user trust. <a href="http://newsletter.ruder.io/issues/highlights-of-emnlp-2019-ethics-in-nlp-vol-2-ai-and-journalism-206147" target="_blank">Recent</a> NLP conferences show a surge in papers on explaining and pruning large neural models. However, the field of explainable AI also suffers from a lack of clear definitions, as pointed out by Zachary Lipton in his review of interpretability discourse <d-cite key="lipton2018mytho"></d-cite>. Explainable AI papers often cherrypick visualizations, and the explanations are not robust enough to perturbations in data. 
+</p>
+<aside>
+  A former MIT Media Lab graduate student explains how "Ethical AI" is just a way for Big Tech to avoid legal consequences <d-cite key="fraudethicalai"></d-cite>
+</aside>
+<p>
+Ghorbani et al. <d-cite key="ghorbani2019interpretation"></d-cite> show that it is easy to construct adversarial examples that change explanations (feature importance, sample importance) while keeping the predictions same. Lakkaraju et al. <d-cite key="lakkaraju2020fool"></d-cite> show that it is possible to manipulate user trust by generating misleading explanations. For example, a black-box model might rely on defendant's race to predict if the defendant is risky or not. If an explanation of this model instead shows that the prediction depends on prior jail incarcerations, it might mislead the lawmakers into trusting the prediction.
+ </p>
+
+ <p>
+  Improving the robustness of explanations is an important research direction. If not, bad decisions could potentially be justified as undertaken by ethical AI machines. (Think of military consequences)
+ </p>
+  
+
+  <h2 id="finalremarks">Final Remarks</h2>
+  <p>
+    Metcalf et al. ask us whether we are climbing the right hill at all. Do we even know what we are looking for? The situation can be vastly improved if companies structure themselves around ethics rather than just creating an ethics team. Releasing anonymized data will also help the research community to ask better questions. 
+  </p>
+  <p>
+    Media tends to take extreme stances to garner clicks. They either overhype tech products or overstate harms of tech. Being overcritical of an entire field (like AI) because of few mishaps helps neither the researchers nor the public. Both technologists and media should make conversations about tech accessible to all so that we can recognize overhype / mishaps better. 
+  </p>
+  <p>
+    India, in particular, should stop expecting solutions to come only from its engineers. We have always seen liberal arts education as something secondary to science education. This has resulted in technologists with no knowledge of humanities. Forget doing ethics, they can't even talk ethics. As explained earlier, solutions to real-world problems require various fields such as pyschology, sociology, etc. to join hands with technology. A first step in this direction would be to cultivate respect for humanities.
+  </p>
+  <aside>A fantastic description of science caste vs humanities caste by @vimoh <d-cite key="vimohthread"></d-cite>
+  </aside>
+  <p>
+    Things will only get better when we make ethics an everyday practice. Michael Schur, the creator of (philosophical!) sitcom "The Good Place", has some sound advice for all of us <d-cite key="mikeschur"></d-cite>. 
+    <blockquote style=" margin-top: 8px; margin-bottom: 12px; padding: 10px; background-color: rgba(236, 149, 10, 0.2); color: black;">
+      It feels, all the time in life, like a bad decision is right in front of you. No matter who you are, there’s the opportunity to make bad decisions and hurt people. And it takes work just to keep not making those bad decisions. It takes a lot of concentrated effort to do the right thing all the time. Hopefully, you get so used to it, and it becomes such a part of who you are, that it doesn’t take work.
+    </blockquote>
+    
+  </p>
+</d-article>
+
+<d-appendix>
+  <h3>Acknowledgements</h3>
+  <p>The article was prepared using the <a href="https://github.com/distillpub/post--example" target="_blank">Distill Template</a></p>
+  <p>This essay is largely a summary of news articles that I've read over the past few months. I found links to most articles via Twitter. It is very crucial to choose the right gatekeepers as there's a lot of noise on Twitter. Here are some accounts that you <b>must</b> follow: @hardmaru, @zacharylipton, @vboykis, @random_walker, @michael_nielsen</p>
+  <h3>Updates and Corrections</h3>
+  <p>If you see mistakes or want to suggest changes, please <a href="mailto:teja.surya59@gmail.com">contact me</a></p>
+
+  <d-bibliography src="bibliography.bib"></d-bibliography>
+</d-appendix>
+
+</body>
