@@ -21,10 +21,10 @@ jobs:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
       # now onto approving pr
       - name: Approve PR
-          run: gh pr review --approve "$PR_URL"
-          env:
-            PR_URL: ${{ github.event.pull_request.html_url }}
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh pr review --approve "$PR_URL"
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # automerging
       -name: Enable auto-merge for Dependabot pr
         if: ${{ steps.dependabot-metadata.outputs.update-type != 'version-update:semver-major' }}
