@@ -1,7 +1,7 @@
 # from: https://blog.somewhatabstract.com/2021/10/11/setting-up-dependabot-with-github-actions-to-approve-and-merge/
 # avoid using this for major projects wherein slight security lapses/vulernabilities are a big deal
 # doesn't work yet
-name: Dependabot PR Approve and Merge
+name: Dependabot PR Approve and Merging
 
 on: pull_request_target
 
@@ -31,4 +31,3 @@ jobs:
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
