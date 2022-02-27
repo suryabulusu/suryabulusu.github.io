@@ -16,10 +16,11 @@
 <!doctype html>
 
 <head>
-  <script src="../../dist/template.v2.js"></script>
+  <script src="../../distill_template_dev/dist/template.v2.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1" >
   <meta charset="utf8">
   <title>Black-Box Variational Inference</title>
+  <link href="../../disqus_comments/inlineDisqussions.css" rel="stylesheet">
 </head>
 
 <body>
@@ -32,8 +33,7 @@
     "authors": [
       {
         "author":"Surya",
-        "authorURL":"https://suryabulusu.github.io/",
-        "affiliations": [{"name": "IIT Kanpur"}]
+        "authorURL":"https://suryabulusu.github.io/"
       }
     ],
     "katex": {
@@ -44,7 +44,7 @@
   }</script>
 </d-front-matter>
 <d-title>
-        <p>An intuitive explanation of Ranganath et. al.'s Black-Box Variational Inference approach, and how it helps us get over tedious inference calculations. [wip]</p>
+        <p>An intuitive explanation of Ranganath et. al.'s Black-Box Variational Inference approach, and how it helps us get over tedious inference calculations.</p>
  
   
 </d-title>
@@ -63,7 +63,6 @@
     <img src="model_basic.jpg">
     <figcaption>Probabilistic Pipeline</figcaption>
   </figure>
-  An intuitive explanation of Ranganath et. al.'s Black-Box Variational Inference approach, and how it helps us get over tedious inference calculations
   <p>
     Variational inference converts an inference problem to an optimization problem. The idea is to consider a variational distribution <d-math>q(z | \lambda )</d-math> over all the hidden variables and bring it as close as possible to the actual posterior distribution <d-math>p(z | \theta )</d-math>. To do so, we minimize the KL divergence between the actual posterior and our variational approximation. Minimizing divergence can be shown to be the same as maximising the <b>ELBO</b> <b>E</b>vidence <b>L</b>ower <b>BO</b>und given by,
     <d-math block>
@@ -183,6 +182,10 @@ For our ELBO gradient case, we could use <d-math>h = \nabla_{\lambda}\log{q(z | 
 </d-math>
 Using the above Monte Carlo gradients, authors improve upon basic BBVI to arrive at <b>BBVI-II</b>. The authors achieved very good results, trying various complex models on longitudinal healthcare data. As expected, BBVI-II outperforms other standard methods such as Gibbs Sampling, mean-field VI etc. Note that the authors have used <span style="color: green;">AdaGrad</span> method for setting learning rates instead of <span style="color: red;">Robbins-Monro</span> rates. AdaGrad rates ensure that when variance in gradient is high, the learning rate is low and vice-versa. 
   </p>
+
+  <div class = "l-page-outset" style = "border-top: 1px rgba(0, 0, 0, 0.5);">
+    <div id="disqus_thread"></div>
+  </div>
 </d-article>
 
 <d-appendix>
@@ -196,3 +199,9 @@ Using the above Monte Carlo gradients, authors improve upon basic BBVI to arrive
 </d-appendix>
 
 </body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script src="../../disqus_comments/inlineDisqussions.js"></script>
+<script src="../../js/disqus.js"></script>
+<noscript>Enable JavaScript for Disqus comments, Vue, and other stuff.</noscript>

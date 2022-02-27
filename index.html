@@ -1,29 +1,22 @@
 <!DOCTYPE HTML>
 <html>
-    <head>
-	 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-112768442-1"></script>
-<script>
-  	 window.dataLayer = window.dataLayer || [];
-  	 function gtag(){dataLayer.push(arguments);}
-  	 gtag('js', new Date());
-  	 gtag('config', 'UA-112768442-1');
-	 </script>	
 
+    <head>
+        <!-- mobile related -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         
-<link rel="stylesheet" href="css/bulma.css">
-   
-<link rel="stylesheet" href="css/style.css">        
-        <title>
-            Surya Bulusu
-        </title>
+        <link rel="stylesheet" href="css/bulma.css">
+        
+        <!-- main stylesheet -->
+        <link rel="stylesheet" href="css/style.css">        
+        
+        <title>Home - stbv's blog</title>
 
         <style>
             .description h2,
         
             .description h2 {
-                font-weight: 600;
+                font-weight: bolder;
             }
         
             h2.post-tag {
@@ -88,6 +81,7 @@
         
             .metadata .publishedDate {
                 margin-right: 1em;
+                font-size: 15px;
             }
         
             .metadata .tags {
@@ -98,7 +92,7 @@
                 color: rgba(0, 0, 0, 0.67);
                 padding: 0.3em 0.5em;
                 margin-bottom: 0.5em;
-                font-size: 80%;
+                font-size: 60%;
                 border: 1px solid rgba(0, 0, 0, 0.4);
                 border-radius: 3px;
                 text-transform: uppercase;
@@ -127,12 +121,12 @@
         
                 .posts-list .post-preview .metadata {
                     float: left;
-                    width: 15%;
+                    width: 10%;
                     margin-top: 8px;
                 }
         
                 .posts-list .post-preview p {
-                    margin: 0 0 12px 0;
+                    margin: 0 0 10px 0;
                     line-height: 1.5em;
                     font-size: 18px;
                 }
@@ -143,160 +137,183 @@
     <body>
         <div id="wrapper">
         <div id="image-region">
-            <span id="name"><span id="bold_part">surya</span>bulusu</span> <br> <br> 
-            <!-- <span id="designation">SENIOR UNDERGRADUATE | IIT KANPUR</span> -->
-            <img id="main-im" src='css/images/propic.jpg' width="250px"/>
-            
-            
-
+            <span id="name"><span id="bold_part">stbv</span>'s blog</span><br><br> 
+            <img id="main-im" src='css/images/propic.jpg' width="220px"/>
             <div id="contact">
-                <img src='css/images/ic_description_black_18dp_1x.png' /> <a target="_blank" href="resume.pdf">Resume</a><br>
-                <img src='css/images/ic_email_black_18dp_1x.png' /> teja.surya59@gmail.com <br>
-                <img src='css/images/ic_location_on_black_18dp_1x.png' /> G-101, Hall-1, IIT Kanpur
+                <a href="mailto:teja.surya59@gmail.com">teja.surya59@gmail.com</a> <br>
+                <a href="resume.pdf">Resume</a> (as of 2019) <br> 
+                <a href="https://github.com/suryabulusu">Github</a> | 
+                <a href="https://stats.stackexchange.com/users/306459/stbv">Cross Validated</a><br>
+                <a href="https://www.linkedin.com/in/suryateja-bulusu/">Linkedin</a> | 
+                <a href="https://www.facebook.com/teja.surya59">Facebook</a><br>
                 
-                <br>
-                <div id="logos">
-                    <div id="fb" onclick="window.open('https://www.facebook.com/teja.surya59', '_blank');"></div>
-                    <div id="github" onclick="window.open('https://github.com/suryabulusu', '_blank');"></div>
-                    <div id="linkin" onclick="window.open('https://www.linkedin.com/in/suryateja-bulusu/', '_blank');"></div>
-                </div>    
                 
             </div>
+        <!-- [todo] Add Rss feed too  -->
         </div>
         
         <div id="root">
             <tabs>      
                 <tab name="Posts" v-bind:selected="true">
                     <div class="posts-list l-page">
-                        <a href="posts/ethics" target="_blank" class="post-preview ">
+                        <div class="post-preview">
                             <div class="metadata">
                                 <div class="publishedDate">Dec. 5, 2019</div>
-                                <div class="tags">
+                                <!-- <div class="tags">
                                     <span class="tag">Review</span>
+                                </div> -->
+                            </div>
+
+                            <div class="description">
+                                <a href="posts/ethics">
+                                <h2>Ethics in Technology</h2>
+                                <p>Exploring skepticism around ethics in technology through the lens of Metcalf et al.'s Corporate Logics (2019).</p></a>
+                                <div class = "tags">
+                                    <span class = "tag">Review</span>
+                                    <span class = "tag">Tech</span>
+                                    <span class = "tag">Ethics</span>
                                 </div>
                             </div>
-                            <div class="description">
-                                <h2>Ethics in Technology</h2>
-                                <p>Exploring skepticism around ethics in technology through the lens of Metcalf et al.'s Corporate Logics</p>
-                            </div>
-                        </a>
-                        <a href="posts/ncrelites" target="_blank" class="post-preview ">
+                        </div>
+                        <div  class="post-preview ">
                             <div class="metadata">
                                 <div class="publishedDate">Nov. 5, 2019</div>
-                                <div class="tags">
-                                    <span class="tag">Review</span>
-                                </div>
                             </div>
                             <div class="description">
+                                <a href="posts/ncrelites">
                                 <h2>Constructing Prestige and Elaborating the Professional</h2>
-                                <p>Paper Review of Llerena Guiu Searle's ethonographic study in the National Capital Region of India (2007)</p>
+                                <p>Paper Review of Llerena Guiu Searle's ethonographic study in the National Capital Region of India (2007).</p>
+                                </a>
+                                <div class = "tags">
+                                    <span class = "tag">Review</span>
+                                    <span class = "tag">Sociology</span>
+                                    <span class = "tag">Urban</span>
+                                </div>
                             </div>
-                        </a>
-                        <a href="posts/hdp/" target="_blank" class="post-preview ">
+                        </div>
+                        <div class="post-preview ">
                             <div class="metadata">
                                 <div class="publishedDate">Apr. 15, 2019</div>
-                                <div class="tags"><span class="tag">Modeling</span></div>
                             </div>
                             <div class="description">
+                                <a href="posts/hdp/">
                                 <h2>Hierarchical Dirichlet Process</h2>
-                                <p>An attempt to intuitively explain HDP, and why it makes sense to use HDPs for joint mixture modeling of multiple related datasets</p>
+                                <p>An attempt to intuitively explain HDP, and why it makes sense to use HDPs for joint mixture modeling of multiple related datasets.</p>
+                                </a>
+                                <div class = "tags">
+                                    <span class = "tag">Probability</span>
+                                    <span class = "tag">Modelling</span>
+                                </div>
                             </div>
-                        </a>
-                        <a href="posts/bbvi/" target="_blank" class="post-preview ">
+                        </div>
+                        <div class="post-preview ">
                             <div class="metadata">
                                 <div class="publishedDate">Apr. 10, 2019</div>
-                                <div class="tags"><span class="tag">Modeling</span></div>
                             </div>
                             <div class="description">
+                                <a href="posts/bbvi/">
                                 <h2>Black-Box Variational Inference</h2>
-                                <p>An intuitive explanation of Ranganath et. al.'s Black-Box Variational Inference approach, and how it helps us get over tedious inference calculations</p>
-                            </div>
-                        </a>
-                        <a href="posts/corenets/" target="_blank" class="post-preview commentary">
-                            <div class="metadata">
-                                <div class="publishedDate">Nov. 1, 2018</div>
-                                <div class="tags">
-                                    <span class="tag">Review</span>
+                                <p>An intuitive explanation of Ranganath et. al.'s Black-Box Variational Inference approach, and how it helps us get over tedious inference calculations.</p>
+                                </a>
+                                <div class = "tags">
+                                    <span class = "tag">Probability</span>
+                                    <span class = "tag">Modelling</span>
                                 </div>
-                                
                             </div>
-                            
+                        </div>
+                        <div class="post-preview commentary">
+                            <div class="metadata">
+                                <div class="publishedDate">Nov. 1, 2018</div>    
+                            </div>
                             <div class="description">
+                                <a href="posts/corenets/">
                                 <h2>Are Mobile Phones changing Social Networks?</h2>
-                                <p>Paper Review of a longitudinal study of core networks in Kerala (2011) by Antony Palackal, Paul Nyaga Mbatia, Dan-Bright Dzorgbo, Ricardo B. Duque, Marcus
-                                    Antonius Ynalvez, and Wesley M. Shrum</p>
+                                <p>Paper Review of a longitudinal study of core networks in Kerala by Palackal et al. (2011)</p>
+                                </a>
+                                <div class = "tags">
+                                    <span class = "tag">Review</span>
+                                    <span class = "tag">Sociology</span>
+                                    <span class = "tag">Networks</span>
+                                </div>
                             </div>
-                        </a>
-                        <a href="posts/south/" target="_blank" class="post-preview commentary">
+                        </div>
+                        <div class="post-preview commentary">
                             <div class="metadata">
                                 <div class="publishedDate">Oct. 20, 2018</div>
-                                <div class="tags">
-                                    <span class="tag">Review</span>
-                                </div>
-                                
                             </div>
                             
                             <div class="description">
+                                <a href="posts/south/">
                                 <h2>Social Media in South India</h2>
-                                <p>Book Review of Shriram Venkatraman's Social Media in South India</p>
+                                <p>Book Review of Shriram Venkatraman's Social Media in South India.</p>
+                                </a>
+                                <div class = "tags">
+                                    <span class = "tag">Review</span>
+                                    <span class = "tag">Book</span>
+                                    <span class = "tag">Sociology</span>
+                                    <span class = "tag">New Media</span>
+                                </div>
                             </div>
-                        </a>
-                        <a href="posts/influencer/" target="_blank" class="post-preview commentary">
+                        </div>
+                        <div class="post-preview commentary">
                             <div class="metadata">
                                 <div class="publishedDate">Oct. 8, 2018</div>
-                                <div class="tags"><span class="tag">New Media</span>
-                                </div>
-                                
                             </div>
                             
                             <div class="description">
+                                <a href="posts/influencer/">
                                 <h2>Influencers on Social Media</h2>
                                 <p>Why do they fit so well into the Post-Fordist narrative</p>
+                                </a>
+                                <div class = "tags">
+                                    <span class = "tag">New Media</span>
+                                    <span class = "tag">Sociology</span>
+                                </div>
                             </div>
-                        </a>
-                        <a href="posts/wayback/" target="_blank" class="post-preview commentary">
+                        </div>
+                        <div class="post-preview commentary">
                             <div class="metadata">
                                 <div class="publishedDate">Aug. 27, 2018</div>
-                                <div class="tags"><span class="tag">New Media</span>
-                                </div>
-                                
                             </div>
-                            
                             <div class="description">
+                                <a href="posts/wayback/">
                                 <h2>Self-Surveillance and the Wayback Machine</h2>
                                 <p>Can you really implement self-surveillance on social media?</p>
+                                </a>
+                                <div class = "tags">
+                                    <span class = "tag">Sociology</span>
+                                    <span class = "tag">New Media</span>
+                                </div>
                             </div>
-                        </a>
-                        <a href="posts/affordance/" target="_blank" class="post-preview commentary">
+                        </div>
+                        <div class="post-preview commentary">
                             <div class="metadata">
                                 <div class="publishedDate">Aug. 20, 2018</div>
-                                <div class="tags"><span class="tag">New Media</span>
-                                </div>
-                                
                             </div>
-                            
                             <div class="description">
+                                <a href="posts/affordance/">
                                 <h2>Theorizing Affordances: From Request to Refuse</h2>
-                                <p>Applying Davis & Chouinard's 
-                                    
-                                    Affordance Theory to Twitter’s Thread Feature</p>
+                                <p>Applying Davis & Chouinard's Affordance Theory to Twitter's Thread Feature</p>
+                                </a>
+                                <div class = "tags">
+                                    <span class = "tag">Sociology</span>
+                                    <span class = "tag">New Media</span>
+                                </div>
                             </div>
-                        </a>
+                        </div>
                     </div>
                     
                 </tab>
 
 
-		<tab name="About me	" >
+		<tab name="About" >
                     I'm Surya, a final-year undergrad at Indian Institute of Technology Kanpur, majoring in Electrical Engineering. My current interests are in Probabilistic Modeling, Interpretability, and New Media. 
-                     You may get in touch with me at: <a target="_blank" href="mailto:teja.surya59@gmail.com" style="font-family: Courier; font-size: 16px">teja.surya59@gmail.com</a> <br>
+                     You may get in touch with me at: <a  href="mailto:teja.surya59@gmail.com" style="font-family: Courier; font-size: 16px">teja.surya59@gmail.com</a> <br>
               <blockquote style=" margin-top: 8px; margin-bottom: 12px; padding: 10px; background-color: rgba(179, 131, 55, 0.2);">
                 I worked on generating coordinated image-text pairs at Adobe Research (Bengaluru) in the summer of 2019. Our work has been accepted at IUI 2020 as a full paper. Preprint coming soon!
 
               </blockquote>
-         I love how lucidly people express their thoughts via technical writing and visualizations. Some of my favourite works are listed <a target="_blank" href="https://www.one-tab.com/page/HdnZfaM7RiKxh_P-vNs16w"><u>here</u></a>. Please check the Posts section for my writeups. I intend to write more often in future. <br><br>  	
-         I'm an ardent <span style="color: rgb(179, 131, 55);"><b>Real Madrid</b></span> fan. Infact, the color scheme of this page is based on Madrid's jersey 
-            this year.<br><br>
+         I love how lucidly people express their thoughts via technical writing and visualizations. Some of my favourite works are listed <a  href="https://www.one-tab.com/page/HdnZfaM7RiKxh_P-vNs16w"><u>here</u></a>. Please check the Posts section for my writeups. I intend to write more often in future. <br><br>  	
             <!-- Some of the problems I'm currently working on: 
             <ol>
                 <li>Defense against Adversarial Attacks on Language Models</li>

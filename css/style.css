@@ -32,6 +32,9 @@
                 #image-region { 
                     flex: 1 auto;
                     order: 1; 
+                    position: sticky;
+                    align-self: flex-start;
+                    top: 25px;
                 } 
                 #root   { order: 2; }
                 #name {
@@ -64,7 +67,7 @@
             
             body {
                 margin-left: 30px;
-                margin-right: 50px;
+                margin-right: 30px;
                 margin-bottom: 50px;
                 background: white;
                 font-family: 'Spectral', serif;
@@ -89,70 +92,13 @@
             }
             
             #contact {
-                margin: 25px 25px 0px 5px;
+                margin: 10px 0px 0px 0px;
                 font-family: 'Spectral';
                 font-size: 18px;
             }
             
-            #logos {
-                display: flex;
-            }
-            #logos > div {
-                flex: 1;
-            }
-            #fb {
-                cursor: pointer;
-                margin: 15px 15px 15px 0px;
-                background: url('images/fb_grey_resize.png') no-repeat;
-                width: 36px;
-                height: 36px;
-                -webkit-transition: background 0.5s ease ;
-                -moz-transition: background 0.5s ease ;
-                -o-transition: background 0.5s ease ;
-                transition: background 0.5s ease ;
-                
-            }
-            #fb:hover {
-                background: url(images/fb_gold_resize.png) no-repeat;
-                transition: background 0.2s ease;
-            }
-            
-            #github {
-                cursor: pointer;
-                margin: 15px 15px 15px 0px;
-                background: url('images/github_grey.png') no-repeat;
-                width: 36px;
-                height: 36px;
-                -webkit-transition: background 0.5s ease ;
-                -moz-transition: background 0.5s ease ;
-                -o-transition: background 0.5s ease ;
-                transition: background 0.5s ease ;
-                
-            }
-            #github:hover {
-                background: url(images/github_gold.png) no-repeat;
-                transition: background 0.2s ease;
-            }
-            
-            #linkin {
-                cursor: pointer;
-                margin: 15px 15px 15px 0px;
-                background: url('images/linkin_grey.png') no-repeat;
-                width: 36px;
-                height: 36px;
-                -webkit-transition: background 0.5s ease ;
-                -moz-transition: background 0.5s ease ;
-                -o-transition: background 0.5s ease ;
-                transition: background 0.5s ease ;
-                
-            }
-            #linkin:hover {
-                background: url(images/linkin_gold.png) no-repeat;
-                transition: background 0.2s ease;
-            }
-            
             #root {
-                margin: 25px 100px 0px 5px;
+                margin: 25px 20px 0px 0px;
             }
 	     #root a {
 		  text-decoration: none;	
