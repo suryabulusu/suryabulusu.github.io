@@ -26,7 +26,7 @@
   "devDependencies": {
     "bibtex-parse-js": "^0.0.23",
     "chai": "^3.5.0",
-    "eslint": "^4.3.0",
+    "eslint": "^8.24.0",
     "eslint-config-google": "^0.9.1",
     "http-server": "^0.11.1",
     "js-yaml": "^3.7.0",
@@ -48,7 +48,7 @@
     "rollup-plugin-uglify": "^1.0.1",
     "rollup-watch": "^2.5.0",
     "should": "^13.1.2",
-    "webpack": "^2.2.1"
+    "webpack": "^5.74.0"
   },
   "dependencies": {
     "@webcomponents/webcomponentsjs": "^1.0.7",
