@@ -1,49 +1,76 @@
 
 /* taken from :  https://github.com/distillpub/post--safety-needs-social-scientists*/
-    @media(max-width: 1000px){
-    d-contents {
-    justify-self: start;
-    align-self: start;
-    grid-column-start: 2;
-    grid-column-end: 6;
-    padding-bottom: 0.5em;
-    margin-bottom: 1em;
-    padding-left: 0.25em;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-bottom-color: rgba(0, 0, 0, 0.1);
-    }
+
+d-byline { display: none; } 
+
+.d-byline-container { 
+    border-top: 1px solid rgba(0,0,0,0.1); 
+    border-bottom: 1px solid rgba(0,0,0,0.1); 
+    padding-top: 10px; padding-bottom: 20px; 
 } 
 
-@media (min-width: 1000px){
-    d-contents {
-    align-self: start;
-    grid-column-start: 1;
-    grid-column-end: 4;
-    justify-self: end;
-    padding-right: 3em;
-    padding-left: 2em;
-    border-right: 1px solid rgba(0, 0, 0, 0.1);
-    border-right-width: 1px;
-    border-right-style: solid;
-    border-right-color: rgba(0, 0, 0, 0.1);
-    }
+.d-byline { 
+    grid-column: text; 
+    display: grid; 
+    grid-template-columns: [authors info] 1fr [published] 1fr [updated] 1fr;
+    font-size: 0.9rem; 
+    line-height: 1.8em; 
+    grid-gap: 20px; 
+} 
+
+.d-byline h3 { 
+    font-size: 0.6rem; 
+    font-weight: 400; 
+    color: rgba(0, 0, 0, 0.5); 
+    margin: 0; 
+    text-transform: uppercase; 
+    margin-bottom: 4px; 
 }
 
-@media (min-width: 1180px){
+@media (max-width: 1000px) {
     d-contents {
-    grid-column-start: 1;
-    grid-column-end: 4;
-    justify-self: end;
-    padding-right: 3em;
-    padding-left: 2em;
-    border-right: 1px solid rgba(0, 0, 0, 0.1);
-    border-right-width: 1px;
-    border-right-style: solid;
-    border-right-color: rgba(0, 0, 0, 0.1);
+      justify-self: start;
+      align-self: start;
+      grid-column-start: 2;
+      grid-column-end: 6;
+      padding-bottom: 0.5em;
+      margin-bottom: 1em;
+      padding-left: 0.25em;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      border-bottom-width: 1px;
+      border-bottom-style: solid;
+      border-bottom-color: rgba(0, 0, 0, 0.1);
     }
-}
+  }
+  
+@media (min-width: 1000px) {
+    d-contents {
+      align-self: start;
+      grid-column-start: 1;
+      grid-column-end: 4;
+      justify-self: end;
+      padding-right: 3em;
+      padding-left: 2em;
+      border-right: 1px solid rgba(0, 0, 0, 0.1);
+      border-right-width: 1px;
+      border-right-style: solid;
+      border-right-color: rgba(0, 0, 0, 0.1);
+    }
+  }
+  
+@media (min-width: 1180px) {
+    d-contents {
+      grid-column-start: 1;
+      grid-column-end: 4;
+      justify-self: end;
+      padding-right: 3em;
+      padding-left: 2em;
+      border-right: 1px solid rgba(0, 0, 0, 0.1);
+      border-right-width: 1px;
+      border-right-style: solid;
+      border-right-color: rgba(0, 0, 0, 0.1);
+    }
+  }
 
 d-contents nav h3 {
     margin-top: 0;
@@ -64,12 +91,25 @@ d-contents ul {
     padding-left: 1em;
 }
 
-d-contents nav ul li {
-    margin-bottom: .25em;
-}
-
 d-contents nav a:hover {
     text-decoration: underline solid rgba(0, 0, 0, 0.6);
+}
+
+/* code blocks to margins */
+@media (min-width: 1600px) {
+    d-code {
+        margin-top: -10px;
+        grid-column-start: 12;
+        grid-column-end: 14; 
+    }
+}
+/* so title is on one line */
+d-title h1, d-title p {
+    grid-column: middle;
+}
+  
+d-contents nav ul li {
+    margin-bottom: 0.25em;
 }
 
 d-contents nav ul {
@@ -77,26 +117,22 @@ d-contents nav ul {
     margin-bottom: 6px;
 }
 
-
-d-contents nav>div {
+d-contents nav > div {
     display: block;
     outline: none;
     margin-bottom: 0.5em;
 }
 
-d-contents nav>div>a {
+d-contents nav > div > a {
     font-size: 13px;
     font-weight: 600;
 }
-/* code blocks to margins */
-@media (min-width: 1600px) {
-    d-code {
-    margin-top: -10px;
-    grid-column-start: 12;
-    grid-column-end: 14; 
-    }
+
+d-article h2 a, d-article h3 a {
+    border-bottom: none !important; /* Removes underline */
+    color: inherit; /* Keeps the link color the same as the heading color */
 }
-/* so title is on one line */
-d-title h1, d-title p {
-    grid-column: middle;
+
+d-article h3 > a:hover {
+    text-decoration: underline solid rgba(0, 0, 0, 0.4);
 }

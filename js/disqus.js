@@ -12,22 +12,3 @@ var disqus_shortname = 'stbv';
       s.src = 'https://stbv.disqus.com/count.js';
       (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
     }());
-
-jQuery(document).ready(function() {
-    jQuery("d-article > p").inlineDisqussions({
-      identifier: 'disqussion',
-      displayCount: true,
-      highlighted: false,
-      position: 'right',
-      background: 'white',
-      maxWidth: 2000,
-    });
-    jQuery("img").inlineDisqussions({
-      identifier: 'disqussion',
-      displayCount: true,
-      highlighted: false,
-      position: 'right',
-      background: 'white',
-      maxWidth: 2000,
-    });
-});

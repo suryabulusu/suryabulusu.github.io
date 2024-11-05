@@ -1,46 +1,26 @@
-<!--
-  Copyright 2018 The Distill Template Authors
-
-  Licensed under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License.
-  You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-  Unless required by applicable law or agreed to in writing, software
-  distributed under the License is distributed on an "AS IS" BASIS,
-  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  See the License for the specific language governing permissions and
-  limitations under the License.
--->
 <!doctype html>
 
 <head>
-  <script src="../../distill_template_dev/dist/template.v2.js"></script>
+  <script src="https://distill.pub/template.v2.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1" >
-  <meta charset="utf8">
+
+   <!-- KaTeX CSS and JS for math rendering -->
+   <link rel="stylesheet" href="https://distill.pub/third-party/katex/katex.min.css" crossorigin="anonymous">
+   <script src="https://distill.pub/third-party/katex/katex.min.js" async></script>
+
+   <!-- stylesheet to increase margin -->
+    <link rel="stylesheet" href="../../css/distill-toc.css">
+    <meta charset="utf8">
   <title>Self-Surveillance and the Wayback Machine</title>
-  <link href="../../disqus_comments/inlineDisqussions.css" rel="stylesheet">
 </head>
 
 <body>
-   
+
 <d-front-matter>
   <script id='distill-front-matter' type="text/json">{
     "title": "Self-Surveillance and the Wayback Machine",
-    "description": "surveillance panopticon",
-    "published": "August 27, 2018",
-    "authors": [
-      {
-        "author":"Surya",
-        "authorURL":"https://suryabulusu.github.io/"
-      }
-    ],
-    "katex": {
-      "delimiters": [
-        {"left": "$$", "right": "$$", "display": false}
-      ]
-    }
+    "description": "",
+    "authors": []
   }</script>
 </d-front-matter>
 <d-title>
@@ -48,10 +28,27 @@
   
   
 </d-title>
+
+<div class="d-byline-container base-grid"> 
+  <div class="d-byline"> 
+    <div class="authors" style="grid-area: authors;"> 
+      <h3>Author</h3> 
+      <div> 
+      <span class="author">Surya</span>
+      </div> 
+    </div> 
+    <div class="published" style="grid-area: published;"> 
+    <h3>Published</h3> 
+    <div>August 27, 2018</div> 
+    </div>
+    <div class="updated" style="grid-area: updated;"> 
+      <h3>Updated</h3> 
+      <div>Not revised yet</div> 
+      </div>
+  </div> 
+</div>
+
 <d-byline></d-byline>
-
-
-
 
 <d-article>
   <p>
@@ -106,9 +103,6 @@ snapshot of your page. I could use this to <em>expose</em> you. Methods of expos
 being explored nowadays in Indian media. Web pages use a <span style="font-family: Courier;">robots.txt</span> file to avoid being
 crawled upon.
 </p>
-<div class = "l-page-outset" style = "border-top: 1px rgba(0, 0, 0, 0.5);">
-  <div id="disqus_thread"></div>
-</div>
 </d-article>
 
 <d-appendix>
@@ -122,9 +116,3 @@ crawled upon.
 </d-appendix>
 
 </body>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
-<script src="../../disqus_comments/inlineDisqussions.js"></script>
-<script src="../../js/disqus.js"></script>
-<noscript>Enable JavaScript for Disqus comments, Vue, and other stuff.</noscript>

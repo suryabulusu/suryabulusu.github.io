@@ -10,13 +10,16 @@
         <!-- main stylesheet -->
         <link rel="stylesheet" href="css/style.css">        
         
-        <title>Home - stbv's blog</title>
+        <title>stbv's blog</title>
 
         <style>
-            .description h2,
-        
+            /* from distill.pub */
             .description h2 {
                 font-weight: bolder;
+            }
+
+            .description-projects p {
+                font-size: 60%;
             }
 
             .post-url-underline {
@@ -62,10 +65,6 @@
                 margin-bottom: 14px;
                 position: relative;
                 max-width: 500px;
-            }
-        
-            .posts-list .post-preview.editorial .thumbnail {
-                display: none;
             }
         
             .posts-list .post-preview img {
@@ -114,7 +113,7 @@
         
                 .posts-list .post-preview .thumbnail {
                     float: right;
-                    width: 35%;
+                    width: 15%;
                     margin-bottom: 0;
                 }
         
@@ -142,14 +141,15 @@
         <div id="wrapper">
         <div id="image-region">
             <span id="name"><span id="bold_part">stbv</span>'s blog</span><br><br> 
-            <img id="main-im" src='css/images/propic.jpg' width="220px"/>
+            <img id="main-im" src='assets/display_picture.png' width="220px"/>
             <div id="contact">
-                <a href="mailto:teja.surya59@gmail.com">teja.surya59@gmail.com</a> <br>
-                <a href="resume.pdf">Resume</a> (as of 2019) <br> 
-                <a href="https://github.com/suryabulusu">Github</a> | 
+                <a href="assests/cv.pdf">CV</a> (as of Nov. 2024) <br> 
+                <a href="https://github.com/suryabulusu">GitHub</a> <br>
                 <a href="https://stats.stackexchange.com/users/306459/stbv">Cross Validated</a><br>
-                <a href="https://www.linkedin.com/in/suryateja-bulusu/">Linkedin</a> | 
-                <a href="https://www.facebook.com/teja.surya59">Facebook</a><br>
+                <a href="https://scholar.google.com/citations?user=JNsMQIgAAAAJ&hl=en">Google Scholar</a><br>
+                <a href="https://www.linkedin.com/in/suryateja-bulusu/">Linkedin</a> <br>
+                <a href="https://www.youtube.com/@suryateja5300/videos/">YouTube</a> <br>
+                
                 
                 
             </div>
@@ -158,21 +158,76 @@
         
         <div id="root">
             <tabs>      
-                <tab name="Posts" v-bind:selected="true">
+                <tab name="About" v-bind:selected="true">
+                    I am a Software Engineer at the non-profit <a href="https://www.avantifellows.org/"><u>Avanti Fellows</u></a>, where I develop open source technology for public school systems alongside <a href="https://substack.com/@pritamps"><u>Pritam Sukumar</u></a>. I also mentor contributors in the <a href="https://codeforgovtech.in/"><u>Code for GovTech</u></a> program, supporting the creation of Digital Public Goods. I deeply aspire to understand how machine learning can help us address critical needs within public systems and to build responsible technology. Previously, I worked as a Research Associate at <a href="https://research.adobe.com/careers/bangalore/"><u>Adobe Research</u></a> under the guidance of <a href="https://www.linkedin.com/in/balajivasan/?originalSubdomain=in"><u>Balaji Vasan Srinivasan</u></a>. Before Adobe, I studied Electrical Engineering and Machine Learning at IIT Kanpur, where my thesis advisor was <a href="https://www.cse.iitk.ac.in/users/piyush/"><u>Prof. Piyush Rai</u></a>. Feel free to reach out to me at: <a  href="mailto:teja.surya59@gmail.com" style="font-family: Courier; font-size: 16px">teja.surya59@gmail.com</a> <br>
+              <blockquote style=" margin-top: 8px; margin-bottom: 12px; padding: 10px; background-color: rgba(179, 131, 55, 0.2);">
+                I recently shared detailed notes on my research taste. Do check <a href="posts/taste"><u>this post</u></a> and let me know if any of the ideas resonate with you.
+              </blockquote>
+              To emphasize, I have a strong interest in designing models with the following characteristics:
+              <ul>
+                <li>1) formulated and deployed with care for local communities,</li>
+                <li>2) built with domain-dependent inductive biases,</li>
+                <li>3) small scale; both in parameter count and training data size,</li>
+                <li>4) adequately specified while graciously leaving room for critique,</li>
+                <li>5) controllable and interpretable; likely through discrete latent variables,</li>
+                <li>6) inferred via (semi)differentiable approximate Bayesian procedures.</li>
+              </ul>
+              That's a lot! Briefly, I'd like to go against the tide of current ML trends and build adequately-sized models with an unwavering commitment to responsible practices.<br><br>
+              Outside of work, I enjoy movies and books, not only for the art but also for dissecting the craft. You can check out my Goodreads reviews <a href="https://www.goodreads.com/user/show/25851872-surya-bulusu"><u>here</u></a>. I plan to write more on other books soon, and I'm happy to share my hot takes on movies upon request. :)
+              <br><br>I am also keen on exploring cities and their hidden spaces. Based in Mumbai, I'm endlessly intrigued by its urban histories and politics. If I'm not at home, you might find me loitering in the gullies around Sion or Mumbai Central.
+                </tab> 
+
+                <tab name="Posts">
                     <div class="posts-list l-page">
-                        
+
                         <div class="post-preview ">
                             <div class="metadata">
-                                <div class="publishedDate">Dec. 16, 2021</div>
+                                <div class="publishedDate">Nov. 4, 2024</div>
                             </div>
                             <div class="description">
-                                <a href="posts/foundation-models/foundation_model_intro.pdf">
-                                <h2>Reflections on Foundation Models</h2></a>
-                                <p>Trends, properties, criticisms, and immediate uses of large-scale models. 
+                                <a href="posts/taste/index.html">
+                                <h2>Notes on Research Taste</h2></a>
+                                <p> Rough notes on research that excites me. Written to help me discover my taste in research.
                                 </p>
+                                
                                 <div class = "tags">
-                                    <span class = "tag">Slides</span>
-                                    <span class = "tag">Modelling</span>
+                                    <span class = "tag">Notes</span>
+                                    <span class = "tag">ML</span>
+                                    <span class = "tag">Sociology</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="post-preview ">
+                            <div class="metadata">
+                                <div class="publishedDate">Oct. 17, 2024</div>
+                            </div>
+                            <div class="description">
+                                <a href="https://techatavanti.substack.com/p/production-world-part-1">
+                                <h2>Production World: Part 1</h2></a>
+                                <p> Journey of Avanti's Quiz Engine From Local Dev To Production.
+                                </p>
+                                
+                                <div class = "tags">
+                                    <span class = "tag">Video</span>
+                                    <span class = "tag">Python</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="post-preview ">
+                            <div class="metadata">
+                                <div class="publishedDate">Dec. 22, 2023</div>
+                            </div>
+                            <div class="description">
+                                <a href="https://www.youtube.com/watch?v=qNSmN2yLGrs">
+                                <h2>Start Python with Colab | Video</h2></a>
+                                <p> I made a quick intro on using Colab for basic data analysis. Beginners in Python may find this useful. <a href = "posts/basic-python-colab/python_starter.pdf" class  = "post-url-underline">Slides</a>
+                                </p>
+                                
+                                <div class = "tags">
+                                    <span class = "tag">Video</span>
+                                    <span class = "tag">Python</span>
                                 </div>
                             </div>
                         </div>
@@ -189,74 +244,6 @@
                                 <div class = "tags">
                                     <span class = "tag">Tutorial</span>
                                     <span class = "tag">Evaluation</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="post-preview ">
-                            <div class="metadata">
-                                <div class="publishedDate">Aug. 27, 2021</div>
-                            </div>
-                            <div class="description">
-                                <a href="https://www.youtube.com/watch?v=ldtVI0czYeE">
-                                <h2>Post-OCR Error Detection and Correction | Talk</h2></a>
-                                <p> Through the sociopolitical lens of Sivaji: The Boss (2007). <a href = "posts/postocr/postocr_sivaji.pdf" class  = "post-url-underline">Slides</a>
-                                </p>
-                                
-                                <div class = "tags">
-                                    <span class = "tag">Video</span>
-                                    <span class = "tag">Slides</span>
-                                    <span class = "tag">Altppt</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="post-preview ">
-                            <div class="metadata">
-                                <div class="publishedDate">Jul. 16, 2021</div>
-                            </div>
-                            <div class="description">
-                                <a href="posts/intern-quiz-2021/InternQuiz2021.pdf">
-                                <h2>Intern General Quiz 2021</h2></a>
-                                <p>Quiz hosted by <a href = "https://www.linkedin.com/in/vinagg999/" class = "post-url-underline">Vinay Aggarwal</a> and me during Adobe Internship 2021. 
-                                </p>
-                                
-                                <div class = "tags">
-                                    <span class = "tag">Quiz</span>
-                                    <span class = "tag">Slides</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="post-preview ">
-                            <div class="metadata">
-                                <div class="publishedDate">Feb. 10, 2021</div>
-                            </div>
-                            <div class="description">
-                                <a href="posts/openai-clip/clip_intro.pdf">
-                                <h2>Reflections on OpenAI's CLIP Model</h2></a>
-                                <p>Comparing CLIP training and properties with previous class of supervised models.
-                                </p>
-                                <div class = "tags">
-                                    <span class = "tag">Slides</span>
-                                    <span class = "tag">Modelling</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="post-preview ">
-                            <div class="metadata">
-                                <div class="publishedDate">Sep. 14, 2020</div>
-                            </div>
-                            <div class="description">
-                                <a href="posts/collab-creation/collab_conent_creation.pdf">
-                                <h2>Intro to Collaborative Content Creation</h2></a>
-                                <p>Does collaboration aid in creativity? An initial view of the academic landscape. 
-                                </p>
-                                
-                                <div class = "tags">
-                                    <span class = "tag">Slides</span>
-                                    <span class = "tag">Creativity</span>
                                 </div>
                             </div>
                         </div>
@@ -410,24 +397,339 @@
                     
                 </tab>
 
+        <tab name="Presentations">
+            <div class="posts-list l-page">
+                <div class="post-preview ">
+                    <div class="metadata">
+                        <div class="publishedDate">July. 7, 2022</div>
+                    </div>
+                    <div class="description">
+                        <a href="posts/garudmachi-t4d/avanti_glific_share.pdf">
+                        <h2>Intro to Tech at Avanti Fellows</h2></a>
+                        <p>A presentation on Avanti's tech at the Tech4Dev Sprint organized by Donald Lobo and Glific.
+                        </p>
+                        <div class = "tags">
+                            <span class = "tag">Slides</span>
+                            <span class = "tag">Development</span>
+                            <span class = "tag">NGO</span>
+                        </div>
+                    </div>
+                </div>
 
-		<tab name="About" >
-                    I'm Surya, a final-year undergrad at Indian Institute of Technology Kanpur, majoring in Electrical Engineering. My current interests are in Probabilistic Modeling, Interpretability, and New Media. 
-                     You may get in touch with me at: <a  href="mailto:teja.surya59@gmail.com" style="font-family: Courier; font-size: 16px">teja.surya59@gmail.com</a> <br>
-              <blockquote style=" margin-top: 8px; margin-bottom: 12px; padding: 10px; background-color: rgba(179, 131, 55, 0.2);">
-                I worked on generating coordinated image-text pairs at Adobe Research (Bengaluru) in the summer of 2019. Our work has been accepted at IUI 2020 as a full paper. Preprint coming soon!
+                <div class="post-preview ">
+                    <div class="metadata">
+                        <div class="publishedDate">July. 7, 2022</div>
+                    </div>
+                    <div class="description">
+                        <a href="posts/foundation-models/foundation_model_intro.pdf">
+                        <h2>The Evolution of AI: From Rules to Prompts</h2></a>
+                        <p>Discussed the modelling gains we made over the past two decades. Some examples of prompting relevant to a broader NGO community.
+                        </p>
+                        <div class = "tags">
+                            <span class = "tag">Slides</span>
+                            <span class = "tag">ML</span>
+                            <span class = "tag">NGO</span>
+                        </div>
+                    </div>
+                </div>
 
-              </blockquote>
-         I love how lucidly people express their thoughts via technical writing and visualizations. Some of my favourite works are listed <a  href="https://www.one-tab.com/page/HdnZfaM7RiKxh_P-vNs16w"><u>here</u></a>. Please check the Posts section for my writeups. I intend to write more often in future. <br><br>  	
-            <!-- Some of the problems I'm currently working on: 
-            <ol>
-                <li>Defense against Adversarial Attacks on Language Models</li>
-                <li>Improving upon Stochastic Gradient MCMC</li>
-                <li>Clustering of Bandits for Dynamic Recommender Systems</li>
-            </ol> -->
+                <div class="post-preview ">
+                    <div class="metadata">
+                        <div class="publishedDate">Dec. 16, 2021</div>
+                    </div>
+                    <div class="description">
+                        <a href="posts/foundation-models/foundation_model_intro.pdf">
+                        <h2>Reflections on Foundation Models</h2></a>
+                        <p>Trends, properties, criticisms, and immediate uses of large-scale models. 
+                        </p>
+                        <div class = "tags">
+                            <span class = "tag">Slides</span>
+                            <span class = "tag">Modelling</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="post-preview ">
+                    <div class="metadata">
+                        <div class="publishedDate">Aug. 27, 2021</div>
+                    </div>
+                    <div class="description">
+                        <a href="https://www.youtube.com/watch?v=ldtVI0czYeE">
+                        <h2>Post-OCR Error Detection and Correction | Video</h2></a>
+                        <p> Through the sociopolitical lens of Sivaji: The Boss (2007). <a href = "posts/postocr/postocr_sivaji.pdf" class  = "post-url-underline">Slides</a>
+                        </p>
+                        
+                        <div class = "tags">
+                            <span class = "tag">Video</span>
+                            <span class = "tag">Slides</span>
+                            <span class = "tag">Altppt</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="post-preview ">
+                    <div class="metadata">
+                        <div class="publishedDate">Jul. 16, 2021</div>
+                    </div>
+                    <div class="description">
+                        <a href="posts/intern-quiz-2021/InternQuiz2021.pdf">
+                        <h2>Intern General Quiz 2021</h2></a>
+                        <p>Quiz hosted by <a href = "https://www.linkedin.com/in/vinagg999/" class = "post-url-underline">Vinay Aggarwal</a> and me during Adobe Internship 2021. 
+                        </p>
+                        
+                        <div class = "tags">
+                            <span class = "tag">Quiz</span>
+                            <span class = "tag">Slides</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="post-preview ">
+                    <div class="metadata">
+                        <div class="publishedDate">Feb. 10, 2021</div>
+                    </div>
+                    <div class="description">
+                        <a href="posts/openai-clip/clip_intro.pdf">
+                        <h2>Reflections on OpenAI's CLIP Model</h2></a>
+                        <p>Comparing CLIP training and properties with previous class of supervised models.
+                        </p>
+                        <div class = "tags">
+                            <span class = "tag">Slides</span>
+                            <span class = "tag">Modelling</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="post-preview ">
+                    <div class="metadata">
+                        <div class="publishedDate">Sep. 14, 2020</div>
+                    </div>
+                    <div class="description">
+                        <a href="posts/collab-creation/collab_conent_creation.pdf">
+                        <h2>Intro to Collaborative Content Creation</h2></a>
+                        <p>Does collaboration aid in creativity? An initial view of the academic landscape. 
+                        </p>
+                        
+                        <div class = "tags">
+                            <span class = "tag">Slides</span>
+                            <span class = "tag">Creativity</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </tab>
+
+        <tab name="Projects">
+            Over the years, I've been part of diverse projects and I'm very grateful to all collaborators. I've divided them into few themes for easy access. Although I'm not fully invested in all the themes right now, I'm excited to hear and discuss ideas. 
+            For a full list, check my <a href="https://scholar.google.com/citations?user=JNsMQIgAAAAJ&hl=en"><u>Google Scholar</u></a> page.<br>
             
-                </tab> 
-		            </tabs>
+            <div class="posts-list l-page">
+                <div class="post-preview">
+                    <div class="thumbnail" style="width: 32%">
+                        <img src="posts/bbvi/model_basic.jpg">
+                        <br>
+                        <img src="assets/pmi_theme1.png">
+                    </div>
+                    <div class="description" style="width: 65%; font-size: 85%">
+                        <h2>Theme 1: Probabilistic Modelling and Inference</h2></a>
+                        PMI forms the foundation of my understanding in ML, anchoring my intuitions and expanding my approach to complex problems. My fascination with PMI began with the CS698X course at IIT Kanpur, taught by Prof. Piyush Rai, which was a pivotal experience. I've exhaustively documented my thoughts on PMI <a href="posts/taste/index.html#probabilistic-modelling-and-inference-(pmi)"><u>here</u></a>.
+                        <ul>
+                            <li>(a) <b>Undergraduate Thesis</b>: My thesis, in collaboration with <a href="https://github.com/shngt"><u>Shashank Gupta</u></a>, explored bandits for sequential recommendations. We focused on two key ideas: the power of bandits in sequential interaction, facilitating online learning, and the efficiency of clustering arms to streamline computations. Using a DP-means approach with stick-breaking priors, we bypassed the need for a fixed cluster size, letting clusters emerge naturally. <a href="assets/bandit_clustering.pdf"><u>Report</u></a> | <a href="https://github.com/shngt/bayesian-bandit-clustering"><u>Code</u></a></li>
+                            <li>(b) <b>Mixture of ARMA</b>: This related project asks whether time series can be modeled as a mixture of ARMA processes, clustering them using the EM algorithm. <a href="assets/Mixture_of_ARMA.pdf"><u>Report</u></a> | <a href="https://github.com/suryabulusu/ARMA_mixtures/blob/master/Code_Report.ipynb"><u>Code</u></a></li>
+                            <li>(c) <b>sslvae</b>: Recently, I implemented SSLVAE, leveraging VAEs for label prediction in images with discrete latent variables modeled by a Concrete distribution. This approach draws from the work of Ben Poole et al. and Yee Whye Teh on the Gumbel-Softmax trick.  Differentiating them is a pain, yet I'm thoroughly fascinated by VAEs and the interpretability offered via discrete LVs. <a href="https://github.com/suryabulusu/sslvae/"><u>Code</u></a></li>
+                            <li>(d) <b>Misc</b>: Exploratory modelling in Jax, Pytorch: <a href="https://github.com/suryabulusu/prob-autodiff/"><u>Link 1</u></a> | <a href="https://github.com/suryabulusu/play-notebooks/"><u>Link 2</u></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="post-preview">
+                    <div class="thumbnail" style="width: 32%">
+                        <img src="assets/multimodalIUI_theme2.png">
+                        <br>
+                        <img src="assets/proc2vid_theme2.png">
+                    </div>
+                    <div class="description" style="width: 65%; font-size: 85%">
+                        <h2>Theme 2: Multimodal Combinations</h2></a>
+                        Image and text generation tasks are highly pedagogical. They have been a great entry point for me into Deep Learning. However, I have <a href="posts/taste/index.html#image-based-tasks"><u>mixed thoughts</u></a> about the subfield in its current shape.
+                        <ul>
+                            <li>(a) <b>SongTrain</b>: Though not directly tied to image/text, Songtrain marked my first significant project working with data. We analyzed audio frequencies to track users' singing accuracy compared to an original track, providing real-time feedback and scoring. This project introduced me to the possibilities of multimodal data, Our work earned the first place in Microsoft's code.fun.do! <a href="https://www.youtube.com/watch?v=iwKzN4ybRDM"><u>Video</u></a> | <a href="https://www.thehindu.com/news/cities/Hyderabad/codefundo-that-spots-exceptional-talent/article18429674.ece"><u>The Hindu</u></a>.</li>
+                            <li>(b) <b>Image-Text Fragments</b>: We developed a tool to generate custom image-text combinations from articles, adapting content and style to meet specific user needs. Work published at IUI 2020. <a href="assets/IUI2020Multimodal.pdf"><u>Paper</u></a></li>
+                            <li>(c) <b>Temporal Fragments</b>: Expanding on image-text combinations, what if we incorporate a temporal dimension? This allows us  to add audio and video elements to the mix. Of course, it doesn't work for all documents! We focused on procedural texts. Work published in WACV 2023. <a href="https://ieeexplore.ieee.org/document/10030241"><u>Paper</u></a> | <a href="https://www.youtube.com/watch?v=H2GgrgqQx74"><u>Video</u></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="post-preview">
+                    <div class="thumbnail" style="width: 32%">
+                        <img src="assets/codifying_theme3.png">
+                        <br>
+                        <img src="assets/collabcolor_theme3.png">
+                    </div>
+                    <div class="description" style="width: 65%; font-size: 85%">
+                        <h2>Theme 3: Systems for Creative Collaboration</h2></a>
+                        Generating images and videos certainly has its functional applications, but I feel it doesn't yet fully capture the needs of a creative's toolbox. What truly excites me is the prospect of co-creation. Just as a chat interface provides an interactive flow in textual modality, I envision a similarly iterative, back-and-forth process in image and video modalities. This interaction doesn't have to be limited to a human-agent dynamic; it could very well involve human-human interactions, with an agent in the background, subtly aligning differences. You can read more about my perspectives on RL <a href="posts/taste/index.html#reinforcement-learning"><u>here</u></a>.
+                        <ul>
+                            <li>(a) <b>Codifying Conflicts in Co-Coloring</b>: We looked at the process of creatives collaborating on a simple line-art coloring task, focusing on the conflicts and pain points that arise. Through user studies, we explored whether participants could effectively collaborate and impart their unique preferences in the final artwork. This project allowed me to work with SVGs, a flexible and often overlooked modality. Work published in CHI LBW 2022. <a href="assets/collabcolor_chilbw22.pdf"><u>Paper</u></a> | <a href="assets/collabcolor_poster_chilbw22.pdf"><u>Poster</u></a> | <a href="https://www.youtube.com/watch?v=Cqb7MI2YHpQ"><u>Video</u></a></li>
+                            <li>(b) <b>Collabcolor</b>: Extending the previous task, we developed CollabColor, an RL-based support system that assists users in finding a shared creative vision during collaboration. Framed as a multi-agent MDP, this project encompassed user studies, behaviour cloning, supervised RL with transformers, extensive evaluations, and more. We found that CollabColor's interventions improved coherence in final colorizations. While the immediate impact is on artistic collaboration, can RL interventions broadly help reconcile local differences toward societal harmony? Perhaps a utopian overreach, but one worth pursuing. <a href="assets/iui_collabcolor_draft.pdf"><u>Paper Draft</u></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="post-preview">
+                    <div class="thumbnail" style="width: 32%">
+                        <img src="assets/compress_theme4.png">
+                    </div>
+                    <div class="description" style="width: 65%; font-size: 85%">
+                        <h2>Theme 4: Compressing Data and Models</h2></a>
+                        My experience working on creative support systems highlighted a recurring issue: users struggle with large, slow models that aren't well-suited for production or mobile use. I've always felt that today's models are bloated, impacting UX unnecessarily. This led me to an interest in compression and efficiency. You can read more <a href="posts/taste/index.html#memory-/-hardware-efficiency"><u>here</u></a> and <a href="posts/taste/index.html#neural-compression"><u>here</u></a>.
+                        <ul>
+                            <li>(a) <b>Post-OCR Error Detection</b>: OCR outputs suffer from common document issues like poor angles, folds, and creases. For Adobe Scan, I developed a lightweight, mobile-friendly model that flags documents likely to yield OCR errors, enabling targeted post-processing. <a href="https://github.com/suryabulusu/play-notebooks/blob/main/onnx_tut.ipynb"><u>Code</u></a></li>
+                            <li>(b) <b>User-guided Variable-rate Learned Image Compression</b>: Neural nets can compress images but this process is lossy. I explored an approach where we ask users for their critical regions and compress less aggressively in those regions. This enables differential bit allocation, allowing a single model to operate at multiple bit rates. Work published in CVPR 2022 Workshop. <a href="https://openaccess.thecvf.com/content/CVPR2022W/CLIC/papers/Gupta_User-Guided_Variable_Rate_Learned_Image_Compression_CVPRW_2022_paper.pdf"><u>Paper</u></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="post-preview">
+                    <div class="thumbnail" style="width: 32%">
+                        <img src="assets/avanti_theme5.png">
+                    </div>
+                    <div class="description" style="width: 65%; font-size: 85%">
+                        <h2>Theme 5: Tech for Public Service Systems</h2></a>
+                        Alongside ML research, I've been deeply interested in the sociological, historical, and political landscapes of the communities I belong to. My previous research often catered to functional productivity and efficiency, and I wanted to explore public interest technology that primarily serves human-centered values. Low-resource contexts require participatory action and field research with care and dignity as a necessary ethic. I feel these constraints, whether geographical or economic, can foster uniquely creative solutions. You can read more <a href="posts/taste/index.html#ictd"><u>here</u></a> and <a href="posts/taste/index.html#sociology-and-caste"><u>here</u></a>.
+                        <ul>
+                            <li>(a) <b>Avanti's Open Source Tools</b>: I played a major role in developing tools for India's public school systems, reaching over 250,000 students across 5,000 schools. These tools enable assessments, attendance tracking, resource access, reporting, and data analysis for thousands of students and teachers daily. <a href="https://github.com/avantifellows/"><u>Code</u></a> | <a href="https://www.youtube.com/watch?v=vlPYxi5xJL8"><u>Video</u></a></li>
+                            <li>(b) I lead a project applying LLM-based interventions to enhance student memory retention, emphasizing responsible, ethically-aligned AI practices in education. More on this soon!</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </tab>
+
+        <tab name="Code">
+            I maintain multiple public repositories at <a href="https://github.com/avantifellows/"><u>Avanti Fellows</u></a>, focusing on projects such as the Quiz Engine, Portal, Reporting Engine, Session Manager, and College Predictor. These repos have a variety of open issues, many of which are beginner-friendly. Please consider contributing! You can reach out to me on Avanti's <a href="https://discord.gg/aNur9VPS2r">Discord</a>. My discord id is <span style="font-family: Courier; font-size: 16px">suryabulusu</span>.
+            <br>
+            I've listed some personal projects outside of Avanti here, primarily related to programming and ML:
+            
+            <div class="posts-list l-page">
+                <div class="post-preview ">
+                    <div class="metadata">
+                        <div class="publishedDate">Nov. 5, 2024</div>
+                    </div>
+                    <div class="description">
+                        <a href="https://github.com/suryabulusu/bib-gen">
+                        <h2>bib-gen: Fetch bibtex from paper titles</h2></a>
+                        <p>Repurposed from Xeophon's <a href="https://github.com/Xeophon/espanso-bib-generator">code</a>.</p>
+                    </div>
+                </div>
+
+                <div class="posts-list l-page">
+                    <div class="post-preview ">
+                        <div class="metadata">
+                            <div class="publishedDate">Oct. 14, 2024</div>
+                        </div>
+                        <div class="description">
+                            <a href="https://github.com/suryabulusu/sslvae">
+                            <h2>sslvae: Semi Supervised Learning with discrete VAE</h2></a>
+                            <p>Uses Concrete Distrbution and Gumbel-Softmax trick. Also (unofficially) implemented Variational Contrastive Divergence following Ruiz (2019)'s <a href="https://github.com/franrruiz/vcd_divergence">work</a>.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="posts-list l-page">
+                    <div class="post-preview ">
+                        <div class="metadata">
+                            <div class="publishedDate">Jan. 2, 2022</div>
+                        </div>
+                        <div class="description">
+                            <a href="https://github.com/suryabulusu/AOC-2021">
+                            <h2>Advent of Code 2021</h2></a>
+                           <p>I had a lot of fun participating in AOC 2021. My main aim was to learn Python's typing and class structuring. I wrote some takeaways on each question in the README section.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="posts-list l-page">
+                    <div class="post-preview ">
+                        <div class="metadata">
+                            <div class="publishedDate">Feb. 2, 2021</div>
+                        </div>
+                        <div class="description">
+                            <a href="https://github.com/suryabulusu/CSES-Python">
+                            <h2>Solutions to CSES Problems</h2></a>
+                           <p>CSES has concise descriptions of common algorithms. My goal wasn't necessarily to excel in competitive programming but rather deepen my familiarity with Python.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="posts-list l-page">
+                    <div class="post-preview ">
+                        <div class="metadata">
+                            <div class="publishedDate">Nov. 12, 2019</div>
+                        </div>
+                        <div class="description">
+                            <a href="https://github.com/suryabulusu/ARMA_mixtures/">
+                            <h2>Mixture of ARMA: Time Series clustering</h2></a>
+                           <p>EM Algorithm for soft-clustering of Time Series data. Chooses the best model using BIC.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="posts-list l-page">
+                    <div class="post-preview ">
+                        <div class="metadata">
+                            <div class="publishedDate">Apr. 12, 2019</div>
+                        </div>
+                        <div class="description">
+                            <a href="https://github.com/suryabulusu/prob-modelling-and-inf/">
+                            <h2>Code for CS698X: Probabilisitc Modelling and Inference</h2></a>
+                           <p>Bayesian Lin. Reg., MCMC, Online EM, etc. Course taught by Prof. Piyush Rai.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </tab> 
+
+        <tab name="Now">
+            <i>Last Updated: 5th Nov. 2024 | You should make a <a href="https://sive.rs/now"><u>now</u></a> page too!</i>
+
+            <div class="posts-list l-page">
+                <div class="post-preview">
+                    <div class="description">
+                        <h2>Reading</h2></a>
+                        <ul>
+                            <li>(a) A History of the Bible, by John Barton. Two chapters in, it's already a masterpiece in elucidation. Barton is extremely compassionate.</li>
+                            <li>(b) Recoding America, by Jennifer Pahlka.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="post-preview">
+                    <div class="description">
+                        <h2>Writing - Lots to write!</h2></a>
+                        <ul>
+                            <li>(a) An essay on Hyderabad. Expanding on my <a href="https://www.goodreads.com/review/show/6851807258"><u>review</u></a> of Prof. Afsar Mohammad's book.</li>
+                            <li>(b) An essay on my interactions with Anki over the past five years. Did Anki improve my memory retention? Did Anki make me more creative?</li>
+                            <li>(c) An essay on my experiences in the non-profit sector.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="post-preview">
+                    <div class="description">
+                        <h2>Work and Research</h2></a>
+                        <ul>
+                            <li>(a) I've finally updated my website once again after 5 years!</li>
+                            <li>(b) Building an LLM-based intervention for memory retention in Avanti's Quiz Engine.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </tab>
+    </tabs>
         </div>
         
         <script src="js/vue.js"></script>
