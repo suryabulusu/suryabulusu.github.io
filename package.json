@@ -1,0 +1,42 @@
+{
+  "name": "suryabulusu-website",
+  "version": "1.0.0",
+  "description": "Personal website and blog",
+  "type": "module",
+  "scripts": {
+    "lint": "npm run lint:css && npm run lint:js",
+    "lint:html": "html-validate \"**/*.html\"",
+    "lint:css": "stylelint \"**/*.css\"",
+    "lint:js": "eslint \"**/*.js\"",
+    "format": "npm run format:css && npm run format:js",
+    "format:html": "prettier --write \"**/*.html\"",
+    "format:css": "prettier --write \"**/*.css\"",
+    "format:js": "prettier --write \"**/*.js\"",
+    "fix": "npm run fix:css && npm run fix:js",
+    "fix:css": "stylelint \"**/*.css\" --fix",
+    "fix:js": "eslint \"**/*.js\" --fix",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "eslint": "^9.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "html-validate": "^8.0.0",
+    "husky": "^9.0.0",
+    "lint-staged": "^15.0.0",
+    "prettier": "^3.0.0",
+    "stylelint": "^14.16.0",
+    "stylelint-config-prettier": "^9.0.0",
+    "stylelint-config-standard": "^29.0.0"
+  },
+  "lint-staged": {
+    "*.css": [
+      "prettier --write",
+      "stylelint --fix"
+    ],
+    "*.js": [
+      "prettier --write",
+      "eslint --fix"
+    ]
+  }
+}

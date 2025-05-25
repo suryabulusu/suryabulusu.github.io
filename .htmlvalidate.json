@@ -1,0 +1,15 @@
+{
+  "extends": ["html-validate:recommended"],
+  "rules": {
+    "void-style": ["error", {"style": "omit"}],
+    "close-order": "error",
+    "doctype-style": ["error", {"style": "lowercase"}],
+    "no-trailing-whitespace": "error",
+    "attribute-boolean-style": ["error", {"style": "omit"}],
+    "element-required-attributes": "error",
+    "no-unknown-elements": "off"
+  },
+  "elements": [
+    "html5"
+  ]
+} 

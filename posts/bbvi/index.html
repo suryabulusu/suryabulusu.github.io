@@ -2,192 +2,323 @@
 
 <head>
   <script src="https://distill.pub/template.v2.js"></script>
-  <meta name="viewport" content="width=device-width, initial-scale=1" >
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-   <!-- KaTeX CSS and JS for math rendering -->
-   <link rel="stylesheet" href="https://distill.pub/third-party/katex/katex.min.css" crossorigin="anonymous">
-   <script src="https://distill.pub/third-party/katex/katex.min.js" async></script>
+  <!-- KaTeX CSS and JS for math rendering -->
+  <link
+    rel="stylesheet"
+    href="https://distill.pub/third-party/katex/katex.min.css"
+    crossorigin="anonymous"
+  />
+  <script
+    src="https://distill.pub/third-party/katex/katex.min.js"
+    async
+  ></script>
 
-   <!-- stylesheet to increase margin -->
-    <link rel="stylesheet" href="../../css/distill-toc.css">
+  <!-- stylesheet to increase margin -->
+  <link rel="stylesheet" href="../../css/distill-toc.css" />
 
-  <meta charset="utf8">
+  <!-- Home button styling -->
+  <link rel="stylesheet" href="../../css/distill-home.css" />
+
+  <meta charset="utf8" />
   <title>Black-Box Variational Inference</title>
 </head>
 
 <body>
+  <!-- Home button - inspired by Michael Nielsen's site -->
+  <a href="../../index.html" class="home-button" title="Back to Home">
+    <img src="../../assets/home.png" alt="Home" />
+  </a>
 
   <d-front-matter>
     <script type="text/json">
-        {
-            "title": "Black-Box Variational Inference",
-            "description": "",
-            "authors": []
-        }
+      {
+        "title": "Black-Box Variational Inference",
+        "description": "",
+        "authors": []
+      }
     </script>
-</d-front-matter>
-<d-title>
-        <p>An intuitive explanation of Ranganath et. al.'s Black-Box Variational Inference approach, and how it helps us get over tedious inference calculations.</p>
-</d-title>
-<div class="d-byline-container base-grid"> 
-  <div class="d-byline"> 
-    <div class="authors" style="grid-area: authors;"> 
-      <h3>Author</h3> 
-      <div> 
-      <span class="author">Surya</span>
-      </div> 
-    </div> 
-    <div class="published" style="grid-area: published;"> 
-    <h3>Published</h3> 
-    <div>April 15, 2019</div> 
-    </div>
-    <div class="updated" style="grid-area: updated;"> 
-      <h3>Updated</h3> 
-      <div>November 3, 2024</div> 
+  </d-front-matter>
+  <d-title>
+    <p>
+      An intuitive explanation of Ranganath et. al.'s Black-Box Variational
+      Inference approach, and how it helps us get over tedious inference
+      calculations.
+    </p>
+  </d-title>
+  <div class="d-byline-container base-grid">
+    <div class="d-byline">
+      <div class="authors" style="grid-area: authors">
+        <h3>Author</h3>
+        <div>
+          <span class="author">Surya</span>
+        </div>
       </div>
-  </div> 
-</div>
-<d-byline></d-byline>
+      <div class="published" style="grid-area: published">
+        <h3>Published</h3>
+        <div>April 15, 2019</div>
+      </div>
+      <div class="updated" style="grid-area: updated">
+        <h3>Updated</h3>
+        <div>November 3, 2024</div>
+      </div>
+    </div>
+  </div>
+  <d-byline></d-byline>
 
-<d-article>
-  <a class="marker" href="#section-1" id="section-1"><span>1</span></a>
-  <h2>Introduction</h2>
-  <p>
-    Probabilisitc modeling follows a simple pipeline as shown in the figure below. We have some questions, so we build a model to answer them, and use the available data to infer the parameters of our model. We then use our model to make predictions, or explore data further, and hence evaluate our model. The bottleneck of this pipeline is <b>inference</b>. More often than not, inference of real-world models is computationally intractable, and require some form of approximation. One such approximation technique is <b>variational</b> inference.
-  </p>
-  <figure>
-    <img src="model_basic.jpg">
-    <figcaption>Probabilistic Pipeline</figcaption>
-  </figure>
-  <p>
-    Variational inference converts an inference problem to an optimization problem. The idea is to consider a variational distribution <d-math>q(z | \lambda )</d-math> over all the hidden variables and bring it as close as possible to the actual posterior distribution <d-math>p(z | \theta )</d-math>. To do so, we minimize the KL divergence between the actual posterior and our variational approximation. Minimizing divergence can be shown to be the same as maximising the <b>ELBO</b> <b>E</b>vidence <b>L</b>ower <b>BO</b>und given by,
-    <d-math block>
-      \begin{aligned}
-    \text{ELBO} = L( \lambda ) = \textbf{E}_{q}[\log{p(x, z)} - \log{q(z)}] \\
-      \end{aligned}
-    </d-math>  
-  The recipe for VI is as follows -
-  <d-math block>
-\begin{aligned}
-    \text{Build model }\green{p(X, Z)} \rightarrow \text{Choose approx. } \green{q(z | \lambda)} \rightarrow \text{Compute \red{ELBO}} \rightarrow \text{Take derivatives and optimize}
-\end{aligned}
-    </d-math>
-  </p>
-
+  <d-article>
+    <a class="marker" href="#section-1" id="section-1"><span>1</span></a>
+    <h2>Introduction</h2>
     <p>
-      This approach too has a bottleneck - the calculation of ELBO, which requires computing intractable expectations for most models. There are some model specific tricks (like Jaakola-Jordan’s <a href="https://pdfs.semanticscholar.org/e407/ea7fda6d152d2186f4b5e27aa04ec2d32dcd.pdf" target="_blank">logistic likelihood trick</a>) to make the computation easier, in addition to assuming simpler structures (like mean-field VI) for the variational distribution. We could also find tractable
-model-specific bounds for ELBO. However, these tricks don’t generalize well across other models. We can’t really go on deriving tricks for all models. </p>
-<p>
-Moreover, referring to our pipeline, we
-can’t let our inference techniques determine what models to choose. Liabilities in computation
-of inference should in no way influence or restrict our choice of models. The paper addresses
-this problem by proposing a model-agnostic trick to make VI computations easier, thereby
-enabling us to freely explore complex models. The goal of the paper is to help users make
-easy iterations in the probabilistic pipeline - continuously trying new innovative models and
-improving upon them, instead of getting stuck in tedious inference calculations. The freedom
-that the idea provides to users is what I like the most about this paper. 
+      Probabilisitc modeling follows a simple pipeline as shown in the figure
+      below. We have some questions, so we build a model to answer them, and use
+      the available data to infer the parameters of our model. We then use our
+      model to make predictions, or explore data further, and hence evaluate our
+      model. The bottleneck of this pipeline is <b>inference</b>. More often
+      than not, inference of real-world models is computationally intractable,
+      and require some form of approximation. One such approximation technique
+      is <b>variational</b> inference.
     </p>
-  
-  <a class="marker" href="#section-2" id="section-2"><span>2</span></a>
-  <h2>The Black-Box VI</h2>
-  <p>
-    The core idea of BBVI <d-cite key="ranganath2013black"></d-cite> is - What if we take derivatives first and then compute expectations? The Black-box VI recipe is as follows -
-    <d-math block>
-    \begin{aligned}
-        \text{Build model }\green{p(X, Z)} \rightarrow \text{Choose approx. } \green{q(z | \lambda)} \rightarrow \text{Compute \green{derivatives} of ELBO} \rightarrow \text{Compute \green{expectations}}
-    \end{aligned}
-  </d-math>
-    Via some calculations, we can show that the gradient of ELBO with respect to variational parameters <d-math>\lambda</d-math> has the following form - 
-    <d-math block>
-    \begin{aligned}
-        \nabla_{\lambda}L &= \textbf{E}_{q}[\blue{\nabla_{\lambda}\log{q(z|\lambda)}}(\log{p(x, z)} - \log{q(z | \lambda)})] \\
-        & \downarrow \\
-        & \text{Monte-carlo approximation} \\
-        & \downarrow \\
-        \nabla_{\lambda}L
-        &\approx \frac{1}{S}\sum_{s=1}^S{\blue{\nabla_{\lambda}\log{q(z_s|\lambda)}}(\log{p(x, z_s)} - \log{q(z_s | \lambda)})} \quad z_s \sim q(z | \lambda)
-    \end{aligned}
-  </d-math>
-  </p>  
-  <p>
-    There are no tedious assumptions on the model; It need not be continuous. It need not be differentiable. We just need to ensure that <d-math>\log{p(x, z)}</d-math> can be computed. Since <d-math>q(z | \lambda)</d-math> is in our hands, we could choose it to be such that we can sample from it and that it is differentiable. So this is not a problem too. One advantage is that we can actually <b>re-use</b> our variational distributions. Since the gradient computations do not involve any model-specific attributes (black box!), we could just collect some <d-math>q_i(z | \lambda)</d-math> distributions, compute gradients, sample from them, store in a library, and try it out on various models as and when needed. 
-  </p>
-  <p>
-    Instead of computing expectations, we could use Monte carlo approximation and arrive at noisy unbiased gradients. Once we have all the gradients, we make gradient descent steps in the variational parameter space, ie, <d-math> \lambda^{(t+1)} = \lambda^{(t)} + \rho^{(t)}\nabla_{\lambda}L^{(t)}</d-math>
-  </p>
-
-
-  <a class="marker" href="#section-3" id="section-3"><span>3</span></a>
-  <h2>Issues with Variance</h2>
-  <p>
-    Since VI is based on minimizing KL divergence, it is bound to have variance-related issues. Specifically, VI underestimates variance of true posterior. To see this, say true post. <d-math>p(z | \theta)</d-math> is variadic, and shoots up in some region. Since <d-math>KL(q || p) = \int q\log{(q / p)}</d-math>, our optimization could do away with giving a small value to q, which also minimizes <d-math>KL(q || p)</d-math>, therein underestimating the variance of p. </p>
-
+    <figure>
+      <img src="model_basic.jpg" />
+      <figcaption>Probabilistic Pipeline</figcaption>
+    </figure>
     <p>
-    In BBVI, since we are using Monte-carlo sampling, we end up with very <span style="color: red;">noisy</span> gradients. The steps we take are not so optimal more often than not, and this leads to very high variance. The time taken for convergence is also long, since the step size is small owing to the <span style="color: red;">noisy</span> nature of gradients. To put simply, basic BBVI fails if variance is not controlled. The paper proposes two methods to control variance of gradients. They are explained below.  
-  </p>
-
-  <h3>Rao-Blackwellization</h3>
-  <p>
-    Suppose we want to compute the expectation of a random variable. If we could collect information that we already know of the random variable and condition the expectation on this information, we could possibly reduce the variance in the expectation. Mathematically, say, <d-math>T = \textbf{E}[J(X, Y)]</d-math> and <d-math>\hat{J}(X) = \textbf{E}[J(X, Y) | X]</d-math>. Then, using law of iterated expectations and law of total variance,
-    <d-math block>
-      \begin{aligned}
-    \textbf{E}[\hat{J}(X)] &= \textbf{E}[\textbf{E}[J(X, Y) | X]] = \textbf{E}[J(X, Y)] = T\\
-    \text{var}(J(X, Y)) &= \textbf{E}[\text{var}(J(X, Y | X))] + \text{var}(\hat{J}(X)) \implies \text{var}(J(X, Y)) > \text{var}(\hat{J}(X))
-    \end{aligned}
-    </d-math>
-  </p>
-
-    <p>
-      Effectively, we have a proxy for computation of <d-math>T</d-math>. Instead of computing expectation of <d-math>\red{J(X, Y)}</d-math> , use expectation of <d-math>\green{\hat{J}(X)}</d-math>, which is of lower variance. This is the Rao-Blackwellization method. 
-    </p>
-
-    <p>
-      In our case, using  mean-field assumption, we can factorize and show that, 
+      Variational inference converts an inference problem to an optimization
+      problem. The idea is to consider a variational distribution
+      <d-math>q(z | \lambda )</d-math> over all the hidden variables and bring
+      it as close as possible to the actual posterior distribution
+      <d-math>p(z | \theta )</d-math>. To do so, we minimize the KL divergence
+      between the actual posterior and our variational approximation. Minimizing
+      divergence can be shown to be the same as maximising the <b>ELBO</b>
+      <b>E</b>vidence <b>L</b>ower <b>BO</b>und given by,
       <d-math block>
-      \begin{aligned}
-    \textbf{E}[J(X, Y | X)] = \textbf{E}_y[J(x, y)]
-\end{aligned}
-</d-math>
-Essentially, we'd need to integrate out some variables to compute the conditional expectations, which would thereby reduce variance. So, in case we seek ELBO gradient with respect to <d-math>\lambda_i</d-math>, we could integrate out other factors by iteratively taking expectations, arriving at the final form - 
-<d-math block>
-\begin{aligned}
-    \nabla_{\lambda_i}L &= \textbf{E}_{q(i)}[\blue{\nabla_{\lambda_i}\log{q(z_i|\lambda_i)}}(\log{p_i(x, z_{(i)})} - \log{q(z_i | \lambda_i)})]
-\end{aligned}
-</d-math>
-Here, <d-math>z_{(i)}</d-math> is the markov blanket of i<d-math>^{th}</d-math> factor, <d-math>p_i</d-math> includes terms from i<d-math>^{th}</d-math> factor. Importantly, this form is model-agnostic too. There are no model-specific conditional expectations! Experiments conducted by the authors showed great reduction in variance and time by incorporating Rao-Blackwellized gradients. 
+        \begin{aligned} \text{ELBO} = L( \lambda ) = \textbf{E}_{q}[\log{p(x,
+        z)} - \log{q(z)}] \\ \end{aligned}
+      </d-math>
+      The recipe for VI is as follows -
+      <d-math block>
+        \begin{aligned} \text{Build model }\green{p(X, Z)} \rightarrow
+        \text{Choose approx. } \green{q(z | \lambda)} \rightarrow \text{Compute
+        \red{ELBO}} \rightarrow \text{Take derivatives and optimize}
+        \end{aligned}
+      </d-math>
     </p>
 
-  <h3>Control Variates</h3>
-  <p>
-    Again, the idea is to find a proxy for our computation, which gives the same expectation but with lesser variance. Control variates are a family of functions that satisfy the conditions for this proxy. Define
-    <d-math block> 
-\begin{aligned}
-    \hat{f}(z) &= f(z) - a(h(z) - \textbf{E}[h(z)]) \implies \textbf{E}[\hat{f}] = \textbf{E}[f] \quad \text{and} \\
-    \text{var}(\hat{f}) &= \text{var}(f) + a^2(\text{var}(h)) - 2a\text{Cov}(f, h)
-\end{aligned}
-</d-math>
-Here <d-math>\hat{f}</d-math> are the control variates. We can minimize the variance of <d-math>\hat{f}</d-math> by tweaking a. Note that its really important that we pick <d-math>h</d-math> that is correlated to <d-math>f</d-math>, thereby providing some additional information about <d-math>f</d-math>. Only then we can reduce variance of <d-math>f</d-math>. 
-</p>
-<p>
-For our ELBO gradient case, we could use <d-math>h = \nabla_{\lambda}\log{q(z | \lambda)}</d-math>. Note that its expectation is zero. Also, we are in accordance with the model-agnostic flavor as <d-math>h</d-math> doesn't have any model-specific terms. We compute the optimum <d-math>a^*</d-math> that minimizes variance of <d-math>\hat{f}</d-math> using this <d-math>h</d-math>, and applying Rao-Blackwellization too, we end up with
-<d-math block>
-\begin{aligned}
-\nabla_{\lambda_i}L
-&= \frac{1}{S}\sum_{s=1}^S{\blue{\nabla_{\lambda_i}\log{q(z_s|\lambda_i)}}(\log{p_i(x, z_s)} - \log{q_i(z_s | \lambda_i)} - a_i^*)} \quad z_s \sim q_{(i)}(z | \lambda)
-\end{aligned}
-</d-math>
-Using the above Monte Carlo gradients, authors improve upon basic BBVI to arrive at <b>BBVI-II</b>. The authors achieved very good results, trying various complex models on longitudinal healthcare data. As expected, BBVI-II outperforms other standard methods such as Gibbs Sampling, mean-field VI etc. Note that the authors have used <span style="color: green;">AdaGrad</span> method for setting learning rates instead of <span style="color: red;">Robbins-Monro</span> rates. AdaGrad rates ensure that when variance in gradient is high, the learning rate is low and vice-versa. 
-  </p>
-</d-article>
+    <p>
+      This approach too has a bottleneck - the calculation of ELBO, which
+      requires computing intractable expectations for most models. There are
+      some model specific tricks (like Jaakola-Jordan’s
+      <a
+        href="https://pdfs.semanticscholar.org/e407/ea7fda6d152d2186f4b5e27aa04ec2d32dcd.pdf"
+        target="_blank"
+        >logistic likelihood trick</a
+      >) to make the computation easier, in addition to assuming simpler
+      structures (like mean-field VI) for the variational distribution. We could
+      also find tractable model-specific bounds for ELBO. However, these tricks
+      don’t generalize well across other models. We can’t really go on deriving
+      tricks for all models.
+    </p>
+    <p>
+      Moreover, referring to our pipeline, we can’t let our inference techniques
+      determine what models to choose. Liabilities in computation of inference
+      should in no way influence or restrict our choice of models. The paper
+      addresses this problem by proposing a model-agnostic trick to make VI
+      computations easier, thereby enabling us to freely explore complex models.
+      The goal of the paper is to help users make easy iterations in the
+      probabilistic pipeline - continuously trying new innovative models and
+      improving upon them, instead of getting stuck in tedious inference
+      calculations. The freedom that the idea provides to users is what I like
+      the most about this paper.
+    </p>
 
-<d-appendix>
-  <h3>Acknowledgements</h3>
-  <p>The article was prepared using the <a href="https://github.com/distillpub/post--example" target="_blank">Distill Template</a></p>
-  <p>I wrote this article as a part of the course <a href="https://www.cse.iitk.ac.in/users/piyush" target="_blank">CS698X: Probabilistic Modeling and Inference</a> by Prof. Piyush Rai</p>
-  <h3>Updates and Corrections</h3>
-  <p>If you see mistakes or want to suggest changes, please <a href="mailto:teja.surya59@gmail.com">contact me</a></p>
+    <a class="marker" href="#section-2" id="section-2"><span>2</span></a>
+    <h2>The Black-Box VI</h2>
+    <p>
+      The core idea of BBVI <d-cite key="ranganath2013black"></d-cite> is - What
+      if we take derivatives first and then compute expectations? The Black-box
+      VI recipe is as follows -
+      <d-math block>
+        \begin{aligned} \text{Build model }\green{p(X, Z)} \rightarrow
+        \text{Choose approx. } \green{q(z | \lambda)} \rightarrow \text{Compute
+        \green{derivatives} of ELBO} \rightarrow \text{Compute
+        \green{expectations}} \end{aligned}
+      </d-math>
+      Via some calculations, we can show that the gradient of ELBO with respect
+      to variational parameters <d-math>\lambda</d-math> has the following form
+      -
+      <d-math block>
+        \begin{aligned} \nabla_{\lambda}L &=
+        \textbf{E}_{q}[\blue{\nabla_{\lambda}\log{q(z|\lambda)}}(\log{p(x, z)} -
+        \log{q(z | \lambda)})] \\ & \downarrow \\ & \text{Monte-carlo
+        approximation} \\ & \downarrow \\ \nabla_{\lambda}L &\approx
+        \frac{1}{S}\sum_{s=1}^S{\blue{\nabla_{\lambda}\log{q(z_s|\lambda)}}(\log{p(x,
+        z_s)} - \log{q(z_s | \lambda)})} \quad z_s \sim q(z | \lambda)
+        \end{aligned}
+      </d-math>
+    </p>
+    <p>
+      There are no tedious assumptions on the model; It need not be continuous.
+      It need not be differentiable. We just need to ensure that
+      <d-math>\log{p(x, z)}</d-math> can be computed. Since
+      <d-math>q(z | \lambda)</d-math> is in our hands, we could choose it to be
+      such that we can sample from it and that it is differentiable. So this is
+      not a problem too. One advantage is that we can actually <b>re-use</b> our
+      variational distributions. Since the gradient computations do not involve
+      any model-specific attributes (black box!), we could just collect some
+      <d-math>q_i(z | \lambda)</d-math> distributions, compute gradients, sample
+      from them, store in a library, and try it out on various models as and
+      when needed.
+    </p>
+    <p>
+      Instead of computing expectations, we could use Monte carlo approximation
+      and arrive at noisy unbiased gradients. Once we have all the gradients, we
+      make gradient descent steps in the variational parameter space, ie,
+      <d-math>
+        \lambda^{(t+1)} = \lambda^{(t)} +
+        \rho^{(t)}\nabla_{\lambda}L^{(t)}</d-math
+      >
+    </p>
 
-  <d-bibliography src="bibliography.bib"></d-bibliography>
-</d-appendix>
+    <a class="marker" href="#section-3" id="section-3"><span>3</span></a>
+    <h2>Issues with Variance</h2>
+    <p>
+      Since VI is based on minimizing KL divergence, it is bound to have
+      variance-related issues. Specifically, VI underestimates variance of true
+      posterior. To see this, say true post. <d-math>p(z | \theta)</d-math> is
+      variadic, and shoots up in some region. Since
+      <d-math>KL(q || p) = \int q\log{(q / p)}</d-math>, our optimization could
+      do away with giving a small value to q, which also minimizes
+      <d-math>KL(q || p)</d-math>, therein underestimating the variance of p.
+    </p>
 
+    <p>
+      In BBVI, since we are using Monte-carlo sampling, we end up with very
+      <span style="color: red">noisy</span> gradients. The steps we take are not
+      so optimal more often than not, and this leads to very high variance. The
+      time taken for convergence is also long, since the step size is small
+      owing to the <span style="color: red">noisy</span> nature of gradients. To
+      put simply, basic BBVI fails if variance is not controlled. The paper
+      proposes two methods to control variance of gradients. They are explained
+      below.
+    </p>
+
+    <h3>Rao-Blackwellization</h3>
+    <p>
+      Suppose we want to compute the expectation of a random variable. If we
+      could collect information that we already know of the random variable and
+      condition the expectation on this information, we could possibly reduce
+      the variance in the expectation. Mathematically, say,
+      <d-math>T = \textbf{E}[J(X, Y)]</d-math> and
+      <d-math>\hat{J}(X) = \textbf{E}[J(X, Y) | X]</d-math>. Then, using law of
+      iterated expectations and law of total variance,
+      <d-math block>
+        \begin{aligned} \textbf{E}[\hat{J}(X)] &= \textbf{E}[\textbf{E}[J(X, Y)
+        | X]] = \textbf{E}[J(X, Y)] = T\\ \text{var}(J(X, Y)) &=
+        \textbf{E}[\text{var}(J(X, Y | X))] + \text{var}(\hat{J}(X)) \implies
+        \text{var}(J(X, Y)) > \text{var}(\hat{J}(X)) \end{aligned}
+      </d-math>
+    </p>
+
+    <p>
+      Effectively, we have a proxy for computation of <d-math>T</d-math>.
+      Instead of computing expectation of <d-math>\red{J(X, Y)}</d-math> , use
+      expectation of <d-math>\green{\hat{J}(X)}</d-math>, which is of lower
+      variance. This is the Rao-Blackwellization method.
+    </p>
+
+    <p>
+      In our case, using mean-field assumption, we can factorize and show that,
+      <d-math block>
+        \begin{aligned} \textbf{E}[J(X, Y | X)] = \textbf{E}_y[J(x, y)]
+        \end{aligned}
+      </d-math>
+      Essentially, we'd need to integrate out some variables to compute the
+      conditional expectations, which would thereby reduce variance. So, in case
+      we seek ELBO gradient with respect to <d-math>\lambda_i</d-math>, we could
+      integrate out other factors by iteratively taking expectations, arriving
+      at the final form -
+      <d-math block>
+        \begin{aligned} \nabla_{\lambda_i}L &=
+        \textbf{E}_{q(i)}[\blue{\nabla_{\lambda_i}\log{q(z_i|\lambda_i)}}(\log{p_i(x,
+        z_{(i)})} - \log{q(z_i | \lambda_i)})] \end{aligned}
+      </d-math>
+      Here, <d-math>z_{(i)}</d-math> is the markov blanket of i<d-math
+        >^{th}</d-math
+      >
+      factor, <d-math>p_i</d-math> includes terms from i<d-math>^{th}</d-math>
+      factor. Importantly, this form is model-agnostic too. There are no
+      model-specific conditional expectations! Experiments conducted by the
+      authors showed great reduction in variance and time by incorporating
+      Rao-Blackwellized gradients.
+    </p>
+
+    <h3>Control Variates</h3>
+    <p>
+      Again, the idea is to find a proxy for our computation, which gives the
+      same expectation but with lesser variance. Control variates are a family
+      of functions that satisfy the conditions for this proxy. Define
+      <d-math block>
+        \begin{aligned} \hat{f}(z) &= f(z) - a(h(z) - \textbf{E}[h(z)]) \implies
+        \textbf{E}[\hat{f}] = \textbf{E}[f] \quad \text{and} \\
+        \text{var}(\hat{f}) &= \text{var}(f) + a^2(\text{var}(h)) -
+        2a\text{Cov}(f, h) \end{aligned}
+      </d-math>
+      Here <d-math>\hat{f}</d-math> are the control variates. We can minimize
+      the variance of <d-math>\hat{f}</d-math> by tweaking a. Note that its
+      really important that we pick <d-math>h</d-math> that is correlated to
+      <d-math>f</d-math>, thereby providing some additional information about
+      <d-math>f</d-math>. Only then we can reduce variance of
+      <d-math>f</d-math>.
+    </p>
+    <p>
+      For our ELBO gradient case, we could use
+      <d-math>h = \nabla_{\lambda}\log{q(z | \lambda)}</d-math>. Note that its
+      expectation is zero. Also, we are in accordance with the model-agnostic
+      flavor as <d-math>h</d-math> doesn't have any model-specific terms. We
+      compute the optimum <d-math>a^*</d-math> that minimizes variance of
+      <d-math>\hat{f}</d-math> using this <d-math>h</d-math>, and applying
+      Rao-Blackwellization too, we end up with
+      <d-math block>
+        \begin{aligned} \nabla_{\lambda_i}L &=
+        \frac{1}{S}\sum_{s=1}^S{\blue{\nabla_{\lambda_i}\log{q(z_s|\lambda_i)}}(\log{p_i(x,
+        z_s)} - \log{q_i(z_s | \lambda_i)} - a_i^*)} \quad z_s \sim q_{(i)}(z |
+        \lambda) \end{aligned}
+      </d-math>
+      Using the above Monte Carlo gradients, authors improve upon basic BBVI to
+      arrive at <b>BBVI-II</b>. The authors achieved very good results, trying
+      various complex models on longitudinal healthcare data. As expected,
+      BBVI-II outperforms other standard methods such as Gibbs Sampling,
+      mean-field VI etc. Note that the authors have used
+      <span style="color: green">AdaGrad</span> method for setting learning
+      rates instead of <span style="color: red">Robbins-Monro</span> rates.
+      AdaGrad rates ensure that when variance in gradient is high, the learning
+      rate is low and vice-versa.
+    </p>
+  </d-article>
+
+  <d-appendix>
+    <h3>Acknowledgements</h3>
+    <p>
+      The article was prepared using the
+      <a href="https://github.com/distillpub/post--example" target="_blank"
+        >Distill Template</a
+      >
+    </p>
+    <p>
+      I wrote this article as a part of the course
+      <a href="https://www.cse.iitk.ac.in/users/piyush" target="_blank"
+        >CS698X: Probabilistic Modeling and Inference</a
+      >
+      by Prof. Piyush Rai
+    </p>
+    <h3>Updates and Corrections</h3>
+    <p>
+      If you see mistakes or want to suggest changes, please
+      <a href="mailto:teja.surya59@gmail.com">contact me</a>
+    </p>
+
+    <d-bibliography src="bibliography.bib"></d-bibliography>
+  </d-appendix>
 </body>
