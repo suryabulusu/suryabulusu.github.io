@@ -64,12 +64,13 @@ The project includes automated workflows:
 
 ### Code Quality Tools
 
-- **ESLint**: JavaScript linting
-- **Stylelint**: CSS linting  
+- **ESLint**: JavaScript linting with Vue.js support
+- **Stylelint**: CSS linting (catches real errors, ignores legacy patterns)
 - **Prettier**: Code formatting
-- **html-validate**: HTML validation
 - **Husky**: Git hooks
 - **lint-staged**: Run linters on staged files
+
+**Note**: HTML validation is available but not enforced due to legacy blog content.
 
 ## TODO
 

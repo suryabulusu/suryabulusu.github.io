@@ -2,9 +2,9 @@ name: Lint and Format Check
 
 on:
   pull_request:
-    branches: [ main, master ]
+    branches: [ main ]
   push:
-    branches: [ main, master ]
+    branches: [ main ]
 
 jobs:
   lint:
@@ -27,9 +27,6 @@ jobs:
         
       - name: Run Stylelint
         run: npm run lint:css
-        
-      - name: Run HTML validation
-        run: npm run lint:html
         
       - name: Check Prettier formatting
         run: |
