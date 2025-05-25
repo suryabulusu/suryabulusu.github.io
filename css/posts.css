@@ -102,8 +102,123 @@ h2.post-tag {
   border-color: rgb(179, 131, 55);
 }
 
+/* Mobile-first responsive design */
+@media (max-width: 768px) {
+  .posts-list .post-preview {
+    padding: 12px 0;
+  }
+
+  .posts-list .post-preview h2 {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+
+  .posts-list .post-preview p {
+    font-size: 14px;
+    line-height: 1.5em;
+    margin-bottom: 10px;
+  }
+
+  .posts-list .metadata {
+    font-size: 11px;
+    margin-bottom: 12px;
+  }
+
+  .metadata .publishedDate {
+    font-size: 13px;
+  }
+
+  .tags .tag {
+    font-size: 55%;
+    padding: 0.25em 0.4em;
+    margin-bottom: 0.4em;
+    margin-right: 0.4em;
+  }
+
+  /* Stack layout on mobile */
+  .posts-list .post-preview .thumbnail {
+    width: 100% !important;
+    float: none !important;
+    margin-bottom: 10px;
+  }
+
+  .posts-list .post-preview .description {
+    width: 100% !important;
+    float: none !important;
+  }
+
+  .posts-list .post-preview .metadata {
+    width: 100% !important;
+    float: none !important;
+    margin-top: 0;
+  }
+
+  /* Improve readability for project descriptions */
+  .description-projects p {
+    font-size: 70%;
+  }
+
+  /* Better spacing for mobile */
+  .l-page {
+    padding: 0 5px;
+  }
+
+  /* Mobile project theme adjustments */
+  .project-theme {
+    margin-bottom: 24px;
+  }
+
+  .project-theme h2 {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  .project-theme .thumbnail {
+    margin-bottom: 16px;
+  }
+
+  .project-theme .thumbnail img {
+    margin-bottom: 12px;
+    border-radius: 6px;
+  }
+
+  .project-theme ul {
+    margin-top: 8px;
+    padding-left: 16px;
+  }
+
+  .project-theme li {
+    margin-bottom: 12px;
+    font-size: 14px;
+  }
+}
+
+/* Tablet layout */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .posts-list .post-preview h2 {
+    font-size: 18px;
+  }
+
+  .posts-list .post-preview p {
+    font-size: 16px;
+    line-height: 1.5em;
+  }
+
+  .posts-list .post-preview .thumbnail {
+    width: 20% !important;
+  }
+
+  .posts-list .post-preview .description {
+    width: 80% !important;
+  }
+
+  .posts-list .post-preview .metadata {
+    width: 15% !important;
+  }
+}
+
 /* Desktop layout */
-@media (min-width: 768px) {
+@media (min-width: 1025px) {
   .posts-list .post-preview h2 {
     font-size: 20px;
   }
@@ -130,4 +245,66 @@ h2.post-tag {
     line-height: 1.5em;
     font-size: 18px;
   }
+}
+
+/* Ensure clearfix for floated elements */
+.posts-list .post-preview::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Project-specific thumbnail styling */
+.posts-list .post-preview .thumbnail {
+  box-sizing: border-box;
+  margin-bottom: 14px;
+  position: relative;
+  max-width: 500px;
+}
+
+.posts-list .post-preview .thumbnail img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  margin-bottom: 8px;
+}
+
+.posts-list .post-preview .thumbnail img:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Better spacing between stacked images in thumbnails */
+.posts-list .post-preview .thumbnail img + img {
+  margin-top: 12px;
+}
+
+/* Project theme styling */
+.project-theme {
+  margin-bottom: 32px;
+}
+
+.project-theme h2 {
+  color: rgb(26, 47, 76);
+  border-bottom: 2px solid rgba(179, 131, 55, 0.3);
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+}
+
+/* Improved project list styling */
+.project-theme ul {
+  margin-top: 12px;
+}
+
+.project-theme li {
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
+.project-theme li b {
+  color: rgb(26, 47, 76);
 }

@@ -5,6 +5,10 @@
         <!-- mobile related -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         
+        <!-- favicon -->
+        <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+        
         <link rel="stylesheet" href="css/bulma.css">
         
         <!-- main stylesheet -->
@@ -450,14 +454,13 @@
             For a full list, check my <a href="https://scholar.google.com/citations?user=JNsMQIgAAAAJ&hl=en"><u>Google Scholar</u></a> page.<br>
             
             <div class="posts-list l-page">
-                <div class="post-preview">
+                <div class="post-preview project-theme">
                     <div class="thumbnail" style="width: 32%">
-                        <img src="posts/bbvi/model_basic.jpg">
-                        <br>
-                        <img src="assets/pmi_theme1.png">
+                        <img src="posts/bbvi/model_basic.jpg" alt="Probabilistic model diagram">
+                        <img src="assets/pmi_theme1.png" alt="PMI theme visualization">
                     </div>
                     <div class="description" style="width: 65%; font-size: 85%">
-                        <h2>Theme 1: Probabilistic Modelling and Inference</h2></a>
+                        <h2>Theme 1: Probabilistic Modelling and Inference</h2>
                         PMI forms the foundation of my understanding in ML, anchoring my intuitions and expanding my approach to complex problems. My fascination with PMI began with the CS698X course at IIT Kanpur, taught by Prof. Piyush Rai, which was a pivotal experience. I've exhaustively documented my thoughts on PMI <a href="posts/taste/index.html#probabilistic-modelling-and-inference-(pmi)"><u>here</u></a>.
                         <ul>
                             <li>(a) <b>Undergraduate Thesis</b>: My thesis, in collaboration with <a href="https://github.com/shngt"><u>Shashank Gupta</u></a>, explored bandits for sequential recommendations. We focused on two key ideas: the power of bandits in sequential interaction, facilitating online learning, and the efficiency of clustering arms to streamline computations. Using a DP-means approach with stick-breaking priors, we bypassed the need for a fixed cluster size, letting clusters emerge naturally. <a href="assets/bandit_clustering.pdf"><u>Report</u></a> | <a href="https://github.com/shngt/bayesian-bandit-clustering"><u>Code</u></a></li>
@@ -468,14 +471,13 @@
                     </div>
                 </div>
 
-                <div class="post-preview">
+                <div class="post-preview project-theme">
                     <div class="thumbnail" style="width: 32%">
-                        <img src="assets/multimodalIUI_theme2.png">
-                        <br>
-                        <img src="assets/proc2vid_theme2.png">
+                        <img src="assets/multimodalIUI_theme2.png" alt="Multimodal interface example">
+                        <img src="assets/proc2vid_theme2.png" alt="Procedural video generation">
                     </div>
                     <div class="description" style="width: 65%; font-size: 85%">
-                        <h2>Theme 2: Multimodal Combinations</h2></a>
+                        <h2>Theme 2: Multimodal Combinations</h2>
                         Image and text generation tasks are highly pedagogical. They have been a great entry point for me into Deep Learning. However, I have <a href="posts/taste/index.html#image-based-tasks"><u>mixed thoughts</u></a> about the subfield in its current shape.
                         <ul>
                             <li>(a) <b>SongTrain</b>: Though not directly tied to image/text, Songtrain marked my first significant project working with data. We analyzed audio frequencies to track users' singing accuracy compared to an original track, providing real-time feedback and scoring. This project introduced me to the possibilities of multimodal data, Our work earned the first place in Microsoft's code.fun.do! <a href="https://www.youtube.com/watch?v=iwKzN4ybRDM"><u>Video</u></a> | <a href="https://www.thehindu.com/news/cities/Hyderabad/codefundo-that-spots-exceptional-talent/article18429674.ece"><u>The Hindu</u></a>.</li>
@@ -485,14 +487,13 @@
                     </div>
                 </div>
 
-                <div class="post-preview">
+                <div class="post-preview project-theme">
                     <div class="thumbnail" style="width: 32%">
-                        <img src="assets/codifying_theme3.png">
-                        <br>
-                        <img src="assets/collabcolor_theme3.png">
+                        <img src="assets/codifying_theme3.png" alt="Creative collaboration system">
+                        <img src="assets/collabcolor_theme3.png" alt="Collaborative coloring interface">
                     </div>
                     <div class="description" style="width: 65%; font-size: 85%">
-                        <h2>Theme 3: Systems for Creative Collaboration</h2></a>
+                        <h2>Theme 3: Systems for Creative Collaboration</h2>
                         Generating images and videos certainly has its functional applications, but I feel it doesn't yet fully capture the needs of a creative's toolbox. What truly excites me is the prospect of co-creation. Just as a chat interface provides an interactive flow in textual modality, I envision a similarly iterative, back-and-forth process in image and video modalities. This interaction doesn't have to be limited to a human-agent dynamic; it could very well involve human-human interactions, with an agent in the background, subtly aligning differences. You can read more about my perspectives on RL <a href="posts/taste/index.html#reinforcement-learning"><u>here</u></a>.
                         <ul>
                             <li>(a) <b>Codifying Conflicts in Co-Coloring</b>: We looked at the process of creatives collaborating on a simple line-art coloring task, focusing on the conflicts and pain points that arise. Through user studies, we explored whether participants could effectively collaborate and impart their unique preferences in the final artwork. This project allowed me to work with SVGs, a flexible and often overlooked modality. Work published in CHI LBW 2022. <a href="assets/collabcolor_chilbw22.pdf"><u>Paper</u></a> | <a href="assets/collabcolor_poster_chilbw22.pdf"><u>Poster</u></a> | <a href="https://www.youtube.com/watch?v=Cqb7MI2YHpQ"><u>Video</u></a></li>
@@ -501,12 +502,12 @@
                     </div>
                 </div>
 
-                <div class="post-preview">
+                <div class="post-preview project-theme">
                     <div class="thumbnail" style="width: 32%">
-                        <img src="assets/compress_theme4.png">
+                        <img src="assets/compress_theme4.png" alt="Data compression visualization">
                     </div>
                     <div class="description" style="width: 65%; font-size: 85%">
-                        <h2>Theme 4: Compressing Data and Models</h2></a>
+                        <h2>Theme 4: Compressing Data and Models</h2>
                         My experience working on creative support systems highlighted a recurring issue: users struggle with large, slow models that aren't well-suited for production or mobile use. I've always felt that today's models are bloated, impacting UX unnecessarily. This led me to an interest in compression and efficiency. You can read more <a href="posts/taste/index.html#memory-/-hardware-efficiency"><u>here</u></a> and <a href="posts/taste/index.html#neural-compression"><u>here</u></a>.
                         <ul>
                             <li>(a) <b>Post-OCR Error Detection</b>: OCR outputs suffer from common document issues like poor angles, folds, and creases. For Adobe Scan, I developed a lightweight, mobile-friendly model that flags documents likely to yield OCR errors, enabling targeted post-processing. <a href="https://github.com/suryabulusu/play-notebooks/blob/main/onnx_tut.ipynb"><u>Code</u></a></li>
@@ -515,12 +516,12 @@
                     </div>
                 </div>
 
-                <div class="post-preview">
+                <div class="post-preview project-theme">
                     <div class="thumbnail" style="width: 32%">
-                        <img src="assets/avanti_theme5.png">
+                        <img src="assets/avanti_theme5.png" alt="Public service technology platform">
                     </div>
                     <div class="description" style="width: 65%; font-size: 85%">
-                        <h2>Theme 5: Tech for Public Service Systems</h2></a>
+                        <h2>Theme 5: Tech for Public Service Systems</h2>
                         Alongside ML research, I've been deeply interested in the sociological, historical, and political landscapes of the communities I belong to. My previous research often catered to functional productivity and efficiency, and I wanted to explore public interest technology that primarily serves human-centered values. Low-resource contexts require participatory action and field research with care and dignity as a necessary ethic. I feel these constraints, whether geographical or economic, can foster uniquely creative solutions. You can read more <a href="posts/taste/index.html#ictd"><u>here</u></a> and <a href="posts/taste/index.html#sociology-and-caste"><u>here</u></a>.
                         <ul>
                             <li>(a) <b>Avanti's Open Source Tools</b>: I played a major role in developing tools for India's public school systems, reaching over 250,000 students across 5,000 schools. These tools enable assessments, attendance tracking, resource access, reporting, and data analysis for thousands of students and teachers daily. <a href="https://github.com/avantifellows/"><u>Code</u></a> | <a href="https://www.youtube.com/watch?v=vlPYxi5xJL8"><u>Video</u></a></li>

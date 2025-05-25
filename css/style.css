@@ -13,20 +13,162 @@
   flex: 1 100%;
 }
 
-@media all and (max-width: 554px) {
+/* Mobile-first approach */
+@media all and (max-width: 1024px) {
+  body {
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 30px;
+    font-size: 16px;
+  }
+
   #image-region {
     flex: 1 auto;
-    /* text-align: center; */
+    text-align: center;
+    margin: 15px auto;
+    padding: 0 10px;
+    position: static !important;
   }
+
+  #main-im {
+    width: 180px;
+    max-width: 100%;
+    height: auto;
+  }
+
+  #contact {
+    margin: 15px 0;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  #contact a {
+    display: inline-block;
+    margin: 2px 0;
+  }
+
   #name {
-    font-size: 200%;
+    font-size: 180%;
     font-family: "Raleway";
     color: rgb(26, 47, 76);
+    text-align: center;
+    margin-bottom: 10px;
   }
-  /* #designation { font-size: 10px;} */
+
+  #root {
+    margin: 15px 0 0 0;
+  }
+
+  /* Mobile navigation - replace tabs with dropdown */
+  .tabs {
+    display: none !important;
+  }
+
+  .mobile-nav {
+    display: block !important;
+    margin-bottom: 20px;
+  }
+
+  .mobile-nav-toggle {
+    width: 100%;
+    padding: 12px 15px;
+    background: rgb(179, 131, 55);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    font-family: "Spectral", serif;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .mobile-nav-toggle:active {
+    background: rgb(160, 115, 45);
+  }
+
+  .dropdown-arrow {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid white;
+    transition: transform 0.2s ease;
+  }
+
+  .dropdown-arrow.open {
+    transform: rotate(180deg);
+  }
+
+  .mobile-nav-menu {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: none;
+  }
+
+  .mobile-nav-menu.show {
+    display: block;
+  }
+
+  .mobile-nav-item {
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background-color 0.2s;
+  }
+
+  .mobile-nav-item:last-child {
+    border-bottom: none;
+  }
+
+  .mobile-nav-item:hover {
+    background-color: #f5f5f5;
+  }
+
+  .mobile-nav-item.active {
+    background-color: rgba(179, 131, 55, 0.1);
+    color: rgb(179, 131, 55);
+    font-weight: bold;
+  }
+
+  /* Improve content readability on mobile */
+  .tabs-details {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* Better handling of long text and links */
+  .tabs-details a {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* Improve blockquote on mobile */
+  blockquote {
+    margin: 15px 0;
+    padding: 15px;
+    font-size: 15px;
+  }
+
+  /* Better list spacing on mobile */
+  ul,
+  ol {
+    padding-left: 20px;
+  }
+
+  li {
+    margin-bottom: 8px;
+  }
 }
 
-@media all and (min-width: 554px) {
+/* Desktop - side-by-side layout */
+@media all and (min-width: 1025px) {
   #root {
     flex: 25 0px;
   }
@@ -36,6 +178,7 @@
     position: sticky;
     align-self: flex-start;
     top: 25px;
+    text-align: left;
   }
   #root {
     order: 2;
@@ -45,9 +188,19 @@
     font-family: "Raleway";
     color: rgb(26, 47, 76);
   }
-  /* #designation {
-                font-size: 25px;
-                } */
+
+  #contact {
+    text-align: left;
+  }
+
+  /* Show tabs on desktop, hide mobile nav */
+  .tabs {
+    display: block !important;
+  }
+
+  .mobile-nav {
+    display: none;
+  }
 }
 
 @font-face {
