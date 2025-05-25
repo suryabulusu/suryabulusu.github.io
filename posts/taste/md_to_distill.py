@@ -66,4 +66,6 @@ def convert_md_to_distill(md_file, distill_file):
 
     print(f"Conversion complete. Output saved to {distill_file}")
 
-convert_md_to_distill('writeup_taste.md', 'output.html')
+# Example usage
+if __name__ == "__main__":
+    convert_md_to_distill('writeup_taste.md', 'output.html')

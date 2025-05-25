@@ -1,105 +1,104 @@
 #wrapper {
-                  display: -webkit-box;
-                  display: -moz-box;
-                  display: -ms-flexbox;
-                  display: -webkit-flex;
-                  display: flex; 
-                  
-                  -webkit-flex-flow: row wrap;
-                  flex-flow: row wrap;
-            }
-            
-            
-            #wrapper > * {
-                flex: 1 100%;
-            }
-            
-            @media all and (max-width: 554px) {
-                #image-region { 
-                    flex: 1 auto;
-                    /* text-align: center; */
-                    
-                }
-                #name { font-size: 200%; 
-                font-family: 'Raleway';
-                color: rgb(26, 47, 76);
-                }
-                /* #designation { font-size: 10px;} */
-            }
-                    
-            @media all and (min-width: 554px) {
-                #root    { flex: 25 0px; }
-                #image-region { 
-                    flex: 1 auto;
-                    order: 1; 
-                    position: sticky;
-                    align-self: flex-start;
-                    top: 25px;
-                } 
-                #root   { order: 2; }
-                #name {
-                font-size: 200%;
-                font-family: 'Raleway';
-                color: rgb(26, 47, 76);
-                }
-                /* #designation {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+}
+
+#wrapper > * {
+  flex: 1 100%;
+}
+
+@media all and (max-width: 554px) {
+  #image-region {
+    flex: 1 auto;
+    /* text-align: center; */
+  }
+  #name {
+    font-size: 200%;
+    font-family: "Raleway";
+    color: rgb(26, 47, 76);
+  }
+  /* #designation { font-size: 10px;} */
+}
+
+@media all and (min-width: 554px) {
+  #root {
+    flex: 25 0px;
+  }
+  #image-region {
+    flex: 1 auto;
+    order: 1;
+    position: sticky;
+    align-self: flex-start;
+    top: 25px;
+  }
+  #root {
+    order: 2;
+  }
+  #name {
+    font-size: 200%;
+    font-family: "Raleway";
+    color: rgb(26, 47, 76);
+  }
+  /* #designation {
                 font-size: 25px;
                 } */
-            }
-            
-            @font-face {
-                font-family: 'Raleway';
-                src: url('Raleway-Light.ttf');
-            }
+}
 
-            @font-face {
-                font-family: 'Spectral';
-                src: url('Spectral-Regular.ttf');
-            }
-            
-            
-            
-            #bold_part {
-                font-weight: bold;
-                color: rgb(179, 131, 55);;
-            }
-            
-            
-            body {
-                margin-left: 30px;
-                margin-right: 30px;
-                margin-bottom: 50px;
-                background: white;
-                font-family: 'Spectral', serif;
-                color: #333333;
-                font-size: 18px;
+@font-face {
+  font-family: "Raleway";
+  src: url("Raleway-Light.ttf");
+}
 
-            }
-            
-            #image-region {
-                margin: 25px;
-            }
-            
-	     #main-im {
-          /* border-radius: 100%;	 */
-          box-shadow: 0 1px 2px rgba(0,0,0,.075);
-          border: 1px solid #ddd;
-          border-radius: 4px;
-	     }
-            #image-region a {
-                text-decoration: none;
-                color: rgb(179, 131, 55);
-            }
-            
-            #contact {
-                margin: 10px 0px 0px 0px;
-                font-family: 'Spectral';
-                font-size: 18px;
-            }
-            
-            #root {
-                margin: 25px 20px 0px 0px;
-            }
-	     /* #root a {
+@font-face {
+  font-family: "Spectral";
+  src: url("Spectral-Regular.ttf");
+}
+
+#bold_part {
+  font-weight: bold;
+  color: rgb(179, 131, 55);
+}
+
+body {
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-bottom: 50px;
+  background: white;
+  font-family: "Spectral", serif;
+  color: #333333;
+  font-size: 18px;
+}
+
+#image-region {
+  margin: 25px;
+}
+
+#main-im {
+  /* border-radius: 100%;	 */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075);
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+#image-region a {
+  text-decoration: none;
+  color: rgb(179, 131, 55);
+}
+
+#contact {
+  margin: 10px 0px 0px 0px;
+  font-family: "Spectral";
+  font-size: 18px;
+}
+
+#root {
+  margin: 25px 20px 0px 0px;
+}
+/* #root a {
 		  text-decoration: none;	
 	     } */

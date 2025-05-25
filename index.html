@@ -10,132 +10,10 @@
         <!-- main stylesheet -->
         <link rel="stylesheet" href="css/style.css">        
         
+        <!-- posts stylesheet -->
+        <link rel="stylesheet" href="css/posts.css">
+        
         <title>stbv's blog</title>
-
-        <style>
-            /* from distill.pub */
-            .description h2 {
-                font-weight: bolder;
-            }
-
-            .description-projects p {
-                font-size: 60%;
-            }
-
-            .post-url-underline {
-                text-decoration: underline;
-            }
-        
-            h2.post-tag {
-                border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-                padding-bottom: 12px;
-            }
-        
-            /* .posts-list {
-                margin-top: 24px;
-                margin-bottom: 24px;
-            } */
-        
-            .posts-list .post-preview {
-                text-decoration: none;
-                overflow: hidden;
-                display: block;
-                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-                padding: 14px 0;
-            }
-        
-            .posts-list .post-preview:last-of-type {
-                border-bottom: none;
-            }
-        
-            .posts-list .post-preview h2 {
-                margin: 0 0 6px 0;
-                line-height: 1.2em;
-                font-style: normal;
-                font-size: 18px;
-            }
-        
-            .posts-list .post-preview p {
-                margin: 0 0 12px 0;
-                line-height: 1.4em;
-            }
-        
-            .posts-list .post-preview .thumbnail {
-                box-sizing: border-box;
-                margin-bottom: 14px;
-                position: relative;
-                max-width: 500px;
-            }
-        
-            .posts-list .post-preview img {
-                width: 100%;
-                display: block;
-            }
-        
-            .posts-list .metadata {
-                font-size: 12px;
-                line-height: 1.4em;
-                margin-bottom: 18px;
-            }
-        
-            .metadata>* {
-                display: inline-block;
-            }
-        
-            .metadata .publishedDate {
-                margin-right: 1em;
-                font-size: 15px;
-            }
-        
-            .metadata .tags {
-                margin-top: 1em;
-            }
-        
-            .tags .tag {
-                color: rgba(0, 0, 0, 0.67);
-                padding: 0.3em 0.5em;
-                margin-bottom: 0.5em;
-                font-size: 60%;
-                border: 1px solid rgba(0, 0, 0, 0.4);
-                border-radius: 3px;
-                text-transform: uppercase;
-                font-weight: 500;
-            }
-        
-            @media(min-width: 768px) {
-                .posts-list .post-preview h2 {
-                    font-size: 20px;
-                }
-        
-                /* .posts-list {
-                    margin-top: 60px;
-                } */
-        
-                .posts-list .post-preview .thumbnail {
-                    float: right;
-                    width: 15%;
-                    margin-bottom: 0;
-                }
-        
-                .posts-list .post-preview .description {
-                    float: left;
-                    width: 85%;
-                }
-        
-                .posts-list .post-preview .metadata {
-                    float: left;
-                    width: 10%;
-                    margin-top: 8px;
-                }
-        
-                .posts-list .post-preview p {
-                    margin: 0 0 10px 0;
-                    line-height: 1.5em;
-                    font-size: 18px;
-                }
-        
-            }
-        </style>
     </head>
     <body>
         <div id="wrapper">
@@ -201,7 +79,7 @@
                                 <div class="publishedDate">Nov. 15, 2024</div>
                             </div>
                             <div class="description">
-                                <a href="https://techatavanti.substack.com/p/production-world-part-2">
+                                <a href="https://techatavantifellows.substack.com/p/production-world-part-2">
                                 <h2>Production World: Part 2</h2></a>
                                 <p> Touring The Trade-Offs and Joys of Avanti's Tech Deployments
                                 </p>
@@ -236,7 +114,7 @@
                                 <div class="publishedDate">Oct. 17, 2024</div>
                             </div>
                             <div class="description">
-                                <a href="https://techatavanti.substack.com/p/production-world-part-1">
+                                <a href="https://techatavantifellows.substack.com/p/production-world-part-1">
                                 <h2>Production World: Part 1</h2></a>
                                 <p> Journey of Avanti's Quiz Engine From Local Dev To Production.
                                 </p>
@@ -433,7 +311,7 @@
                         <div class="publishedDate">Nov. 28, 2024</div>
                     </div>
                     <div class="description">
-                        <a href="https://techatavanti.substack.com/p/a-tech-workers-perspective-on-responsible">
+                        <a href="https://techatavantifellows.substack.com/p/a-tech-workers-perspective-on-responsible">
                         <h2>RAIL Fellowship Symposium 2024</h2></a>
                         <p>A tech worker's perspective on Responsible AI practices. <a href="posts/rail-talk/rail-symposium-slides-pdf.pdf"><u>Slides</u></a>
                         </p>
@@ -778,8 +656,8 @@
     </tabs>
         </div>
         
-        <script src="js/vue.js"></script>
-        <script src="js/vuemain.js"></script>
+        <script src="https://unpkg.com/vue@2/dist/vue.min.js"></script>
+        <script src="js/components.js"></script>
         
         </div>
     </body>

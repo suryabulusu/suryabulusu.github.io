@@ -2,117 +2,172 @@
 
 <head>
   <script src="https://distill.pub/template.v2.js"></script>
-  <meta name="viewport" content="width=device-width, initial-scale=1" >
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-   <!-- KaTeX CSS and JS for math rendering -->
-   <link rel="stylesheet" href="https://distill.pub/third-party/katex/katex.min.css" crossorigin="anonymous">
-   <script src="https://distill.pub/third-party/katex/katex.min.js" async></script>
+  <!-- KaTeX CSS and JS for math rendering -->
+  <link
+    rel="stylesheet"
+    href="https://distill.pub/third-party/katex/katex.min.css"
+    crossorigin="anonymous"
+  />
+  <script
+    src="https://distill.pub/third-party/katex/katex.min.js"
+    async
+  ></script>
 
-   <!-- stylesheet to increase margin -->
-    <link rel="stylesheet" href="../../css/distill-toc.css">
-    <meta charset="utf8">
+  <!-- stylesheet to increase margin -->
+  <link rel="stylesheet" href="../../css/distill-toc.css" />
+
+  <!-- Home button styling -->
+  <link rel="stylesheet" href="../../css/distill-home.css" />
+
+  <meta charset="utf8" />
   <title>Self-Surveillance and the Wayback Machine</title>
 </head>
 
 <body>
+  <!-- Home button - inspired by Michael Nielsen's site -->
+  <a href="../../index.html" class="home-button" title="Back to Home">
+    <img src="../../assets/home.png" alt="Home" />
+  </a>
 
-<d-front-matter>
-  <script id='distill-front-matter' type="text/json">{
-    "title": "Self-Surveillance and the Wayback Machine",
-    "description": "",
-    "authors": []
-  }</script>
-</d-front-matter>
-<d-title>
-        <p>Can you really implement self-surveillance on social media?</p>
-  
-  
-</d-title>
+  <d-front-matter>
+    <script id="distill-front-matter" type="text/json">
+      {
+        "title": "Self-Surveillance and the Wayback Machine",
+        "description": "",
+        "authors": []
+      }
+    </script>
+  </d-front-matter>
+  <d-title>
+    <p>Can you really implement self-surveillance on social media?</p>
+  </d-title>
 
-<div class="d-byline-container base-grid"> 
-  <div class="d-byline"> 
-    <div class="authors" style="grid-area: authors;"> 
-      <h3>Author</h3> 
-      <div> 
-      <span class="author">Surya</span>
-      </div> 
-    </div> 
-    <div class="published" style="grid-area: published;"> 
-    <h3>Published</h3> 
-    <div>August 27, 2018</div> 
-    </div>
-    <div class="updated" style="grid-area: updated;"> 
-      <h3>Updated</h3> 
-      <div>Not revised yet</div> 
+  <div class="d-byline-container base-grid">
+    <div class="d-byline">
+      <div class="authors" style="grid-area: authors">
+        <h3>Author</h3>
+        <div>
+          <span class="author">Surya</span>
+        </div>
       </div>
-  </div> 
-</div>
+      <div class="published" style="grid-area: published">
+        <h3>Published</h3>
+        <div>August 27, 2018</div>
+      </div>
+      <div class="updated" style="grid-area: updated">
+        <h3>Updated</h3>
+        <div>Not revised yet</div>
+      </div>
+    </div>
+  </div>
 
-<d-byline></d-byline>
+  <d-byline></d-byline>
 
-<d-article>
-  <p>
-    Waz and Bruno define self-surveillance as the attention one pays to one’s behavior when facing the
-actuality or virtuality of an immediate or mediated observation by others whose opinion he or she deems
-relevant - usually, the observers of the same or superior social position <d-cite key="vaz2003types"></d-cite>. For example, we may
-control ourselves from sharing certain posts on Facebook fearing that our friends might not like it.
-Sometimes, we scroll back through our timeline and delete any embarrassing posts that we’ve made in
-the past before someone else finds it and trolls us. It can be seen as censoring oneself or controlling
-oneself. You may control yourself from consuming harmful substances because you know they’re
-unhealthy.
-  </p>
-<p>
-  Self-surveillance is very important for celebrities who are active on social media. If
-a celebrity makes a statement, she must ensure that she has not made even a slight negation of that
-statement in the past. Else, she’d be charged with hypocrisy and get trolled. Media outlets today have
-people dedicated to scrolling through a celeb’s tweets. Once a <em>malicious</em> tweet is found, an entire article
-is written on it <em>exposing</em> the celeb. The article is carefully framed to attract readers and gain virality. The
-readers usually don’t see how old the <em>malicious</em> tweet is and assume that it is a recent one.</p>
+  <d-article>
+    <p>
+      Waz and Bruno define self-surveillance as the attention one pays to one’s
+      behavior when facing the actuality or virtuality of an immediate or
+      mediated observation by others whose opinion he or she deems relevant -
+      usually, the observers of the same or superior social position
+      <d-cite key="vaz2003types"></d-cite>. For example, we may control
+      ourselves from sharing certain posts on Facebook fearing that our friends
+      might not like it. Sometimes, we scroll back through our timeline and
+      delete any embarrassing posts that we’ve made in the past before someone
+      else finds it and trolls us. It can be seen as censoring oneself or
+      controlling oneself. You may control yourself from consuming harmful
+      substances because you know they’re unhealthy.
+    </p>
+    <p>
+      Self-surveillance is very important for celebrities who are active on
+      social media. If a celebrity makes a statement, she must ensure that she
+      has not made even a slight negation of that statement in the past. Else,
+      she’d be charged with hypocrisy and get trolled. Media outlets today have
+      people dedicated to scrolling through a celeb’s tweets. Once a
+      <em>malicious</em> tweet is found, an entire article is written on it
+      <em>exposing</em> the celeb. The article is carefully framed to attract
+      readers and gain virality. The readers usually don’t see how old the
+      <em>malicious</em> tweet is and assume that it is a recent one.
+    </p>
 
-<p> To illustrate, let us
-consider the case of stand-up comedian Kunal Kamra. Kamra is known for his anti-authoritarian humor
-and has been attracting a lot of hate from right-wing activists. Recently, his haters furiously retweeted old
-tweets wherein he made dark jokes on Muslims. Not only was he criticized by his
-followers for being offensive, but also lost a lot of them. To avoid further damage, he was forced to
-deactivate his Twitter account. After the backlash subsided, he reactivated his account offering an
-explanation. He claimed they were very old tweets he made before gaining popularity, and his thoughts
-have matured over the years
-</p>
-<aside>Kunal Kamra's <a href="https://www.youtube.com/channel/UC7sbc0Ed3_yMu-etXVpj7cg" target="_blank">Youtube channel</a>
-<br><br>
-Right-wing news outlet OpIndia's <a href="https://www.opindia.com/2018/01/comedian-twitter-kunal-kamra-deactivated-muslim-jokes-offensive/" target="_blank">article</a> <em>exposing</em> Kamra
-</aside>
+    <p>
+      To illustrate, let us consider the case of stand-up comedian Kunal Kamra.
+      Kamra is known for his anti-authoritarian humor and has been attracting a
+      lot of hate from right-wing activists. Recently, his haters furiously
+      retweeted old tweets wherein he made dark jokes on Muslims. Not only was
+      he criticized by his followers for being offensive, but also lost a lot of
+      them. To avoid further damage, he was forced to deactivate his Twitter
+      account. After the backlash subsided, he reactivated his account offering
+      an explanation. He claimed they were very old tweets he made before
+      gaining popularity, and his thoughts have matured over the years
+    </p>
+    <aside>
+      Kunal Kamra's
+      <a
+        href="https://www.youtube.com/channel/UC7sbc0Ed3_yMu-etXVpj7cg"
+        target="_blank"
+        >Youtube channel</a
+      >
+      <br /><br />
+      Right-wing news outlet OpIndia's
+      <a
+        href="https://www.opindia.com/2018/01/comedian-twitter-kunal-kamra-deactivated-muslim-jokes-offensive/"
+        target="_blank"
+        >article</a
+      >
+      <em>exposing</em> Kamra
+    </aside>
 
-<p>
-  How would a celeb avoid such situations? She can have control over what she says in
-the present, but what about the past? This is where self-surveillance comes in. Celebs have hired PR
-teams to take care of their accounts. PR teams conduct regular checks of the account and see to it that
-there are no trailing malicious tweets. However, if such tweet is found by trolls before the PR team does,
-deleting it would be of no help as screenshots are taken. You could delete the tweet and claim that the
-screenshot is doctored, but that might not help either, because of Wayback Machine - which could be
-storing your tweets.
-</p>
-<p>
-  Wayback Machine, in layman terms, is a storehouse of web pages. It sends out bots
-to crawl across the Web and take snapshots of whatever they see. Suppose you made a malicious blog
-post 10 years back and shared the link on Facebook. No one has read it then as you weren’t popular. Now
-you are a celeb, and realize that you made a stupid blog post years ago, so you delete it. When I grab hold of
-the link you shared via FB and click on it, I’d not find any content as you deleted the post. However, if I search for the same
-link on Wayback Machine, I’d find your content as at some point of time a crawler would’ve taken a
-snapshot of your page. I could use this to <em>expose</em> you. Methods of exposing using this technology are
-being explored nowadays in Indian media. Web pages use a <span style="font-family: Courier;">robots.txt</span> file to avoid being
-crawled upon.
-</p>
-</d-article>
+    <p>
+      How would a celeb avoid such situations? She can have control over what
+      she says in the present, but what about the past? This is where
+      self-surveillance comes in. Celebs have hired PR teams to take care of
+      their accounts. PR teams conduct regular checks of the account and see to
+      it that there are no trailing malicious tweets. However, if such tweet is
+      found by trolls before the PR team does, deleting it would be of no help
+      as screenshots are taken. You could delete the tweet and claim that the
+      screenshot is doctored, but that might not help either, because of Wayback
+      Machine - which could be storing your tweets.
+    </p>
+    <p>
+      Wayback Machine, in layman terms, is a storehouse of web pages. It sends
+      out bots to crawl across the Web and take snapshots of whatever they see.
+      Suppose you made a malicious blog post 10 years back and shared the link
+      on Facebook. No one has read it then as you weren’t popular. Now you are a
+      celeb, and realize that you made a stupid blog post years ago, so you
+      delete it. When I grab hold of the link you shared via FB and click on it,
+      I’d not find any content as you deleted the post. However, if I search for
+      the same link on Wayback Machine, I’d find your content as at some point
+      of time a crawler would’ve taken a snapshot of your page. I could use this
+      to <em>expose</em> you. Methods of exposing using this technology are
+      being explored nowadays in Indian media. Web pages use a
+      <span style="font-family: Courier">robots.txt</span> file to avoid being
+      crawled upon.
+    </p>
+  </d-article>
 
-<d-appendix>
-  <h3>Acknowledgements</h3>
-  <p>The article was prepared using the <a href="https://github.com/distillpub/post--example" target="_blank">Distill Template</a></p>
-  <p>I wrote this article as a part of the course <a href="https://www.iitk.ac.in/new/jillet-sarah-sam" target="_blank">SOC473: New Media Theory</a> by Prof. Jillet Sarah Sam</p>
-  <h3>Updates and Corrections</h3>
-  <p>If you see mistakes or want to suggest changes, please <a href="mailto:teja.surya59@gmail.com">contact me</a></p>
+  <d-appendix>
+    <h3>Acknowledgements</h3>
+    <p>
+      The article was prepared using the
+      <a href="https://github.com/distillpub/post--example" target="_blank"
+        >Distill Template</a
+      >
+    </p>
+    <p>
+      I wrote this article as a part of the course
+      <a href="https://www.iitk.ac.in/new/jillet-sarah-sam" target="_blank"
+        >SOC473: New Media Theory</a
+      >
+      by Prof. Jillet Sarah Sam
+    </p>
+    <h3>Updates and Corrections</h3>
+    <p>
+      If you see mistakes or want to suggest changes, please
+      <a href="mailto:teja.surya59@gmail.com">contact me</a>
+    </p>
 
-  <d-bibliography src="bibliography.bib"></d-bibliography>
-</d-appendix>
-
+    <d-bibliography src="bibliography.bib"></d-bibliography>
+  </d-appendix>
 </body>
