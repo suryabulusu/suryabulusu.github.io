@@ -1,9 +1,31 @@
 Vue.component("tabs", {
   template: `
         <div>
-            <div class="tabs">
-                <ul>
-                    <li v-for="tab in tabs" v-bind:class="{'is-active': tab.isActive}"><a @click="selectTab(tab)">{{ tab.name }}</a></li>
+            <!-- Mobile Navigation -->
+            <div class="mobile-nav">
+                <button class="mobile-nav-toggle" @click="toggleMobileMenu">
+                    <span>{{ activeTab ? activeTab.name : 'Select Section' }}</span>
+                    <span class="dropdown-arrow" :class="{ 'open': showMobileMenu }"></span>
+                </button>
+                <div class="mobile-nav-menu" :class="{ show: showMobileMenu }">
+                    <div 
+                        v-for="tab in tabs" 
+                        :key="tab.name"
+                        class="mobile-nav-item" 
+                        :class="{ active: tab.isActive }"
+                        @click="selectTabMobile(tab)"
+                    >
+                        {{ tab.name }}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desktop Tabs -->
+            <div class="tabs" ref="tabsContainer">
+                <ul ref="tabsList">
+                    <li v-for="tab in tabs" v-bind:class="{'is-active': tab.isActive}">
+                        <a @click="selectTab(tab)">{{ tab.name }}</a>
+                    </li>
                 </ul>
             </div>
             
@@ -18,7 +40,14 @@ Vue.component("tabs", {
     return {
       tabs: [],
       activeFilters: [],
+      showMobileMenu: false,
     };
+  },
+
+  computed: {
+    activeTab() {
+      return this.tabs.find(tab => tab.isActive);
+    },
   },
 
   created() {
@@ -27,6 +56,12 @@ Vue.component("tabs", {
 
   mounted() {
     this.initializeTagFiltering();
+    // Close mobile menu when clicking outside
+    document.addEventListener("click", this.handleClickOutside);
+  },
+
+  beforeDestroy() {
+    document.removeEventListener("click", this.handleClickOutside);
   },
 
   methods: {
@@ -38,6 +73,21 @@ Vue.component("tabs", {
       this.$nextTick(() => {
         this.initializeTagFiltering();
       });
+    },
+
+    selectTabMobile(selectedTab) {
+      this.selectTab(selectedTab);
+      this.showMobileMenu = false;
+    },
+
+    toggleMobileMenu() {
+      this.showMobileMenu = !this.showMobileMenu;
+    },
+
+    handleClickOutside(event) {
+      if (!this.$el.contains(event.target)) {
+        this.showMobileMenu = false;
+      }
     },
 
     initializeTagFiltering() {

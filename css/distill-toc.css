@@ -140,3 +140,11 @@ d-article h3 a {
 d-article h3 > a:hover {
   text-decoration: underline solid rgba(0, 0, 0, 0.4);
 }
+
+/* Home button styling - inspired by Michael Nielsen's site */
+.home-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
