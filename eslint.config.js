@@ -30,7 +30,7 @@ export default [
       curly: ["error", "all"],
       "brace-style": ["error", "1tbs"],
       indent: ["error", 2],
-      quotes: ["error", "double"],
+      quotes: ["error", "double", { avoidEscape: true }],
       semi: ["error", "always"],
     },
   },

@@ -44,10 +44,10 @@ Vue.component("tabs", {
       // Add click handlers to all tags in the current active tab
       const activeTab =
         this.$el.querySelector(
-          "[v-show]:not([style*=\"display: none\"]), [v-show=\"true\"]"
+          '[v-show]:not([style*="display: none"]), [v-show="true"]'
         ) ||
         this.$el.querySelector(
-          ".tabs-details > div:not([style*=\"display: none\"])"
+          '.tabs-details > div:not([style*="display: none"])'
         );
 
       if (!activeTab) {
