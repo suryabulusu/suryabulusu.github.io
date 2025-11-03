@@ -52,7 +52,7 @@ npm run format       # auto-format all files with Prettier
 npm run format:check # check if files are formatted correctly
 ```
 
-The output directory `_site/` is ignored by git. Run `npm run build` before deploying to GitHub Pages or publishing the generated folder.
+The output directory `_site/` is ignored by git.
 
 ## Git Hooks
 
@@ -63,15 +63,6 @@ This project uses [Husky](https://github.com/typicode/husky) to run pre-commit h
 
 This ensures consistent code quality without manual intervention.
 
-## Development Notes
-
-- Templates use Eleventy’s `collections.posts` to build the posts index (`src/posts/index.njk`).
-- Shared markup lives in `_includes/layouts` and `_includes/partials`.
-- Global metadata (`src/_data/site.js`) is available in every template as `site.*`.
-- Passthrough copy rules live in `eleventy.config.js`; anything under `src/assets`, `src/css`, and `src/js` is copied directly to the output.
-- When creating a new Distill post, drop the converted HTML into `src/posts/<new-slug>/index.html`, add YAML front matter (title/date/description/tags), and Eleventy will pick it up on the next build.
-
 ## TODO / Next Steps
 
 - Revisit `/posts/` once there are enough entries to bring back Eleventy pagination.
-- If we add more client-side helpers, consider bundling them for cache-friendly delivery.
