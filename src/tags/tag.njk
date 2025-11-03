@@ -1,0 +1,38 @@
+---
+layout: layouts/page.njk
+pagination:
+  data: collections.combinedTagEntries
+  size: 1
+  alias: tagEntry
+permalink: /tags/{{ tagEntry.slug }}/
+eleventyComputed:
+  title: Posts tagged “{{ tagEntry.name }}”
+---
+{% set taggedPosts = tagEntry.items %}
+<section>
+  <h1>Posts tagged “{{ tagEntry.name }}”</h1>
+  <p class="section-intro">
+    {{ taggedPosts | length }} {{ 'post' if taggedPosts | length == 1 else 'posts' }} filed under this tag.
+    <a href="/posts/">Back to all posts</a>.
+  </p>
+  <ul class="post-list">
+    {% for post in taggedPosts %}
+      <li class="post-item">
+        <div class="post-meta">{{ post.date | readableDate }}</div>
+        <h2>
+          <a href="{{ post.url }}"{% if post.isExternal %} target="_blank" rel="noopener"{% endif %}>{{ post.title }}</a>
+        </h2>
+        {% if post.description %}
+          <p>{{ post.description }}</p>
+        {% endif %}
+        {% if post.tags | length %}
+          <div class="inline-tags">
+            {% for tagName in post.tags %}
+              <a href="/tags/{{ tagName | slugify }}/">{{ tagName }}</a>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</section>

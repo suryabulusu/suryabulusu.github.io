@@ -2,80 +2,76 @@
 
 The site is [suryabulusu.github.io](https://suryabulusu.github.io)
 
-### Technologies Used
-- HTML5
-- CSS3 (with Bulma framework)
-- Vue.js 2
-- GitHub Pages for hosting
+## Stack
 
-## Development Setup
+- [Eleventy](https://www.11ty.dev/) static site generator
+- Nunjucks templates for layouts and pages
+- Plain HTML for Distill posts with passthrough assets
+- Node.js tooling for linting, formatting, and builds
 
-### Prerequisites
-- Node.js (v20 or higher)
-- npm
+## Project Structure
 
-### Installation
-```bash
-# Clone the repository
-git clone https://github.com/suryabulusu/suryabulusu.github.io.git
-cd suryabulusu.github.io
-
-# Install dependencies
-npm install
-
-# Set up pre-commit hooks
-npm run prepare
+```
+src/
+  index.njk               # About page (home)
+  posts/                  # Post archive + Distill posts
+    feed.njk              # RSS feed (outputs /feed.xml)
+  projects/               # Projects page
+  presentations/          # Talks, workshops
+  code/                   # Code & open source listings
+  tags/                   # Tag index + per-tag pages
+  now/                    # Now page
+  _includes/
+    layouts/
+      base.njk            # Global <head> + shell
+      page.njk            # Base page layout with nav/footer
+    partials/
+      nav.njk             # Main site navigation
+  _data/
+    site.js               # Global metadata (title, description, email)
+    writingElsewhere.js   # External essays
+    talks.js              # Talks & presentations
+    resources.js          # Workshops and guides
+    codeRepos.js          # Open-source projects
+  assets/                 # Images, PDFs, misc assets
+  css/                    # Styles (site.css)
+  js/                     # Disqus loader, TOC helpers, talk tag filter
 ```
 
-### Development Commands
+- Distill HTML posts live under `src/posts/<slug>/index.html`. Each has YAML front matter (`layout: null`) so Eleventy emits them unchanged while still indexing metadata.
+- Asset references inside post folders remain the same (e.g. `/posts/mangli-kanduri/...`). Eleventy passthrough keeps the directory layout intact.
 
-```bash
-# Lint all files
-npm run lint
+## Commands
 
-# Format all files
-npm run format
-
-# Fix auto-fixable issues
-npm run fix
-
-# Individual commands
-npm run lint:html    # Validate HTML
-npm run lint:css     # Lint CSS
-npm run lint:js      # Lint JavaScript
-npm run format:html  # Format HTML
-npm run format:css   # Format CSS
-npm run format:js    # Format JavaScript
+```
+npm install          # install deps + setup git hooks
+npm run dev          # eleventy --serve (watch + local server)
+npm run build        # eleventy (static build into _site/)
+npm run lint         # run ESLint on JS files
+npm run format       # auto-format all files with Prettier
+npm run format:check # check if files are formatted correctly
 ```
 
-### Pre-commit Hooks
+The output directory `_site/` is ignored by git. Run `npm run build` before deploying to GitHub Pages or publishing the generated folder.
 
-This project uses Husky and lint-staged to automatically lint and format code before commits. The hooks will:
-- Format code with Prettier
-- Lint CSS with Stylelint
-- Lint JavaScript with ESLint
-- Validate HTML structure
+## Git Hooks
 
-### GitHub Actions
+This project uses [Husky](https://github.com/typicode/husky) to run pre-commit hooks. When you commit, `lint-staged` automatically:
 
-The project includes automated workflows:
-- **Lint Check**: Runs on all PRs to ensure code quality
-- **Deploy**: Validates code and deploys to GitHub Pages on main branch
+- Formats staged files with Prettier
+- Lints and fixes staged JS files with ESLint
 
-### Code Quality Tools
+This ensures consistent code quality without manual intervention.
 
-- **ESLint**: JavaScript linting with Vue.js support
-- **Stylelint**: CSS linting (catches real errors, ignores legacy patterns)
-- **Prettier**: Code formatting
-- **Husky**: Git hooks
-- **lint-staged**: Run linters on staged files
+## Development Notes
 
-**Note**: HTML validation is available but not enforced due to legacy blog content.
+- Templates use Eleventy’s `collections.posts` to build the posts index (`src/posts/index.njk`).
+- Shared markup lives in `_includes/layouts` and `_includes/partials`.
+- Global metadata (`src/_data/site.js`) is available in every template as `site.*`.
+- Passthrough copy rules live in `eleventy.config.js`; anything under `src/assets`, `src/css`, and `src/js` is copied directly to the output.
+- When creating a new Distill post, drop the converted HTML into `src/posts/<new-slug>/index.html`, add YAML front matter (title/date/description/tags), and Eleventy will pick it up on the next build.
 
-## TODO
+## TODO / Next Steps
 
-Still figuring out:
-* How to surface comments in posts? Disqus Inline comments?
-* Better structure; Markdown -> Post conversion?
-* ✅ Improve gh actions?
-* Implement tagging, pagination
+- Revisit `/posts/` once there are enough entries to bring back Eleventy pagination.
+- If we add more client-side helpers, consider bundling them for cache-friendly delivery.

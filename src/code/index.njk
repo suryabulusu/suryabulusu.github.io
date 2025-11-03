@@ -1,0 +1,43 @@
+---
+layout: layouts/page.njk
+permalink: /code/
+title: Code
+---
+<section>
+  <h1>Code</h1>
+  <p>
+    For the Avanti Fellows ecosystem, browse the <a href="https://github.com/avantifellows/">GitHub organization</a>. 
+    I help maintain Quiz Engine, Portal, Reporting Engine, Session Manager, and more. 
+  </p>
+  <p>
+    These repos have a variety of open issues, many of which are beginner-friendly. 
+    Please consider contributing! You can reach out to me on Avanti's Discord. 
+    My discord id is <span style="font-family: Courier; font-size: 16px">suryabulusu</span>.
+  </p>
+</section>
+
+<ul class="post-list">
+  {% for repo in codeRepos | sort(attribute='published') | reverse %}
+    <li class="post-item">
+      <div class="post-meta">{{ repo.published | readableDate }}</div>
+      <h2><a href="{{ repo.url }}">{{ repo.title }}</a></h2>
+      <p>{{ repo.summary }}
+
+        {% if repo.resources %}
+          <span class="repo-resources">
+            {% for resource in repo.resources %}
+              <a href="{{ resource.url }}">{{ resource.label }}</a>{% if not loop.last %} ·{% endif %}
+            {% endfor %}
+          </span>
+        {% endif %}
+      </p>
+      {% if repo.tags %}
+        <div class="inline-tags">
+          {% for tag in repo.tags %}
+            <span>{{ tag }}</span>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>

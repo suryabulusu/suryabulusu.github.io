@@ -1,0 +1,167 @@
+---
+layout: layouts/page.njk
+permalink: /projects/
+title: Projects
+---
+<section>
+  <h1>Projects</h1>
+  <p>
+    I've divided projects into few themes for easy access. 
+    Although I'm not fully invested in all of them right now, I'm excited to hear and discuss ideas. 
+    For a full list, check my <a href="https://scholar.google.com/citations?user=JNsMQIgAAAAJ&hl=en">Google Scholar</a> page.
+  </p>
+</section>
+
+<section class="project-block">
+  <h2>Theme 1 · Probabilistic Modelling and Inference</h2>
+  <div class="project-media">
+    <img src="/posts/bbvi/model_basic.jpg" alt="Probabilistic modelling diagram" />
+    <img src="/assets/pmi_theme1.png" alt="PMI theme visualization" />
+  </div>
+  <p>
+    PMI forms the foundation of my understanding in ML, anchoring my intuitions and expanding my approach to complex problems. 
+    The CS698X course at IIT Kanpur, taught by
+    <a href="https://www.cse.iitk.ac.in/users/piyush/">Prof. Piyush Rai</a>, was pivotal, and I've documented many of
+    these thoughts in <a href="/posts/taste/#probabilistic-modelling-and-inference-(pmi)">Notes on Research Taste</a>.
+  </p>
+  <ul>
+    <li>
+      <strong>Undergraduate thesis.</strong> With <a href="https://github.com/shngt">Shashank Gupta</a>, we explored
+      bandits for sequential recommendations, leaning on DP-means clustering with stick-breaking priors to avoid
+      fixing the number of clusters. <a href="/assets/bandit_clustering.pdf">Report</a> ·
+      <a href="https://github.com/shngt/bayesian-bandit-clustering">Code</a>
+    </li>
+    <li>
+      <strong>Mixture of ARMA.</strong> Can cohorts of time series be modelled as mixtures of ARMA processes? We tried
+      an EM-based approach. <a href="/assets/Mixture_of_ARMA.pdf">Report</a> ·
+      <a href="https://github.com/suryabulusu/ARMA_mixtures/blob/master/Code_Report.ipynb">Code</a>
+    </li>
+    <li>
+      <strong>sslvae.</strong> Discrete latent variables in VAEs with Concrete distributions for semi-supervised image
+      labelling, inspired by work from Ben Poole et al. and Yee Whye Teh.
+      Differentiating them is a pain, yet I'm thoroughly fascinated by VAEs and the interpretability offered via discrete LVs.
+      <a href="https://github.com/suryabulusu/sslvae/">Code</a>
+    </li>
+    <li>
+      <strong>Exploratory modelling.</strong> Experiments in JAX and PyTorch.
+      <a href="https://github.com/suryabulusu/prob-autodiff/">Link 1</a> ·
+      <a href="https://github.com/suryabulusu/play-notebooks/">Link 2</a>
+    </li>
+  </ul>
+</section>
+
+<section class="project-block">
+  <h2>Theme 2 · Multimodal Combinations</h2>
+  <div class="project-media">
+    <img src="/assets/multimodalIUI_theme2.png" alt="Multimodal interface example" />
+    <img src="/assets/proc2vid_theme2.png" alt="Procedural video generation" />
+  </div>
+  <p>
+    Image and text generation tasks are deeply pedagogical and were my entry point into deep learning, though I have
+    <a href="/posts/taste/#image-based-tasks">mixed thoughts</a> about the field's current incentives.
+  </p>
+  <ul>
+    <li>
+      <strong>SongTrain.</strong> First significant project working with data, with real-time feedback on singing accuracy via audio frequency analysis. This project won
+      Microsoft's code.fun.do! <a href="https://www.youtube.com/watch?v=iwKzN4ybRDM">Video</a> ·
+      <a href="https://www.thehindu.com/news/cities/Hyderabad/codefundo-that-spots-exceptional-talent/article18429674.ece">The Hindu</a>
+    </li>
+    <li>
+      <strong>Image-Text Fragments.</strong> We developed a tool to generate custom image-text combinations from articles, adapting content and style to meet specific user needs. 
+      Presented at IUI 2020. <a href="/assets/IUI2020Multimodal.pdf">Paper</a>
+    </li>
+    <li>
+      <strong>Temporal Fragments.</strong>  Expanding on image-text combinations, what if we incorporate a temporal dimension? 
+      This allows us to add audio and video elements to the mix. Of course, it doesn't work for all documents. 
+      We focused on procedural texts. Work published in WACV 2023.
+      <a href="https://ieeexplore.ieee.org/document/10030241">Paper</a> ·
+      <a href="https://www.youtube.com/watch?v=H2GgrgqQx74">Video</a>
+    </li>
+  </ul>
+</section>
+
+<section class="project-block">
+  <h2>Theme 3 · Systems for Creative Collaboration</h2>
+  <div class="project-media">
+    <img src="/assets/codifying_theme3.png" alt="Creative collaboration system" />
+    <img src="/assets/collabcolor_theme3.png" alt="Collaborative colouring interface" />
+  </div>
+  <p>
+    Generating images and videos certainly has its functional applications, but I feel it doesn't yet fully capture the needs of a creative's toolbox. 
+    What truly excites me is the prospect of co-creation. 
+    Just as a chat interface provides an interactive flow in textual modality, I envision a similarly iterative, back-and-forth process in image and video modalities. 
+    This interaction doesn't have to be limited to a human-agent dynamic; it could very well involve human-human interactions, with an agent in the background, subtly aligning differences.
+    See my thoughts on reinforcement learning <a href="/posts/taste/#reinforcement-learning">here</a>.
+  </p>
+  <ul>
+    <li>
+      <strong>Codifying Conflicts in Co-Coloring.</strong> We looked at the process of creatives collaborating on a simple line-art coloring task, focusing on the conflicts and pain points that arise. 
+      Through user studies, we explored whether participants could effectively collaborate and impart their unique preferences in the final artwork. 
+      This project allowed me to work with SVGs, a flexible and often overlooked modality. Work published in CHI LBW 2022.
+      <a href="/assets/collabcolor_chilbw22.pdf">Paper</a> ·
+      <a href="/assets/collabcolor_poster_chilbw22.pdf">Poster</a> ·
+      <a href="https://www.youtube.com/watch?v=Cqb7MI2YHpQ">Video</a>
+    </li>
+    <li>
+      <strong>CollabColor.</strong> Extending the previous task, we developed CollabColor, an RL-based support system that assists users in finding a shared creative vision during collaboration. 
+      Framed as a multi-agent MDP, this project encompassed user studies, behaviour cloning, supervised RL with transformers, extensive evaluations, and more. 
+      We found that CollabColor's interventions improved coherence in final colorizations. 
+      While the immediate impact is on artistic collaboration, can RL interventions broadly help reconcile local differences toward societal harmony? 
+      Perhaps a utopian overreach, but one worth pursuing.
+      <a href="/assets/iui_collabcolor_draft.pdf">Paper Draft</a>
+    </li>
+  </ul>
+</section>
+
+<section class="project-block">
+  <h2>Theme 4 · Compressing Data and Models</h2>
+  <div class="project-media">
+    <img src="/assets/compress_theme4.png" alt="Data compression visualisation" />
+  </div>
+  <p>
+    Creative tools highlighted how unwieldy large models can be. I'm interested in making them lighter without
+    compromising utility. More thoughts in
+    <a href="/posts/taste/#memory-/-hardware-efficiency">this section</a> and
+    <a href="/posts/taste/#neural-compression">here</a>.
+  </p>
+  <ul>
+    <li>
+      <strong>Post-OCR Error Detection.</strong> OCR outputs suffer from common document issues like poor angles, folds, and creases. 
+      For Adobe Scan, I developed a lightweight, mobile-friendly model that flags documents likely to yield OCR errors, enabling targeted post-processing.
+      <a href="https://github.com/suryabulusu/play-notebooks/blob/main/onnx_tut.ipynb">Code</a>
+    </li>
+    <li>
+      <strong>User-guided Variable-rate Learned Compression.</strong> Neural nets can compress images but this process is lossy. 
+      I explored an approach where we ask users for their critical regions and compress less aggressively in those regions.
+      This enables differential bit allocation, allowing a single model to operate at multiple bit rates. Work published in CVPR 2022 Workshop.
+      <a href="https://openaccess.thecvf.com/content/CVPR2022W/CLIC/papers/Gupta_User-Guided_Variable_Rate_Learned_Image_Compression_CVPRW_2022_paper.pdf">Paper</a>
+    </li>
+  </ul>
+</section>
+
+<section class="project-block">
+  <h2>Theme 5 · Tech for Public Service Systems</h2>
+  <div class="project-media">
+    <img src="/assets/avanti_theme5.png" alt="Public service technology platform" />
+  </div>
+  <p>
+    Alongside ML research, I'm drawn to the sociological, historical, and political landscapes I inhabit. 
+    My previous research often catered to functional productivity and efficiency, and I wanted to explore public interest technology that primarily serves human-centered values. 
+    Low-resource contexts require participatory action and field research with care and dignity as a necessary ethic. 
+    I feel these constraints, whether geographical or economic, can foster uniquely creative solutions.
+    Related notes live in <a href="/posts/taste/#ictd">ICTD</a> and
+    <a href="/posts/taste/#sociology-and-caste">Sociology &amp; Caste</a>.
+  </p>
+  <ul>
+    <li>
+      <strong>Avanti's Open Source Tools.</strong> I played a major role in developing tools for India's public school systems, reaching over 250,000 students across 5,000 schools. 
+      These tools enable assessments, attendance tracking, resource access, reporting, and data analysis for thousands of students and teachers daily.
+      <a href="https://github.com/avantifellows/">Code</a> ·
+      <a href="https://www.youtube.com/watch?v=vlPYxi5xJL8">Video</a>
+    </li>
+    <li>
+      <strong>Memory interventions.</strong> Leading an LLM-based intervention to improve retention within Avanti's Quiz
+      Engine, emphasizing responsible AI practices in education.
+    </li>
+  </ul>
+</section>

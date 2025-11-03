@@ -48,3 +48,12 @@ jspm_packages/
 # Temporary files
 *.tmp
 *.temp
+
+# Eleventy build output
+_site/
+
+# Husky internal files (auto-generated)
+.husky/_
+
+# Claude Code local settings
+.claude/

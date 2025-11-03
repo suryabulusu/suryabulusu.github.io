@@ -1,0 +1,38 @@
+---
+layout: layouts/page.njk
+permalink: /posts/
+title: Posts
+---
+<section>
+  <h1>Posts</h1>
+  <p>
+    Essays and notes hosted here, primarily long-form pieces. Some entries link to newspaper articles. My substack id is <span style="font-family: Courier; font-size: 16px">suryabv</span>.
+  </p>
+  {% set tagEntries = collections.combinedTagEntries %}
+  <div class="tag-cloud"><span class="tag-cloud-label">Tags:</span>
+    {% for entry in tagEntries %}
+      <a href="/tags/{{ entry.slug }}/">{{ entry.name }}</a>{% if not loop.last %},{% endif %}
+    {% endfor %}
+  </div>
+  <ul class="post-list">
+    {% set combinedPosts = collections.combinedPosts %}
+    {% for entry in combinedPosts %}
+      <li class="post-item">
+        <div class="post-meta">{{ entry.date | readableDate }}</div>
+        <h2>
+          <a href="{{ entry.url }}"{% if entry.isExternal %} target="_blank" rel="noopener"{% endif %}>{{ entry.title }}</a>
+        </h2>
+        {% if entry.description %}
+          <p>{{ entry.description }}</p>
+        {% endif %}
+        {% if entry.tags | length %}
+          <div class="inline-tags">
+            {% for tag in entry.tags %}
+              <a href="/tags/{{ tag | slugify }}/">{{ tag }}</a>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</section>

@@ -1,0 +1,49 @@
+---
+layout: layouts/page.njk
+permalink: /presentations/
+title: Presentations
+---
+<section>
+  <h1>Presentations</h1>
+  <p>
+    Includes public-facing material like conference talks, community sessions, and video walkthroughs.
+  </p>
+  {% set talkTags = talks | collectTags %}
+  {% if talkTags | length %}
+    <div class="tag-cloud" data-talk-tags>
+      <span class="tag-cloud-label">Tags:</span>
+      {% for tag in talkTags %}
+        <a href="#" data-talk-control data-tag="{{ tag | slugify }}" class="tag-link">{{ tag }}</a>{% if not loop.last %},{% endif %}
+      {% endfor %}
+    </div>
+  {% endif %}
+</section>
+
+<ul class="post-list">
+  {% for talk in talks | sort(attribute='published') | reverse %}
+    <li class="post-item" data-talk-item data-tags="{% if talk.tags %}{% for tag in talk.tags %}{{ tag | slugify }}{% if not loop.last %} {% endif %}{% endfor %}{% endif %}">
+      <div class="post-meta">{{ talk.published | readableDate }}</div>
+      <h2><a href="{{ talk.url }}">{{ talk.title }}</a></h2>
+      <p>
+        {{ talk.summary }}
+        {% if talk.resources %}
+          <span class="talk-resources">
+            {% for resource in talk.resources %}
+              <a href="{{ resource.url }}">{{ resource.label }}</a>{% if not loop.last %} ·{% endif %}
+            {% endfor %}
+          </span>
+        {% endif %}
+      </p>
+      {% if talk.tags %}
+        <div class="inline-tags">
+          {% for tag in talk.tags %}
+            <a href="#" data-talk-control data-tag="{{ tag | slugify }}">{{ tag }}</a>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>
+{% block scripts %}
+  <script src="/js/talk-filter.js" defer></script>
+{% endblock %}

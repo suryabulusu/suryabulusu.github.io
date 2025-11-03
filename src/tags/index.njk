@@ -1,0 +1,18 @@
+---
+layout: layouts/page.njk
+permalink: /tags/
+title: Tags
+---
+<section>
+  <h1>Browse by tag</h1>
+  <p class="section-intro">A quick map of recurring topics. Tags exclude the internal <code>posts</code> helper.</p>
+</section>
+
+{% set tagEntries = collections.combinedTagEntries %}
+<ul class="tags-grid">
+  {% for entry in tagEntries %}
+    <li>
+      <a href="/tags/{{ entry.slug }}/">{{ entry.name }} <span class="post-meta">({{ entry.items | length }})</span></a>
+    </li>
+  {% endfor %}
+</ul>

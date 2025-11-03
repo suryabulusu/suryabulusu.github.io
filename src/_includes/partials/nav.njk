@@ -1,0 +1,31 @@
+<nav class="site-nav">
+  <a class="site-logo" href="/">{{ site.title }}</a>
+  <ul class="site-nav__links">
+    {% set current = page.url or '/' %}
+    {% set links = [
+      { "url": "/posts/", "label": "Posts" },
+      { "url": "/projects/", "label": "Projects" },
+      { "url": "/presentations/", "label": "Presentations" },
+      { "url": "/code/", "label": "Code" },
+      { "url": "/now/", "label": "Now" },
+      { "url": "/feed.xml", "label": "RSS", "isFeed": true }
+    ] %}
+    {% for link in links %}
+      {% set isActive = false %}
+      {% if not link.isFeed %}
+        {% if link.url == '/' %}
+          {% set isActive = (current == '/') %}
+        {% else %}
+          {% set isActive = (current | startsWith(link.url)) %}
+        {% endif %}
+      {% endif %}
+      <li>
+        <a
+          href="{{ link.url }}"
+          class="{{ 'is-active' if isActive else '' }}"
+          {% if link.isFeed %}rel="alternate" type="application/rss+xml"{% endif %}
+        >{{ link.label }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+</nav>
