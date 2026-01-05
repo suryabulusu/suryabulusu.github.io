@@ -1,5 +1,12 @@
 const writingElsewhere = [
   {
+    title: "Arambagh",
+    url: "https://suryabv.substack.com/p/arambagh",
+    published: "2026-01-03",
+    summary: "Public parks are wonderful.",
+    tags: ["Cities"],
+  },
+  {
     title: "Review of The Sirens of September | The Wire",
     url: "https://thewire.in/books/a-siege-and-its-shadow-the-sirens-of-september-tells-the-story-of-hyderabad",
     published: "2025-10-27",
