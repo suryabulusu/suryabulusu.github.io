@@ -1,5 +1,20 @@
 const writingElsewhere = [
   {
+    title: "Review of Touring Talkies | Scroll",
+    url: "https://scroll.in/article/1091935/touring-talkies-jayant-kaikinis-essays-about-movies-speak-to-his-remarkable-aesthetic-curiosity",
+    published: "2026-04-25",
+    summary:
+      "The essays, written in Kannada, range from film reviews to deep dives on background score and the texture of watching a movie.",
+    tags: ["Films", "Literature"],
+  },
+  {
+    title: "Heritage Toilets",
+    url: "https://suryabv.substack.com/p/heritage-toilets",
+    published: "2026-04-16",
+    summary: "Gents only.",
+    tags: ["Cities"],
+  },
+  {
     title: "Arambagh",
     url: "https://suryabv.substack.com/p/arambagh",
     published: "2026-01-03",
