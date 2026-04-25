@@ -95,34 +95,40 @@ export default function (eleventyConfig) {
   );
 
   eleventyConfig.addCollection("combinedTagEntries", collectionApi => {
-    const combined = buildCombinedPosts(collectionApi);
-    const tagMap = new Map();
+    return buildCombinedTagEntries(collectionApi);
+  });
 
-    for (const entry of combined) {
-      for (const tag of entry.tags) {
-        if (!tag) {
-          continue;
-        }
-        const slug = toSlug(tag);
-        if (!slug) {
-          continue;
-        }
-        const current = tagMap.get(slug) ?? { name: tag, slug, items: [] };
-        if (!current.name) {
-          current.name = tag;
-        }
-        current.items.push(entry);
-        tagMap.set(slug, current);
+  eleventyConfig.addCollection("sitemapPages", collectionApi => {
+    const seen = new Set();
+    const pages = [];
+
+    const addPage = ({ url, date }) => {
+      if (!url || seen.has(url)) {
+        return;
       }
+      seen.add(url);
+      pages.push({ url, date });
+    };
+
+    for (const page of collectionApi.getAll()) {
+      if (
+        !page.url ||
+        page.url === "/sitemap.xml" ||
+        page.url === "/feed.xml" ||
+        page.data.permalink === false ||
+        page.data.sitemap === false ||
+        !page.data.title
+      ) {
+        continue;
+      }
+      addPage({ url: page.url, date: page.data.date ? page.date : null });
     }
 
-    return Array.from(tagMap.entries())
-      .map(([, payload]) => ({
-        name: payload.name,
-        slug: payload.slug,
-        items: payload.items.slice().sort((a, b) => b.date - a.date),
-      }))
-      .sort((a, b) => a.name.localeCompare(b.name));
+    for (const tagEntry of buildCombinedTagEntries(collectionApi)) {
+      addPage({ url: `/tags/${tagEntry.slug}/` });
+    }
+
+    return pages;
   });
 
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
@@ -220,6 +226,37 @@ function buildCombinedPosts(collectionApi) {
     .filter(item => item.date instanceof Date);
 
   return [...posts, ...externalEntries].sort((a, b) => b.date - a.date);
+}
+
+function buildCombinedTagEntries(collectionApi) {
+  const combined = buildCombinedPosts(collectionApi);
+  const tagMap = new Map();
+
+  for (const entry of combined) {
+    for (const tag of entry.tags) {
+      if (!tag) {
+        continue;
+      }
+      const slug = toSlug(tag);
+      if (!slug) {
+        continue;
+      }
+      const current = tagMap.get(slug) ?? { name: tag, slug, items: [] };
+      if (!current.name) {
+        current.name = tag;
+      }
+      current.items.push(entry);
+      tagMap.set(slug, current);
+    }
+  }
+
+  return Array.from(tagMap.entries())
+    .map(([, payload]) => ({
+      name: payload.name,
+      slug: payload.slug,
+      items: payload.items.slice().sort((a, b) => b.date - a.date),
+    }))
+    .sort((a, b) => a.name.localeCompare(b.name));
 }
 
 function toSlug(value) {

@@ -5,19 +5,12 @@ eleventyExcludeFromCollections: true
 ---
 <?xml version="1.0" encoding="utf-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  {%- for page in collections.all %}
-    {%- if page.url
-      and page.data.title
-      and page.url != "/sitemap.xml"
-      and page.url != "/feed.xml"
-      and page.data.permalink != false
-      and (page.data.sitemap is not defined or page.data.sitemap != false) -%}
+  {%- for page in collections.sitemapPages %}
   <url>
     <loc>{{ page.url | absoluteUrl(site.url) }}</loc>
-    {%- if page.data.date -%}
+    {%- if page.date -%}
     <lastmod>{{ page.date | dateToRfc3339 }}</lastmod>
     {%- endif -%}
   </url>
-    {%- endif -%}
   {%- endfor %}
 </urlset>
