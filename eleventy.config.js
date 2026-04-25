@@ -114,6 +114,7 @@ export default function (eleventyConfig) {
       if (
         !page.url ||
         page.url === "/sitemap.xml" ||
+        page.url === "/sitemap.txt" ||
         page.url === "/feed.xml" ||
         page.data.permalink === false ||
         page.data.sitemap === false ||

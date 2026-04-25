@@ -1,0 +1,9 @@
+---
+permalink: /sitemap.txt
+layout: null
+eleventyExcludeFromCollections: true
+---
+{%- for page in collections.sitemapPages -%}
+{{ page.url | absoluteUrl(site.url) }}{% if not loop.last %}
+{% endif %}
+{%- endfor -%}
