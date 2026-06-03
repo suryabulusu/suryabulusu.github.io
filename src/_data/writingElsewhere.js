@@ -1,5 +1,13 @@
 const writingElsewhere = [
   {
+    title: "Blessed by BEST",
+    url: "https://suryabv.substack.com/p/blessed-by-best",
+    published: "2026-06-01",
+    summary:
+      "BEST as a system that carries, exhausts, and occasionally dignifies Mumbai's walkers.",
+    tags: ["Cities"],
+  },
+  {
     title: "Review of Touring Talkies | Scroll",
     url: "https://scroll.in/article/1091935/touring-talkies-jayant-kaikinis-essays-about-movies-speak-to-his-remarkable-aesthetic-curiosity",
     published: "2026-04-25",
