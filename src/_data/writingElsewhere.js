@@ -1,7 +1,6 @@
 const writingElsewhere = [
   {
-    title:
-      "The Politics of Sacred Symbols: Revisiting Khilafat | Frontline, The Hindu",
+    title: "The Politics of Sacred Symbols: Revisiting Khilafat | Frontline",
     url: "https://archive.ph/M0MW7",
     published: "2026-06-27",
     summary:
