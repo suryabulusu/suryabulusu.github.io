@@ -1,5 +1,14 @@
 const writingElsewhere = [
   {
+    title:
+      "The Politics of Sacred Symbols: Revisiting Khilafat | Frontline, The Hindu",
+    url: "https://archive.ph/M0MW7",
+    published: "2026-06-27",
+    summary:
+      "Why treat an extra-territorial symbol as if it belonged to us? The power and peril of religious mass politics.",
+    tags: ["Religion", "Politics", "History"],
+  },
+  {
     title: "Blessed by BEST",
     url: "https://suryabv.substack.com/p/blessed-by-best",
     published: "2026-06-01",
