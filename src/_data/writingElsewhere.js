@@ -1,5 +1,13 @@
 const writingElsewhere = [
   {
+    title: "Colour Atop The Hill",
+    url: "https://suryabv.substack.com/p/colour-atop-the-hill",
+    published: "2026-08-16",
+    summary:
+      "In Sion Koliwada, on the stretch between Sion and GTB Nagar, there is a small hillock. Can you guess what sits on top?",
+    tags: ["Politics", "City", "Religion"],
+  },
+  {
     title: "The Politics of Sacred Symbols: Revisiting Khilafat | Frontline",
     url: "https://archive.ph/M0MW7",
     published: "2026-06-27",
