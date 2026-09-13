@@ -1,5 +1,13 @@
 const writingElsewhere = [
   {
+    title: "Review of White Elephant | The Wire",
+    url: "https://thewire.in/books/an-ice-factory-the-great-famine-and-the-mystery-of-missing-dalit-workers",
+    published: "2026-09-09",
+    summary:
+      "Jeyamohan's Shelleyan raptures, translated by Priyamvada Ramkumar",
+    tags: ["Books", "History"],
+  },
+  {
     title: "Colour Atop The Hill",
     url: "https://suryabv.substack.com/p/colour-atop-the-hill",
     published: "2026-08-16",
