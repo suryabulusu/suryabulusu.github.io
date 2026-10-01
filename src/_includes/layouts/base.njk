@@ -11,7 +11,7 @@
       <meta name="description" content="{{ site.description }}" />
     {% endif %}
     {% set canonicalUrl = page.url | absoluteUrl(site.url) %}
-    <link rel="canonical" href="{{ canonicalUrl }}" />
+    {% if noindex %}<meta name="robots" content="noindex" />{% else %}<link rel="canonical" href="{{ canonicalUrl }}" />{% endif %}
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="{{ site.title }}" />
     <meta property="og:title" content="{{ pageTitle }}" />

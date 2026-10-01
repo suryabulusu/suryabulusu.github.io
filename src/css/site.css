@@ -7,7 +7,7 @@
   --color-accent: #b38337;
   --color-accent-soft: rgba(179, 131, 55, 0.2);
   --color-border: rgba(31, 45, 59, 0.12);
-  --max-width: 820px;
+  --max-width: 720px;
   --space-xs: 0.35rem;
   --space-sm: 0.65rem;
   --space-md: 0.9rem;
@@ -26,8 +26,8 @@ body {
   background: #ffffff;
   color: var(--color-text);
   font-family: var(--font-serif);
-  font-size: 15px;
-  line-height: 1.55;
+  font-size: 17px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 
