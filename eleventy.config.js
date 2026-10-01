@@ -3,7 +3,10 @@ import pluginRss, {
   dateToRfc822,
   getNewestCollectionItemDate,
 } from "@11ty/eleventy-plugin-rss";
+import site from "./src/_data/site.js";
 import writingElsewhere from "./src/_data/writingElsewhere.js";
+
+const postMeta = new Map();
 
 export default function (eleventyConfig) {
   eleventyConfig.addPlugin(pluginRss);
@@ -145,6 +148,42 @@ export default function (eleventyConfig) {
     "src/posts/**/*.{png,jpg,jpeg,gif,webp,svg,pdf,bib,py,md,txt}"
   );
 
+  eleventyConfig.addTransform("post-head-meta", function (content, outputPath) {
+    if (
+      !outputPath ||
+      !outputPath.endsWith(".html") ||
+      !outputPath.includes("/posts/") ||
+      !content.includes("<d-article>") ||
+      content.includes('rel="canonical"')
+    ) {
+      return content;
+    }
+    const url = this.page?.url;
+    if (!url) {
+      return content;
+    }
+    const meta = postMeta.get(url) ?? {};
+    const canonicalUrl = new URL(url, site.url).toString();
+    const tags = [
+      `<link rel="canonical" href="${canonicalUrl}" />`,
+      `<meta property="og:type" content="article" />`,
+      `<meta property="og:url" content="${canonicalUrl}" />`,
+      `<meta property="og:site_name" content="${escapeAttr(site.title)}" />`,
+    ];
+    if (meta.title) {
+      tags.push(
+        `<meta property="og:title" content="${escapeAttr(meta.title)}" />`
+      );
+    }
+    if (meta.description) {
+      tags.push(
+        `<meta name="description" content="${escapeAttr(meta.description)}" />`,
+        `<meta property="og:description" content="${escapeAttr(meta.description)}" />`
+      );
+    }
+    return content.replace("<head>", `<head>\n  ${tags.join("\n  ")}`);
+  });
+
   eleventyConfig.addTransform("inline-disqus", (content, outputPath) => {
     if (!outputPath || !outputPath.endsWith(".html")) {
       return content;
@@ -192,6 +231,14 @@ export default function (eleventyConfig) {
   };
 }
 
+function escapeAttr(value) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/"/g, "&quot;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
 function toDate(value) {
   if (!value) {
     return null;
@@ -204,6 +251,13 @@ function toDate(value) {
 }
 
 function buildCombinedPosts(collectionApi) {
+  for (const item of collectionApi.getFilteredByTag("posts") || []) {
+    postMeta.set(item.url, {
+      title: item.data.title,
+      description: item.data.description,
+    });
+  }
+
   const posts = (collectionApi.getFilteredByTag("posts") || []).map(item => ({
     id: item.url,
     title: item.data.title,

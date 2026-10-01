@@ -3,12 +3,23 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{% if title %}{{ title }} · {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+    {% set pageTitle = site.title if page.url == '/' or not title else title ~ ' · ' ~ site.title %}
+    <title>{{ pageTitle }}</title>
     {% if description %}
       <meta name="description" content="{{ description }}" />
     {% else %}
       <meta name="description" content="{{ site.description }}" />
     {% endif %}
+    {% set canonicalUrl = page.url | absoluteUrl(site.url) %}
+    <link rel="canonical" href="{{ canonicalUrl }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="{{ site.title }}" />
+    <meta property="og:title" content="{{ pageTitle }}" />
+    <meta property="og:description" content="{{ description or site.description }}" />
+    <meta property="og:url" content="{{ canonicalUrl }}" />
+    <meta property="og:image" content="{{ '/assets/DSCF0279.jpg' | absoluteUrl(site.url) }}" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="/feed.xml" />
     <meta name="google-site-verification" content="cL6K6DuDCkbefs4yiUmA_yB6sEs_xjuUSIwNtQV8Rzw" />
     <link rel="icon" href="/assets/favicon.ico" />
     <link rel="alternate icon" type="image/svg+xml" href="/assets/favicon.svg" />
