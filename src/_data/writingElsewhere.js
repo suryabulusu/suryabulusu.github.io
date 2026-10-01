@@ -1,5 +1,21 @@
 const writingElsewhere = [
   {
+    title: "Kamaraj, the disciple Gandhi overlooked | Frontline",
+    url: "https://archive.ph/XhB62",
+    published: "2026-10-01",
+    summary:
+      "Gandhi dismissed Kamaraj's Congress as a clique and trusted Rajaji instead, but by the measure of Gandhi's own talisman, it was Kamaraj who served the poorest best.",
+    tags: ["Politics", "History"],
+  },
+  {
+    title: "One of Our Students Found a Critical Security Hole",
+    url: "https://techatavanti.substack.com/p/one-of-our-students-found-a-critical",
+    published: "2026-09-24",
+    summary:
+      "A conversation with the student who found a data exposure in our login service and helped us fix it",
+    tags: ["Security", "NGO"],
+  },
+  {
     title: "Review of White Elephant | The Wire",
     url: "https://thewire.in/books/an-ice-factory-the-great-famine-and-the-mystery-of-missing-dalit-workers",
     published: "2026-09-09",
