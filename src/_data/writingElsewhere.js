@@ -1,5 +1,12 @@
 const writingElsewhere = [
   {
+    title: "Endearing Priyadarshini",
+    url: "https://suryabv.substack.com/p/endearing-priyadarshini",
+    published: "2026-10-27",
+    summary: "Short story",
+    tags: ["Fiction", "Literature"],
+  },
+  {
     title: "Kamaraj, the disciple Gandhi overlooked | Frontline",
     url: "https://archive.ph/XhB62",
     published: "2026-10-01",
