@@ -4,7 +4,7 @@ const writingElsewhere = [
     url: "https://suryabv.substack.com/p/endearing-priyadarshini",
     published: "2026-10-27",
     summary: "Short story",
-    tags: ["Fiction", "Literature"],
+    tags: ["Fiction", "Literature", "Cities"],
   },
   {
     title: "Kamaraj, the disciple Gandhi overlooked | Frontline",
